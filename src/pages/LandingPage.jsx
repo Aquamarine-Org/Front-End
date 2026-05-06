@@ -8,6 +8,7 @@ function LandingPage() {
       <button onClick={() => alert("Botão clicado!")}>Clique aqui</button>
 
       <Link to="/login">Ir para Login</Link>
+      <Link to="/verificacao-de-email">Ir para a pagina de E-mail</Link>
     </div>
   );
 }
