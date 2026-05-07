@@ -9,6 +9,8 @@ function LandingPage() {
 
       <Link to="/login">Ir para Login</Link>
       <Link to="/verificacao-de-email">Ir para a pagina de E-mail</Link>
+      <hr />
+      <Link to="/dashboard">Clique para acessar o Dashboard</Link>
     </div>
   );
 }
