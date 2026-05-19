@@ -11,10 +11,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/cadastro" element={<CadastroPage />} />
-        <Route path="/verificacao-de-email" element={<VerificacaoDeEmailPage/>}/>
-        <Route path="/dashboard" element={<DashboardPage/>}/>
+        
       </Routes>
     </Router>
   );
