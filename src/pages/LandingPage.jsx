@@ -5,6 +5,7 @@ function LandingPage() {
     <div>
       <h1>Landing page</h1>
       <Link to="/login">Login</Link>
+      <h2>ooie</h2>
     </div>
   );
 }
