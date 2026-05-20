@@ -1,4 +1,4 @@
-.login-page {
+.cadastro-page {
   min-height: 100vh;
   background-color: #ffffff;
   display: flex;
@@ -6,37 +6,15 @@
   justify-content: center;
 }
 
-.login-container {
+.cadastro-container {
   width: 100%;
   min-height: 100vh;
   display: flex;
 }
 
-.login-banner {
-  flex: 1;
-  background-image: url("@assets/login_e_cadastro/imagem-login.png");
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: #ffffff;
-}
+.login-banner { flex: 1; background-image: url("@assets/login/imagem-login.png"); background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; text-align: center; color: #ffffff; }
 
-.login-banner h2 {
-  font-size: 56px;
-  font-weight: 700;
-  max-width: 320px;
-  margin-bottom: 40px;
-}
-
-.login-banner p {
-  font-size: 32px;
-  font-weight: 700;
-}
-
-.login-content {
+.cadastro-content {
   width: 48%;
   min-width: 520px;
   display: flex;
@@ -47,29 +25,29 @@
   padding: 40px;
 }
 
-.login-logo {
+.cadastro-logo {
   width: 109px;
   height: 109px;
   object-fit: contain;
 }
 
-.login-title {
+.cadastro-title {
   text-align: center;
 }
 
-.login-title h1 {
+.cadastro-title h1 {
   font-size: 40px;
   font-weight: 700;
   color: #000000;
   margin-bottom: 14px;
 }
 
-.login-title p {
+.cadastro-title p {
   font-size: 24px;
   color: #000000;
 }
 
-.login-form {
+.cadastro-form {
   width: 100%;
   max-width: 520px;
   display: flex;
@@ -119,14 +97,18 @@
   border: none;
   cursor: pointer;
   padding: 0 18px;
+  font-size: 24px;
+  color: #555555;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.password-input img {
-  width: 23px;
-  height: 23px;
+.password-input button:hover {
+  color: #097cd8;
 }
 
-.login-button {
+.cadastro-button {
   background: #097cd8;
   border-radius: 10px;
   border: none;
@@ -166,13 +148,37 @@
   cursor: pointer;
 }
 
-.register-text {
+.login-text {
   color: #000000;
   font-size: 20px;
   font-weight: 700;
 }
 
-.register-text a {
+.login-text a {
   color: #097cd8;
   text-decoration: none;
+}
+
+.cadastro-banner {
+  flex: 1;
+  background-image: url("@assets/login/imagem-login.png");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #ffffff;
+}
+
+.cadastro-banner h2 {
+  font-size: 56px;
+  font-weight: 700;
+  max-width: 320px;
+  margin-bottom: 40px;
+}
+
+.cadastro-banner p {
+  font-size: 32px;
+  font-weight: 700;
 }

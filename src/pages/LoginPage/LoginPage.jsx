@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-<script src="https://kit.fontawesome.com/YOUR_KIT_CODE.js" crossorigin="anonymous"></script>
 import logoAquamarine from "/public/logo.png";
+import { IoEyeSharp } from "react-icons/io5";
 
 
 import "./LoginPage.css";
@@ -40,9 +40,9 @@ function LoginPage() {
               <div className="password-input">
                 <input type="password" placeholder="Digite sua senha" />
 
-                <button type="button">
-                <i class="fa-solid fa-eye"></i>
-                </button>
+              <button type="button">
+  <IoEyeSharp />
+</button>
               </div>
             </div>
 
