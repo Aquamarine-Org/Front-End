@@ -19,6 +19,7 @@ function LandingPage() {
           </Link>
           <Link to="/planos">
             <button>Ver planos</button>
+            a
           </Link>
         </div>
       </section>
