@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: start;
   justify-content: center;
-  padding: 0px 0px 0px 3rem;
+  padding: 0px 0px 5px 3rem;
   background: url("@assets/landing_page/background1.png");
   background-size: cover;
   background-position: center;
@@ -12,7 +12,7 @@
 }
 
 .main-section h1 {
-  font-size: 80px;
+  font-size: 70px;
   width: 750px;
   color: #13364b;
 }
@@ -33,7 +33,7 @@
   gap: 30px;
 }
 
-.link-buttons button {
+.link-buttons .gradient-button {
   background: linear-gradient(to right, #07a7a2 0%, #238dd8 100%);
   width: 300px;
   height: 60px;
@@ -42,4 +42,33 @@
   font-size: 25px;
   font-weight: bold;
   color: #fff;
+  box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.4);
+  transition: background 2s ease;
+}
+
+.link-buttons .gradient-button:hover {
+  background: linear-gradient(to right, #238dd8 0%, #07a7a2 100%);
+  cursor: pointer;
+}
+
+.glass-button {
+  background: #feffff;
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(4.3px);
+  -webkit-backdrop-filter: blur(4.3px);
+  border: 1px solid rgba(255, 255, 255, 0.29);
+
+  width: 300px;
+  height: 60px;
+
+  border-radius: 10px;
+  font-size: 25px;
+  font-weight: bold;
+  color: #fff;
+  box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.4);
+  transition: background 2s ease;
 }

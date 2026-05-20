@@ -1,7 +1,5 @@
 import { Link } from "react-router-dom";
-<script src="https://kit.fontawesome.com/YOUR_KIT_CODE.js" crossorigin="anonymous"></script>
-import logoAquamarine from "/public/logo.png";
-
+import logoAquamarine from "@assets/logo.png";
 
 import "./LoginPage.css";
 
@@ -41,7 +39,7 @@ function LoginPage() {
                 <input type="password" placeholder="Digite sua senha" />
 
                 <button type="button">
-                <i class="fa-solid fa-eye"></i>
+                  <i className="fa-solid fa-eye"></i>
                 </button>
               </div>
             </div>
@@ -57,9 +55,7 @@ function LoginPage() {
             <span></span>
           </div>
 
-          <button className="google-button">
-            Entrar com Google
-          </button>
+          <button className="google-button">Entrar com Google</button>
 
           <p className="register-text">
             Ainda não tem conta? <Link to="/cadastro">Cadastre-se</Link>
@@ -70,4 +66,4 @@ function LoginPage() {
   );
 }
 
-export default LoginPage
+export default LoginPage;

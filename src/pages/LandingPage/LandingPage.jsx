@@ -5,21 +5,22 @@ import imagem2 from "@assets/landing_page/card_informativo/imagem2.png";
 import imagem3 from "@assets/landing_page/card_informativo/imagem3.png";
 
 import "./LandingPage.css";
+import Header from "../../layouts/Header/Header";
 
 function LandingPage() {
   return (
     <div>
+      <Header></Header>
       <section className="main-section">
         <h1>
           Um vazamento não avisa. <br></br> A <span>Aquamarine</span> sim.
         </h1>
         <div className="link-buttons">
           <Link to="/cadastro">
-            <button>Começar</button>
+            <button className="gradient-button">Começar</button>
           </Link>
           <Link to="/planos">
-            <button>Ver planos</button>
-            a
+            <button className="glass-button">Ver planos</button>
           </Link>
         </div>
       </section>
