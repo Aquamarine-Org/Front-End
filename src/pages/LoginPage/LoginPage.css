@@ -1,0 +1,178 @@
+.login-page {
+  min-height: 100vh;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+}
+
+.login-banner {
+  flex: 1;
+  background-image: url("@assets/login_e_cadastro/imagem-login.png");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #ffffff;
+}
+
+.login-banner h2 {
+  font-size: 56px;
+  font-weight: 700;
+  max-width: 320px;
+  margin-bottom: 40px;
+}
+
+.login-banner p {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.login-content {
+  width: 48%;
+  min-width: 520px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 35px;
+  padding: 40px;
+}
+
+.login-logo {
+  width: 109px;
+  height: 109px;
+  object-fit: contain;
+}
+
+.login-title {
+  text-align: center;
+}
+
+.login-title h1 {
+  font-size: 40px;
+  font-weight: 700;
+  color: #000000;
+  margin-bottom: 14px;
+}
+
+.login-title p {
+  font-size: 24px;
+  color: #000000;
+}
+
+.login-form {
+  width: 100%;
+  max-width: 520px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+.input-group label {
+  font-size: 24px;
+  font-weight: 700;
+  color: #000000;
+}
+
+.input-group input {
+  width: 100%;
+  color: #858585;
+  font-size: 18px;
+  background: #cacaca33;
+  border-radius: 10px;
+  border: 1px solid #9fcaff33;
+  padding: 20px 19px;
+  outline: none;
+}
+
+.password-input {
+  display: flex;
+  align-items: center;
+  background: #cacaca33;
+  border-radius: 10px;
+  border: 1px solid #9fcaff33;
+}
+
+.password-input input {
+  border: none;
+  background: transparent;
+  flex: 1;
+}
+
+.password-input button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0 18px;
+}
+
+.password-input img {
+  width: 23px;
+  height: 23px;
+}
+
+.login-button {
+  background: #097cd8;
+  border-radius: 10px;
+  border: none;
+  padding: 14px 60px;
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+  align-self: center;
+}
+
+.divider {
+  width: 100%;
+  max-width: 520px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.divider span {
+  flex: 1;
+  height: 2px;
+  background: #000000;
+}
+
+.divider p {
+  color: #000000;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.google-button {
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.register-text {
+  color: #000000;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.register-text a {
+  color: #097cd8;
+  text-decoration: none;
+}
