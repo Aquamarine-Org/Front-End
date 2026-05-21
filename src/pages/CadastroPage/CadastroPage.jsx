@@ -6,6 +6,15 @@ import styles from "./CadastroPage.module.css";
 
 function CadastroPage() {
   const [mostrarSenha, setMostrarSenha] = useState(false);
+  const [cpf, setCpf] = useState("");
+
+  const handleCpfChange = (event) => {
+    let value = event.target.value.replace(/\D/g, "").slice(0, 11);
+    value = value.replace(/(\d{3})(\d)/, "$1.$2");
+    value = value.replace(/(\d{3})\.(\d{3})(\d)/, "$1.$2.$3");
+    value = value.replace(/(\d{3})\.(\d{3})\.(\d{3})(\d)/, "$1.$2.$3-$4");
+    setCpf(value);
+  };
 
   return (
     <div className={styles.cadastroPage}>
@@ -35,7 +44,14 @@ function CadastroPage() {
 
             <div className={styles.inputGroup}>
               <label>CPF</label>
-              <input type="text" placeholder="Digite seu CPF" />
+              <input
+                type="text"
+                placeholder="Digite seu CPF"
+                value={cpf}
+                onChange={handleCpfChange}
+                maxLength={14}
+                inputMode="numeric"
+              />
             </div>
 
             <div className={styles.inputGroup}>
@@ -67,7 +83,14 @@ function CadastroPage() {
             <span></span>
           </div>
 
-          <button className={styles.googleButton}>Entrar com Google</button>
+          <button className={styles.googleButton}>
+            <img
+              src="https://www.google.com/favicon.ico"
+              alt="Google"
+              className={styles.googleIcon}
+            />
+            Entrar com Google
+          </button>
 
           <p className={styles.loginText}>
             Já tem uma conta? <Link to="/login">Entrar</Link>
@@ -75,7 +98,7 @@ function CadastroPage() {
         </div>
 
         <div className={styles.cadastroBanner}>
-          <div>
+          <div className={styles.cadastroBannerContent}>
             <h2>Vamos começar</h2>
             <p>Se cadastre para continuar</p>
           </div>

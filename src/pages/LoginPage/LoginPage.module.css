@@ -14,7 +14,7 @@
 
 .loginBanner {
   flex: 1;
-  background: url("../../assets/login_e_cadastro/imagem-login.png");
+  background-image: url("../../assets/login_e_cadastro/imagem-login.png");
   background-size: cover;
   background-position: center;
   display: flex;
@@ -22,6 +22,16 @@
   justify-content: center;
   text-align: center;
   color: #ffffff;
+  padding: 0 24px;
+}
+
+.loginBannerContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  max-width: 380px;
 }
 
 .loginBanner h2 {
@@ -119,11 +129,15 @@
   border: none;
   cursor: pointer;
   padding: 0 18px;
+  font-size: 24px;
+  color: #555555;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.passwordInput img {
-  width: 23px;
-  height: 23px;
+.passwordInput button:hover {
+  color: #097cd8;
 }
 
 .loginButton {
@@ -164,8 +178,16 @@
   font-size: 20px;
   font-weight: 700;
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
 }
 
+.googleIcon {
+  width: 28px;
+  height: 28px;
+  display: inline-block;
+}
 .registerText {
   color: #000000;
   font-size: 20px;

@@ -8,7 +8,7 @@
 
 .cadastroContainer {
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
 }
 
@@ -19,8 +19,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 35px;
-  padding: 40px;
+  gap: 24px;
+  padding: 24px;
 }
 
 .cadastroLogo {
@@ -34,14 +34,14 @@
 }
 
 .cadastroTitle h1 {
-  font-size: 40px;
+  font-size: 36px;
   font-weight: 700;
   color: #000000;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
 .cadastroTitle p {
-  font-size: 24px;
+  font-size: 20px;
   color: #000000;
 }
 
@@ -50,7 +50,7 @@
   max-width: 520px;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 24px;
 }
 
 .inputGroup {
@@ -60,7 +60,7 @@
 }
 
 .inputGroup label {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 700;
   color: #000000;
 }
@@ -72,7 +72,7 @@
   background: #cacaca33;
   border-radius: 10px;
   border: 1px solid #9fcaff33;
-  padding: 20px 19px;
+  padding: 16px 16px;
   outline: none;
 }
 
@@ -110,7 +110,7 @@
   background: #097cd8;
   border-radius: 10px;
   border: none;
-  padding: 14px 60px;
+  padding: 14px 48px;
   color: #ffffff;
   font-size: 20px;
   font-weight: 700;
@@ -144,6 +144,15 @@
   font-size: 20px;
   font-weight: 700;
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.googleIcon {
+  width: 28px;
+  height: 28px;
+  display: inline-block;
 }
 
 .loginText {
@@ -167,16 +176,26 @@
   justify-content: center;
   text-align: center;
   color: #ffffff;
+  padding: 0 24px;
+}
+
+.cadastroBannerContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  max-width: 380px;
 }
 
 .cadastroBanner h2 {
-  font-size: 56px;
+  font-size: 48px;
   font-weight: 700;
   max-width: 320px;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 
 .cadastroBanner p {
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 700;
 }
