@@ -57,9 +57,7 @@ function LoginPage() {
             <span></span>
           </div>
 
-          <button className="google-button">
-            Entrar com Google
-          </button>
+          <button className="google-button">Entrar com Google</button>
 
           <p className="register-text">
             Ainda não tem conta? <Link to="/cadastro">Cadastre-se</Link>
@@ -70,4 +68,4 @@ function LoginPage() {
   );
 }
 
-export default LoginPage
+export default LoginPage;
