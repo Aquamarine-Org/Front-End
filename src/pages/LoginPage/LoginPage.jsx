@@ -1,65 +1,63 @@
 import { Link } from "react-router-dom";
 import logoAquamarine from "/public/logo.png";
 import { IoEyeSharp } from "react-icons/io5";
-
-
-import "./LoginPage.css";
+import styles from "./LoginPage.module.css";
 
 function LoginPage() {
   return (
-    <div className="login-page">
-      <section className="login-container">
-        <div className="login-banner">
+    <div className={styles.loginPage}>
+      <section className={styles.loginContainer}>
+        <div className={styles.loginBanner}>
           <div>
             <h2>Bem-vindo de volta</h2>
             <p>Faça login para continuar</p>
           </div>
         </div>
 
-        <div className="login-content">
+        <div className={styles.loginContent}>
           <img
             src={logoAquamarine}
             alt="Logo Aquamarine"
-            className="login-logo"
+            className={styles.loginLogo}
           />
 
-          <div className="login-title">
+          <div className={styles.loginTitle}>
             <h1>Bem-vindo de volta</h1>
             <p>Acesso seguro a sistemas de controle de precisão</p>
           </div>
 
-          <form className="login-form">
-            <div className="input-group">
+          <form className={styles.loginForm}>
+            <div className={styles.inputGroup}>
               <label>E-mail</label>
               <input type="email" placeholder="Entre com seu e-mail" />
             </div>
 
-            <div className="input-group">
+            <div className={styles.inputGroup}>
               <label>Senha</label>
 
-              <div className="password-input">
+              <div className={styles.passwordInput}>
                 <input type="password" placeholder="Digite sua senha" />
 
-              <button type="button">
-  <IoEyeSharp />
-</button>
+                <button type="button">
+                  <IoEyeSharp />
+                </button>
               </div>
             </div>
 
-            <button type="submit" className="login-button">
+            <button type="submit" className={styles.loginButton}>
               Login
             </button>
           </form>
 
-          <div className="divider">
+          <div className={styles.divider}>
             <span></span>
             <p>ou</p>
             <span></span>
           </div>
 
-          <button className="google-button">Entrar com Google</button>
+          <button className={styles.googleButton}>Entrar com Google</button>
 
-          <p className="register-text">
+          <p className={styles.registerText}>
             Ainda não tem conta? <Link to="/cadastro">Cadastre-se</Link>
           </p>
         </div>

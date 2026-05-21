@@ -1,4 +1,4 @@
-.cadastro-page {
+.loginPage {
   min-height: 100vh;
   background-color: #ffffff;
   display: flex;
@@ -6,15 +6,37 @@
   justify-content: center;
 }
 
-.cadastro-container {
+.loginContainer {
   width: 100%;
   min-height: 100vh;
   display: flex;
 }
 
-.login-banner { flex: 1; background-image: url("@assets/login/imagem-login.png"); background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; text-align: center; color: #ffffff; }
+.loginBanner {
+  flex: 1;
+  background: url("../../assets/login_e_cadastro/imagem-login.png");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #ffffff;
+}
 
-.cadastro-content {
+.loginBanner h2 {
+  font-size: 56px;
+  font-weight: 700;
+  max-width: 320px;
+  margin-bottom: 40px;
+}
+
+.loginBanner p {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.loginContent {
   width: 48%;
   min-width: 520px;
   display: flex;
@@ -25,29 +47,29 @@
   padding: 40px;
 }
 
-.cadastro-logo {
+.loginLogo {
   width: 109px;
   height: 109px;
   object-fit: contain;
 }
 
-.cadastro-title {
+.loginTitle {
   text-align: center;
 }
 
-.cadastro-title h1 {
+.loginTitle h1 {
   font-size: 40px;
   font-weight: 700;
   color: #000000;
   margin-bottom: 14px;
 }
 
-.cadastro-title p {
+.loginTitle p {
   font-size: 24px;
   color: #000000;
 }
 
-.cadastro-form {
+.loginForm {
   width: 100%;
   max-width: 520px;
   display: flex;
@@ -55,19 +77,19 @@
   gap: 30px;
 }
 
-.input-group {
+.inputGroup {
   display: flex;
   flex-direction: column;
   gap: 11px;
 }
 
-.input-group label {
+.inputGroup label {
   font-size: 24px;
   font-weight: 700;
   color: #000000;
 }
 
-.input-group input {
+.inputGroup input {
   width: 100%;
   color: #858585;
   font-size: 18px;
@@ -78,7 +100,7 @@
   outline: none;
 }
 
-.password-input {
+.passwordInput {
   display: flex;
   align-items: center;
   background: #cacaca33;
@@ -86,29 +108,25 @@
   border: 1px solid #9fcaff33;
 }
 
-.password-input input {
+.passwordInput input {
   border: none;
   background: transparent;
   flex: 1;
 }
 
-.password-input button {
+.passwordInput button {
   background: transparent;
   border: none;
   cursor: pointer;
   padding: 0 18px;
-  font-size: 24px;
-  color: #555555;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
-.password-input button:hover {
-  color: #097cd8;
+.passwordInput img {
+  width: 23px;
+  height: 23px;
 }
 
-.cadastro-button {
+.loginButton {
   background: #097cd8;
   border-radius: 10px;
   border: none;
@@ -140,7 +158,7 @@
   font-weight: 700;
 }
 
-.google-button {
+.googleButton {
   background: transparent;
   border: none;
   font-size: 20px;
@@ -148,37 +166,13 @@
   cursor: pointer;
 }
 
-.login-text {
+.registerText {
   color: #000000;
   font-size: 20px;
   font-weight: 700;
 }
 
-.login-text a {
+.registerText a {
   color: #097cd8;
   text-decoration: none;
-}
-
-.cadastro-banner {
-  flex: 1;
-  background-image: url("@assets/login/imagem-login.png");
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: #ffffff;
-}
-
-.cadastro-banner h2 {
-  font-size: 56px;
-  font-weight: 700;
-  max-width: 320px;
-  margin-bottom: 40px;
-}
-
-.cadastro-banner p {
-  font-size: 32px;
-  font-weight: 700;
 }
