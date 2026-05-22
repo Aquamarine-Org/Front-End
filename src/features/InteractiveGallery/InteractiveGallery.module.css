@@ -1,0 +1,34 @@
+.galleryContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 24px;
+}
+
+.galleryColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+
+.galleryColumn img {
+  width: 290px;
+  height: 290px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 16px;
+}
+
+.galleryLargeColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  width: 600px;
+  gap: 16px;
+}

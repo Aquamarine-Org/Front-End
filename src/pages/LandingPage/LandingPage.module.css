@@ -1,0 +1,135 @@
+﻿.mainSection {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  padding: 0px 0px 5px 3rem;
+  background: url("../../assets/landing_page/background1.png");
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100vh;
+}
+
+.mainSection h1 {
+  font-size: 70px;
+  width: 750px;
+  color: #13364b;
+}
+
+.mainSection h1 span {
+  color: #01b0a7;
+  text-shadow:
+    0 1px 0 rgba(27, 27, 27, 0.4),
+    0 -2px 3px rgba(0, 0, 0, 0.25);
+}
+
+.linkButtons {
+  display: flex;
+  justify-content: space-between;
+  width: 600px;
+  margin-top: 2rem;
+  gap: 30px;
+}
+
+.linkButtons .gradientButton {
+  background: linear-gradient(to right, #07a7a2 0%, #238dd8 100%);
+  width: 300px;
+  height: 60px;
+  border: none;
+  border-radius: 10px;
+  font-size: 25px;
+  font-weight: bold;
+  color: #fff;
+  box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.4);
+  transition: background 2s ease;
+}
+
+.linkButtons .gradientButton:hover {
+  background: linear-gradient(to right, #238dd8 0%, #07a7a2 100%);
+  cursor: pointer;
+}
+
+.glassButton {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(4.3px);
+  -webkit-backdrop-filter: blur(4.3px);
+  border: 1px solid rgba(255, 255, 255, 0.29);
+  width: 300px;
+  height: 60px;
+  font-size: 25px;
+  font-weight: bold;
+  color: #fff;
+  box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.4);
+  transition: background 2s ease;
+  cursor: pointer;
+}
+
+.containerSub {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 0px 0px 0rem;
+}
+
+.subtitle {
+  font-size: 38px;
+  color: #000;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.cardInformativoDescription {
+  font-size: 30px;
+  color: #505050;
+  font-weight: 500;
+  width: 80%;
+  padding: 0 20px;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.containerSub a {
+  border-radius: 50px;
+  border: 2px solid #000;
+  padding: 14px 40px;
+  color: #000;
+  font-size: 20px;
+  font-weight: 600;
+  text-decoration: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 15px;
+  margin: 50px 0px 40px 0px;
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
+}
+
+.containerSub a:hover {
+  background: #000;
+  color: #fff;
+}
+
+.containerCardInformativo {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  padding: 0 20px;
+  margin: 0 auto;
+  gap: 50px;
+  background: url("@assets/landing_page/background2.png");
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 1000px;
+  margin: -150px 0px -100px 0px;
+
+  z-index: -1;
+}

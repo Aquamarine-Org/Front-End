@@ -3,37 +3,43 @@ import CardInformativoFuncionalidades from "../../features/CardInformativoFuncio
 import imagem1 from "@assets/landing_page/card_informativo/imagem1.png";
 import imagem2 from "@assets/landing_page/card_informativo/imagem2.png";
 import imagem3 from "@assets/landing_page/card_informativo/imagem3.png";
-
-import "./LandingPage.css";
+import styles from "./LandingPage.module.css";
 import Header from "../../layouts/Header/Header";
+import { FaArrowRight } from "react-icons/fa";
+import InteractiveGallery from "../../features/InteractiveGallery/InteractiveGallery";
+import Testimonials from "../../features/Testimonials/Testimonials.jsx";
 
 function LandingPage() {
   return (
     <div>
       <Header></Header>
-      <section className="main-section">
+      <section className={styles.mainSection}>
         <h1>
           Um vazamento não avisa. <br></br> A <span>Aquamarine</span> sim.
         </h1>
-        <div className="link-buttons">
+        <div className={styles.linkButtons}>
           <Link to="/cadastro">
-            <button className="gradient-button">Começar</button>
+            <button className={styles.gradientButton}>Começar</button>
           </Link>
           <Link to="/planos">
-            <button className="glass-button">Ver planos</button>
+            <button className={styles.glassButton}>Ver planos</button>
           </Link>
         </div>
       </section>
-      <section>
-        <h2>Tenha segurança no encanamento da sua casa</h2>
-        <p>
+      <section className={styles.containerSub}>
+        <h2 className={styles.subtitle}>
+          Tenha segurança no encanamento da sua casa
+        </h2>
+        <p className={styles.cardinformativoDescription}>
           Um sistema que analisa o encanamento da sua casa em tempo real e te
           notifica se houver qualquer tipo de alerta.
         </p>
 
-        <Link to="/planos">Ver planos</Link>
+        <Link to="/planos">
+          Ver planos <FaArrowRight />
+        </Link>
 
-        <div>
+        <div className={styles.containerCardInformativo}>
           <CardInformativoFuncionalidades
             imagem={imagem1}
             alt="Produto da aquamarine"
@@ -50,6 +56,25 @@ function LandingPage() {
             descricao="Fechamento de válvula remoto"
           />
         </div>
+      </section>
+      <section className={styles.containerSub}>
+        <h2 className={styles.subtitle}>
+          Com Aquamarine, o vazamento não vira prejuízo
+        </h2>
+        <p className={styles.cardInformativoDescription}>
+          Um sistema inteligente que monitora o encanamento da sua casa em tempo
+          real, detecta vazamentos e age automaticamente para evitar prejuízos.
+        </p>
+
+        <InteractiveGallery />
+      </section>
+      <section>
+        <h2 className={styles.subtitle}>O que nossos usuários dizem </h2>
+        <p className={styles.cardInformativoDescription}>
+          Veja o que nossos clientes dizem sobre nós
+        </p>
+
+        <Testimonials></Testimonials>
       </section>
     </div>
   );
