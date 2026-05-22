@@ -1,0 +1,69 @@
+.content {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  overflow: hidden;
+}
+
+.content::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: url("@assets/dashboard_layout/dashboard-background.png") no-repeat
+    center center fixed;
+
+  background-size: cover;
+
+  /* Blur */
+  filter: blur(8px);
+
+  /* profundidade/refração */
+  transform: scale(1.08);
+
+  /* congelamento/opacidade */
+  opacity: 0.8;
+
+  /* dispersão/luz */
+  background-blend-mode: screen;
+
+  z-index: -2;
+}
+
+.content::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  /* Luz/refração */
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.08),
+    rgba(255, 255, 255, 0.02),
+    rgba(255, 255, 255, 0.08)
+  );
+
+  backdrop-filter: saturate(180%);
+  z-index: -1;
+}
+
+.content main {
+  display: flex;
+  flex-direction: column;
+
+  padding: 3rem 0rem 0rem 2rem;
+}
+
+.pageTitle {
+  font-size: 32px;
+  font-weight: 700;
+  background: linear-gradient(180deg, #0d32c7 0%, #004b46 80%);
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  /* 3. Make the actual text transparent to reveal the gradient */
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}

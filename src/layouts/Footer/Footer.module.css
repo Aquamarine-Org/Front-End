@@ -1,6 +1,6 @@
 .footer {
   width: 100%;
-  padding: 0rem 4rem;
+  padding: 3rem 4rem;
 
   background: url("@assets/landing_page/background_footer.png");
   background-size: cover;
@@ -114,17 +114,22 @@
   color: #ffffff;
 }
 
+.linksColumn button,
 .linksColumn a {
   color: #e6e6e6;
+  border: none;
+  background: none;
   text-decoration: none;
 
   font-size: 18px;
   font-weight: 500;
 
   transition: color 0.2s ease;
+  cursor: pointer;
 }
 
-.linksColumn a:hover {
+.linksColumn a:hover,
+.linksColumn button:hover {
   color: #01b0a7;
 }
 
@@ -167,4 +172,106 @@
   .linksColumn a {
     font-size: 16px;
   }
+}
+
+.modalContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #ffffff;
+}
+
+.modalHeader {
+  margin-bottom: 2rem;
+}
+
+.modalHeader h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.8rem;
+}
+
+.modalHeader p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.modalBody {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+.modalBody::-webkit-scrollbar {
+  width: 6px;
+}
+
+.modalBody::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+}
+
+.modalSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+
+  padding: 1.3rem;
+
+  border-radius: 18px;
+
+  background: rgba(255, 255, 255, 0.06);
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.modalSection h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #01b0a7;
+}
+
+.modalSection p {
+  font-size: 0.97rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.modalFooter {
+  display: flex;
+  justify-content: flex-end;
+
+  margin-top: 2rem;
+}
+
+.modalButton {
+  padding: 0.9rem 2rem;
+
+  border: none;
+  border-radius: 14px;
+
+  background: linear-gradient(90deg, #01b0a7 0%, #097cd8 100%);
+
+  color: #ffffff;
+
+  font-size: 1rem;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.modalButton:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
 }

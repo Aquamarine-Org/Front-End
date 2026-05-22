@@ -1,6 +1,6 @@
 .section {
   position: relative;
-  margin: 5rem 0;
+  margin: 0 0px 2rem 0px;
   background-color: var(--background);
   /* background: url("@assets/landing_page/background3.png") no-repeat;
   background-size: cover;

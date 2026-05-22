@@ -4,6 +4,7 @@ import { MdEmail } from "react-icons/md";
 
 import Header from "../../layouts/Header/Header";
 import Footer from "@src/layouts/Footer/Footer.jsx";
+import ActionButton from "../../components/ActionButton/ActionButton";
 
 import CardInformativoFuncionalidades from "../../features/CardInformativoFuncionalidaes/CardInformativoFuncionalidades";
 import InteractiveGallery from "../../features/InteractiveGallery/InteractiveGallery";
@@ -62,7 +63,7 @@ function LandingPage() {
     <div>
       <Header />
 
-      <section className={styles.mainSection}>
+      <section id="inicio" className={styles.mainSection}>
         <h1>
           Um vazamento não avisa.
           <br />A <span>Aquamarine</span> sim.
@@ -79,7 +80,7 @@ function LandingPage() {
         </div>
       </section>
 
-      <section className={styles.containerSub}>
+      <section id="sobre" className={styles.containerSub}>
         <h2 className={styles.subtitle}>
           Tenha segurança no encanamento da sua casa
         </h2>
@@ -114,7 +115,7 @@ function LandingPage() {
         </div>
       </section>
 
-      <section className={styles.containerSub}>
+      <section id="produto" className={styles.containerSub}>
         <h2 className={styles.subtitle}>
           Com Aquamarine, o vazamento não vira prejuízo
         </h2>
@@ -127,12 +128,14 @@ function LandingPage() {
         <InteractiveGallery />
       </section>
 
-      <section>
+      <section id="avaliacoes" className={styles.containerSub}>
         <Testimonials />
       </section>
 
       <section className={[styles.containerSub, styles.plansSection].join(" ")}>
-        <h2 className={styles.subtitle}>Nossos planos</h2>
+        <div className={styles.plansHeader} id="planos">
+          <h2 className={styles.subtitle}>Nossos planos</h2>
+        </div>
 
         <div className={styles.plansGrid}>
           {planos.map((plano) => (
@@ -142,6 +145,7 @@ function LandingPage() {
       </section>
 
       <section
+        id="parceiros"
         className={[styles.containerSub, styles.partnersSection].join(" ")}
       >
         <h2 className={styles.subtitle}>Conheça nossos parceiros</h2>
@@ -161,7 +165,7 @@ function LandingPage() {
         </div>
       </section>
 
-      <section className={styles.contactSection}>
+      <section className={styles.contactSection} id="suporte">
         <div className={styles.contactContainer}>
           <h2 className={styles.contactTitle}>Entre em contato com a gente</h2>
 
@@ -207,9 +211,11 @@ function LandingPage() {
               />
             </div>
 
-            <button type="submit" className={styles.contactButton}>
-              Enviar mensagem
-            </button>
+            <div className={styles.contactButtonWrapper}>
+              <ActionButton backgroundColor="#097cd8" type="submit">
+                Enviar mensagem
+              </ActionButton>
+            </div>
           </form>
 
           <div className={styles.socialLinks}>

@@ -72,7 +72,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 50px 0px 0px 0rem;
+  padding: 150px 0px 0px 0rem;
 }
 
 .subtitle {
@@ -287,33 +287,33 @@
   resize: none;
 }
 
-.contactButton {
-  width: fit-content;
-
-  align-self: center;
+.contactButtonWrapper {
+  display: flex;
+  justify-content: center;
 
   margin-top: 2rem;
 
+  width: 100%;
+}
+
+.contactButtonWrapper button {
+  width: fit-content;
+
   padding: 1rem 3rem;
 
-  border: none;
   border-radius: 16px;
-
-  background: #097cd8;
 
   color: white;
 
   font-size: 1rem;
   font-weight: 700;
 
-  cursor: pointer;
-
   transition:
     transform 0.2s ease,
     opacity 0.2s ease;
 }
 
-.contactButton:hover {
+.contactButtonWrapper button:hover {
   transform: translateY(-3px);
 
   opacity: 0.9;
@@ -420,4 +420,12 @@
   background: url("@assets/landing_page/background5.png");
   background-size: cover;
   background-position: center;
+}
+
+.plansHeader {
+  height: 20rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 7rem;
 }
