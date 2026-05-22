@@ -1,0 +1,115 @@
+.informacoes-page {
+  min-height: 100vh;
+  background-color: #ffffff;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  padding: 24px;
+  background-image: url("../../assets/login_e_cadastro/d1039ad1-0b10-4882-9597-d83c96f84722.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  font-family: "Quicksand", sans-serif;
+}
+
+.informacoes-logo {
+ width: 139px;
+  height: 120px;
+  object-fit: contain;
+  margin-bottom: 20px;
+}
+
+.informacoes-background {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+
+.informacoes-card {
+  width: 100%;
+  max-width: 780px;
+  height: fit-content;
+  background: rgba(255, 255, 255, 0.35);
+  border-radius: 50px;
+  box-shadow:
+    0 20px 60px rgba(15, 23, 42, 0.12),
+    inset 0 1px 1px rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  padding: 32px 36px 40px;
+}
+
+.informacoes-title {
+  text-align: center;
+}
+
+.informacoes-title h1 {
+  color: #181c23;
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.informacoes-title p {
+  color: #414755;
+  font-size: 24px;
+  line-height: 28px;
+  max-width: 493px;
+}
+
+.informacoes-form {
+  width: 100%;
+  max-width: 550px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.input-group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.input-group label {
+  color: #000000;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.input-group input {
+  width: 100%;
+  height: 50px;
+  background: #ffffff;
+  border: 0.5px solid #c5c5c5;
+  border-radius: 10px;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  color: #868686;
+  font-size: 18px;
+  padding: 0 19px;
+  outline: none;
+}
+
+.informacoes-button {
+  width: 170px;
+  height: 50px;
+  background: #097cd8;
+  border: none;
+  border-radius: 10px;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+}
