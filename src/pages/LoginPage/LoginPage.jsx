@@ -36,20 +36,20 @@ function LoginPage() {
             </div>
 
             <div className={styles.inputGroup}>
-                          <label>Senha</label>
-                          <div className={styles.passwordInput}>
-                            <input
-                              type={mostrarSenha ? "text" : "password"}
-                              placeholder="Digite sua senha"
-                            />
-                            <button
-                              type="button"
-                              onClick={() => setMostrarSenha(!mostrarSenha)}
-                            >
-                              {mostrarSenha ? <IoEyeOffSharp /> : <IoEyeSharp />}
-                            </button>
-                          </div>
-                        </div>
+              <label>Senha</label>
+              <div className={styles.passwordInput}>
+                <input
+                  type={mostrarSenha ? "text" : "password"}
+                  placeholder="Digite sua senha"
+                />
+                <button
+                  type="button"
+                  onClick={() => setMostrarSenha(!mostrarSenha)}
+                >
+                  {mostrarSenha ? <IoEyeOffSharp /> : <IoEyeSharp />}
+                </button>
+              </div>
+            </div>
 
             <button type="submit" className={styles.loginButton}>
               Login
@@ -63,7 +63,11 @@ function LoginPage() {
           </div>
 
           <button className={styles.googleButton}>
-            <img src="https://www.google.com/favicon.ico" alt="Google" className={styles.googleIcon} />
+            <img
+              src="https://www.google.com/favicon.ico"
+              alt="Google"
+              className={styles.googleIcon}
+            />
             Entrar com Google
           </button>
 

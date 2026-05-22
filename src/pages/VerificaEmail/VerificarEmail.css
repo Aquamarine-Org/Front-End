@@ -1,0 +1,125 @@
+.verificar-page {
+  min-height: 100vh;
+  background-color: #ffffff;
+  background-image: url("../../assets/login_e_cadastro/imagem-verificar.png");
+  background-position: bottom center;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.verificar-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 24px;
+}
+
+.verificar-logo {
+  width: 132px;
+  height: 132px;
+  object-fit: contain;
+  margin-bottom: 24px;
+}
+
+.verificar-background {
+  width: 100%;
+  max-width: 560px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  background: transparent;
+}
+
+.verificar-card {
+  width: 100%;
+  max-width: 520px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 36px;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  box-shadow: 0 30px 90px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(255, 255, 255, 0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 36px 32px 42px;
+  backdrop-filter: blur(18px);
+}
+
+.verificar-title {
+  text-align: center;
+  margin-bottom: 42px;
+}
+
+.verificar-title h1 {
+  color: #0f172a;
+  font-size: 34px;
+  letter-spacing: -0.04em;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.verificar-title p {
+  color: #64748b;
+  font-size: 16px;
+  margin: 0;
+}
+
+.codigo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 48px;
+}
+
+.codigo-container input {
+  width: 64px;
+  height: 84px;
+  background: #f8f8fb;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  border-radius: 18px;
+  color: #0f172a;
+  font-size: 36px;
+  font-weight: 800;
+  text-align: center;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.codigo-container input:focus {
+  transform: translateY(-2px);
+}
+
+.codigo-container input:focus {
+  border-color: #097cd8;
+  box-shadow: 0 0 0 4px rgba(9, 124, 216, 0.12);
+}
+
+.verificar-button {
+  width: 100%;
+  background: #097cd8;
+  border-radius: 16px;
+  border: none;
+  padding: 16px 0;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-bottom: 24px;
+}
+
+.reenviar-button {
+  background: transparent;
+  border: none;
+  color: #475569;
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+}
