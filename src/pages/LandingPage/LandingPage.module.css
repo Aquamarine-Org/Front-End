@@ -76,14 +76,23 @@
 }
 
 .subtitle {
-  font-size: 38px;
+  font-size: 48px;
   color: #000;
   font-weight: bold;
   margin-bottom: 20px;
 }
 
+.plansGrid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  width: 80%;
+  padding: 0 20px;
+}
+
 .cardInformativoDescription {
-  font-size: 30px;
+  font-size: 20px;
   color: #505050;
   font-weight: 500;
   width: 80%;
@@ -132,4 +141,283 @@
   margin: -150px 0px -100px 0px;
 
   z-index: -1;
+}
+
+.plansSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 110rem;
+  padding-top: 20rem;
+  background: url("@assets/landing_page/background4.png");
+  background-size: cover;
+  background-position: center;
+  margin: -200px 0px -100px 0px;
+
+  z-index: -1;
+}
+
+.partnersSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5rem;
+}
+
+.partnersSection div {
+  display: flex;
+  flex-direction: row;
+  gap: 10rem;
+  margin-top: 2rem;
+}
+
+.partnersSection div div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.contactSection {
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+
+  padding: 8rem 2rem 0rem 2rem;
+
+  /* background: linear-gradient(
+    180deg,
+    rgba(245, 252, 255, 1) 0%,
+    rgba(235, 247, 255, 1) 100%
+  ); */
+}
+
+.contactContainer {
+  width: 100%;
+  max-width: 900px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 4rem;
+
+  border-radius: 32px;
+
+  background: #faf9fd;
+
+  backdrop-filter: blur(10px);
+
+  box-shadow: 0px 20px 60px rgba(0, 0, 0, 0.04);
+}
+
+.contactTitle {
+  font-size: 3rem;
+  font-weight: 700;
+
+  text-align: center;
+
+  margin-bottom: 1.5rem;
+}
+
+.contactDescription {
+  font-size: 1.2rem;
+
+  color: #4d4d4d;
+
+  text-align: center;
+
+  max-width: 700px;
+
+  line-height: 1.7;
+
+  margin-bottom: 4rem;
+}
+
+.contactForm {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 2rem;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+
+  gap: 0.8rem;
+}
+
+.inputGroup label {
+  font-size: 1.1rem;
+  font-weight: 700;
+
+  color: #13364b;
+}
+
+.inputGroup input,
+.inputGroup textarea {
+  width: 100%;
+
+  padding: 1rem 1.2rem;
+
+  border: none;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+
+  background: transparent;
+
+  font-size: 1rem;
+
+  outline: none;
+
+  transition: border-color 0.2s ease;
+}
+
+.inputGroup input:focus,
+.inputGroup textarea:focus {
+  border-color: #097cd8;
+}
+
+.inputGroup textarea {
+  resize: none;
+}
+
+.contactButton {
+  width: fit-content;
+
+  align-self: center;
+
+  margin-top: 2rem;
+
+  padding: 1rem 3rem;
+
+  border: none;
+  border-radius: 16px;
+
+  background: #097cd8;
+
+  color: white;
+
+  font-size: 1rem;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.contactButton:hover {
+  transform: translateY(-3px);
+
+  opacity: 0.9;
+}
+
+.socialLinks {
+  display: flex;
+  gap: 2rem;
+
+  margin-top: 4rem;
+}
+
+.socialLinks a {
+  width: 70px;
+  height: 70px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #097cd8;
+
+  color: #fff;
+
+  font-size: 2rem;
+
+  text-decoration: none;
+
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.socialLinks a:hover {
+  transform: translateY(-4px);
+
+  background: #097cd8;
+
+  color: white;
+}
+
+.partnersGrid {
+  display: flex;
+  gap: 8rem;
+
+  margin-top: 3rem;
+}
+
+.partnerCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 2rem;
+}
+
+.partnerCard p {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+@media (max-width: 1024px) {
+  .contactContainer {
+    padding: 3rem 2rem;
+  }
+
+  .contactTitle {
+    font-size: 2.4rem;
+  }
+
+  .partnersGrid {
+    flex-direction: column;
+    gap: 4rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .contactTitle {
+    font-size: 2rem;
+  }
+
+  .contactDescription {
+    font-size: 1rem;
+  }
+
+  .socialLinks {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .partnerCard p {
+    font-size: 1.5rem;
+  }
+}
+
+.footerContainer {
+  width: 100%;
+
+  background: url("@assets/landing_page/background5.png");
+  background-size: cover;
+  background-position: center;
 }

@@ -1,60 +1,62 @@
-import { TestimonialsColumn } from "@/components/ui/testimonials-columns-1";
+import { TestimonialsColumn } from "@/features/TestimonialsColumn/TestimonialsColumn.jsx";
 import { motion } from "motion/react";
+
+import styles from "./Testimonials.module.css";
 
 const testimonials = [
   {
-    text: "This ERP revolutionized our operations, streamlining finance and inventory. The cloud-based platform keeps us productive, even remotely.",
-    image: "https://randomuser.me/api/portraits/women/1.jpg",
-    name: "Briana Patton",
-    role: "Operations Manager",
+    text: "Depois que instalamos a Aquamarine, conseguimos identificar um vazamento invisível que estava aumentando nossa conta havia meses. O alerta chegou no celular antes do problema virar prejuízo.",
+    image: "https://randomuser.me/api/portraits/women/11.jpg",
+    name: "Mariana Souza",
+    role: "Arquiteta",
   },
   {
-    text: "Implementing this ERP was smooth and quick. The customizable, user-friendly interface made team training effortless.",
-    image: "https://randomuser.me/api/portraits/men/2.jpg",
-    name: "Bilal Ahmed",
-    role: "IT Manager",
+    text: "O aplicativo é muito simples de usar. Em poucos minutos consegui acompanhar o consumo da casa inteira e entender exatamente onde estávamos desperdiçando água.",
+    image: "https://randomuser.me/api/portraits/men/12.jpg",
+    name: "Ricardo Almeida",
+    role: "Engenheiro Civil",
   },
   {
-    text: "The support team is exceptional, guiding us through setup and providing ongoing assistance, ensuring our satisfaction.",
-    image: "https://randomuser.me/api/portraits/women/3.jpg",
-    name: "Saman Malik",
-    role: "Customer Support Lead",
+    text: "Viajo bastante a trabalho e sempre tinha medo de acontecer algum vazamento enquanto estivesse fora. Hoje consigo monitorar tudo remotamente e fechar o registro pelo celular.",
+    image: "https://randomuser.me/api/portraits/women/13.jpg",
+    name: "Fernanda Lima",
+    role: "Analista Financeira",
   },
   {
-    text: "This ERP's seamless integration enhanced our business operations and efficiency. Highly recommend for its intuitive interface.",
-    image: "https://randomuser.me/api/portraits/men/4.jpg",
-    name: "Omar Raza",
-    role: "CEO",
+    text: "A instalação foi mais simples do que imaginei. O sistema começou a monitorar o consumo imediatamente e os relatórios ajudaram muito no controle da conta de água.",
+    image: "https://randomuser.me/api/portraits/men/14.jpg",
+    name: "Carlos Henrique",
+    role: "Administrador",
   },
   {
-    text: "Its robust features and quick support have transformed our workflow, making us significantly more efficient.",
-    image: "https://randomuser.me/api/portraits/women/5.jpg",
-    name: "Zainab Hussain",
-    role: "Project Manager",
+    text: "O recurso de alertas inteligentes realmente faz diferença. Recebemos uma notificação de consumo anormal durante a madrugada e evitamos um grande desperdício.",
+    image: "https://randomuser.me/api/portraits/women/15.jpg",
+    name: "Juliana Martins",
+    role: "Empresária",
   },
   {
-    text: "The smooth implementation exceeded expectations. It streamlined processes, improving overall business performance.",
-    image: "https://randomuser.me/api/portraits/women/6.jpg",
-    name: "Aliza Khan",
-    role: "Business Analyst",
+    text: "O histórico de consumo trouxe uma visão que eu nunca tive sobre minha casa. Agora consigo identificar padrões e economizar de forma muito mais consciente.",
+    image: "https://randomuser.me/api/portraits/men/16.jpg",
+    name: "Eduardo Ribeiro",
+    role: "Consultor de TI",
   },
   {
-    text: "Our business functions improved with a user-friendly design and positive customer feedback.",
-    image: "https://randomuser.me/api/portraits/men/7.jpg",
-    name: "Farhan Siddiqui",
-    role: "Marketing Director",
+    text: "Como síndico, a Aquamarine trouxe muito mais transparência para o condomínio. Os relatórios ajudam bastante nas assembleias e na prestação de contas.",
+    image: "https://randomuser.me/api/portraits/men/17.jpg",
+    name: "Paulo Mendes",
+    role: "Síndico Profissional",
   },
   {
-    text: "They delivered a solution that exceeded expectations, understanding our needs and enhancing our operations.",
-    image: "https://randomuser.me/api/portraits/women/8.jpg",
-    name: "Sana Sheikh",
-    role: "Sales Manager",
+    text: "Além de reduzir desperdício, o sistema passa uma sensação real de segurança. Saber que posso agir rapidamente em uma emergência muda completamente a experiência.",
+    image: "https://randomuser.me/api/portraits/women/18.jpg",
+    name: "Camila Rocha",
+    role: "Designer de Interiores",
   },
   {
-    text: "Using this ERP, our online presence and conversions significantly improved, boosting business performance.",
-    image: "https://randomuser.me/api/portraits/men/9.jpg",
-    name: "Hassan Ali",
-    role: "E-commerce Manager",
+    text: "A proposta é moderna, mas o que mais gostei foi a praticidade. Tudo é muito intuitivo e os alertas realmente ajudam a evitar surpresas na conta.",
+    image: "https://randomuser.me/api/portraits/men/19.jpg",
+    name: "André Ferreira",
+    role: "Empresário",
   },
 ];
 
@@ -64,37 +66,34 @@ const thirdColumn = testimonials.slice(6, 9);
 
 const Testimonials = () => {
   return (
-    <section className="bg-background my-20 relative">
-      <div className="container z-10 mx-auto">
+    <section className={styles.section}>
+      <div className={styles.container}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           viewport={{ once: true }}
-          className="flex flex-col items-center justify-center max-w-[540px] mx-auto"
+          className={styles.header}
         >
-          <div className="flex justify-center">
-            <div className="border py-1 px-4 rounded-lg">Testimonials</div>
-          </div>
+          <h2 className={styles.title}>O que nossos usuários dizem</h2>
 
-          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold tracking-tighter mt-5">
-            What our users say
-          </h2>
-          <p className="text-center mt-5 opacity-75">
-            See what our customers have to say about us.
+          <p className={styles.description}>
+            Veja o que nossos clientes dizem sobre nós.
           </p>
         </motion.div>
 
-        <div className="flex justify-center gap-6 mt-10 [mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)] max-h-[740px] overflow-hidden">
+        <div className={styles.columns}>
           <TestimonialsColumn testimonials={firstColumn} duration={15} />
+
           <TestimonialsColumn
             testimonials={secondColumn}
-            className="hidden md:block"
+            className={styles.hiddenMd}
             duration={19}
           />
+
           <TestimonialsColumn
             testimonials={thirdColumn}
-            className="hidden lg:block"
+            className={styles.hiddenLg}
             duration={17}
           />
         </div>

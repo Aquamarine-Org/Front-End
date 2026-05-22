@@ -1,0 +1,170 @@
+.footer {
+  width: 100%;
+  padding: 0rem 4rem;
+
+  background: url("@assets/landing_page/background_footer.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.overlay {
+  width: 100%;
+  max-width: 1400px;
+
+  margin: 0 auto;
+  padding: 4rem 5rem;
+
+  background: rgba(0, 0, 0, 0.4);
+
+  border-radius: 24px;
+
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 5rem;
+}
+
+.brandSection {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  max-width: 320px;
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logoContainer img {
+  width: 45px;
+  height: 45px;
+
+  object-fit: contain;
+}
+
+.logoContainer h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.brandSection p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #e6e6e6;
+}
+
+.socialLinks {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.socialLinks a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 42px;
+  height: 42px;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.08);
+
+  color: #ffffff;
+  font-size: 18px;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+.socialLinks a:hover {
+  transform: translateY(-3px);
+
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.linksContainer {
+  display: flex;
+  gap: 5rem;
+}
+
+.linksColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.linksColumn h3 {
+  margin-bottom: 0.5rem;
+
+  font-size: 22px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.linksColumn a {
+  color: #e6e6e6;
+  text-decoration: none;
+
+  font-size: 18px;
+  font-weight: 500;
+
+  transition: color 0.2s ease;
+}
+
+.linksColumn a:hover {
+  color: #01b0a7;
+}
+
+@media (max-width: 1000px) {
+  .content {
+    flex-direction: column;
+  }
+
+  .linksContainer {
+    width: 100%;
+
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    gap: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 4rem 1.5rem;
+  }
+
+  .overlay {
+    padding: 3rem 2rem;
+  }
+
+  .linksContainer {
+    flex-direction: column;
+  }
+
+  .logoContainer h2 {
+    font-size: 24px;
+  }
+
+  .linksColumn h3 {
+    font-size: 20px;
+  }
+
+  .linksColumn a {
+    font-size: 16px;
+  }
+}

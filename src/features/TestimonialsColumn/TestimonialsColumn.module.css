@@ -1,0 +1,60 @@
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  padding-bottom: 1.5rem;
+
+  background-color: var(--background);
+}
+
+.card {
+  width: 100%;
+  max-width: 20rem;
+
+  padding: 2.5rem;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1.5rem;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.text {
+  line-height: 1.6;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  margin-top: 1.25rem;
+}
+
+.avatar {
+  width: 2.5rem;
+  height: 2.5rem;
+
+  border-radius: 9999px;
+
+  object-fit: cover;
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.name {
+  font-weight: 500;
+  line-height: 1.25rem;
+  letter-spacing: -0.025em;
+}
+
+.role {
+  line-height: 1.25rem;
+  letter-spacing: -0.025em;
+
+  opacity: 0.6;
+}
