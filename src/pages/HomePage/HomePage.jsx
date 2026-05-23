@@ -3,9 +3,11 @@ import DashboardLayout from "@src/layouts/DashboardLayout/DashboardLayout.jsx";
 function HomePage() {
   return (
     <DashboardLayout pageTitle="Início" currentPage="configurar-valvulas">
-      <div>
-        <h2>Bem-vindo ao Dashboard</h2>
-      </div>
+      <div>Fluxo e Pressão</div>
+
+      <div>Válvula Principal</div>
+
+      <div></div>
     </DashboardLayout>
   );
 }
