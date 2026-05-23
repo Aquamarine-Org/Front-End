@@ -1,0 +1,271 @@
+.historyPage {
+  width: min(100%, 1180px);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 20px 32px 40px 0;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.toolbarActions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dateButton,
+.secondaryButton,
+.whatsappButton,
+.filterButton {
+  height: 38px;
+  border: none;
+  border-radius: 100px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 16px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.dateButton,
+.filterButton {
+  background: #097cd8;
+  color: #ffffff;
+}
+
+.secondaryButton {
+  background: #ffffff;
+  color: #097cd8;
+}
+
+.whatsappButton {
+  background: #16a34a;
+  color: #ffffff;
+  box-shadow: 0 4px 5px 1px #16a34a30;
+}
+
+.summaryGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.summaryCard {
+  min-height: 94px;
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 12px 32px rgba(24, 28, 35, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 18px;
+  color: #1a6b8a;
+}
+
+.summaryCard span {
+  color: #414755;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.summaryCard strong {
+  color: #181c23;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.contentGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 18px;
+}
+
+.chartCard,
+.aiCard,
+.tableCard {
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 12px 32px rgba(24, 28, 35, 0.06);
+  padding: 22px;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.cardHeader h2 {
+  color: #181c23;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.cardHeader p {
+  color: #5f6675;
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+.legend {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 10px;
+  color: #414755;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.legendItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legendItem i {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.analysisList {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.analysisItem {
+  border-radius: 12px;
+  border: 1px solid #d8e5ed;
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 12px;
+  padding: 14px;
+}
+
+@media (max-width: 1180px) {
+  .toolbar,
+  .cardHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .toolbarActions,
+  .summaryGrid,
+  .analysisList {
+    width: 100%;
+  }
+
+  .toolbarActions {
+    flex-wrap: wrap;
+  }
+
+  .summaryGrid,
+  .analysisList {
+    grid-template-columns: 1fr;
+  }
+}
+
+.analysisItem > span {
+  color: #1a6b8a;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.analysisItem strong {
+  display: block;
+  color: #181c23;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.analysisItem small {
+  display: block;
+  color: #5f6675;
+  font-size: 12px;
+  font-weight: 700;
+  margin: 3px 0 6px;
+}
+
+.analysisItem p {
+  color: #414755;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.alert {
+  background: #fff5f5;
+  border-color: #ffd2d2;
+}
+
+.warning {
+  background: #fff9e8;
+  border-color: #ffe1a6;
+}
+
+.normal {
+  background: #eefaf3;
+  border-color: #c8efd7;
+}
+
+.historyTable {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+}
+
+.historyTable th,
+.historyTable td {
+  text-align: left;
+  padding: 14px 12px;
+  font-size: 13px;
+}
+
+.historyTable th {
+  color: #414755;
+  background: #f3f5fa;
+  font-weight: 800;
+}
+
+.historyTable td {
+  color: #181c23;
+  border-bottom: 1px solid #edf0f5;
+  font-weight: 600;
+}
+
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 94px;
+  min-height: 26px;
+  border-radius: 100px;
+  padding: 0 10px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.statusBadge.normal {
+  color: #16803f;
+  background: #def8e8;
+}
+
+.statusBadge.alert {
+  color: #be123c;
+  background: #ffe4e6;
+}
