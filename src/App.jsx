@@ -6,6 +6,7 @@ import CadastroPage from "./pages/CadastroPage/CadastroPage";
 import VerificarEmail from "./pages/VerificaEmail/VerificaEmailPage";
 import InformacoesPage from "./pages/InformacoesPage/informacoces";
 import HomePage from "./pages/HomePage/HomePage";
+import ConfigValvulaPage from "./pages/ConfigValvulaPage/ConfigValvula";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/verficaremail" element={<VerificarEmail />} />
         <Route path="/dados" element={<InformacoesPage />} />
         <Route path="/home" element={<HomePage />} />
+        <Route path="/ConfigValvulaPage" element={<ConfigValvulaPage />} />
       </Routes>
     </Router>
   );
