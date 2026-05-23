@@ -1,0 +1,382 @@
+.home {
+  --card-bg: rgb(255, 255, 255);
+  --panel-bg: rgba(244, 246, 250, 0.88);
+  --title-color: #3e4554;
+  --text-color: #2f3542;
+  --soft-text: #6f7787;
+  --success: #56c6a1;
+  --danger: #ea4a4a;
+  --chart-blue: #1f769b;
+
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+  padding-bottom: 2rem;
+}
+
+.topRow {
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(285px, 1fr);
+  gap: 1rem;
+}
+
+.card {
+  background: var(--card-bg);
+  border-radius: 18px;
+  box-shadow: 0 12px 28px rgba(17, 41, 90, 0.12);
+}
+
+.chartCard {
+  display: flex;
+  flex-direction: column;
+  min-height: 390px;
+  padding: 1.6rem 1.9rem 1.35rem 1.9rem;
+}
+
+.chartHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.cardTitle {
+  color: var(--title-color);
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.deltaBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: #38aa7b;
+  background: #e6f6ef;
+  border-radius: 999px;
+  padding: 0.38rem 0.75rem;
+  font-size: 0.92rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.deltaIcon {
+  width: 0.9rem;
+  height: 0.9rem;
+}
+
+.chartValue {
+  margin-top: 0.45rem;
+  color: #1f6e92;
+  font-size: 1.5rem;
+  line-height: 1.2;
+  font-weight: 500;
+}
+
+.chartValue span {
+  margin-left: 0.35rem;
+  font-size: 1rem;
+  color: #5d6a7c;
+}
+
+.chartArea {
+  margin-top: 1.1rem;
+  flex: 1;
+  background: var(--panel-bg);
+  border-radius: 28px;
+  overflow: hidden;
+}
+
+.chartSvg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.gridLine {
+  stroke: #e4e9ef;
+  stroke-width: 2;
+}
+
+.redCurve {
+  fill: none;
+  stroke: #ea4a4a;
+  stroke-width: 4;
+  stroke-linecap: round;
+}
+
+.blueCurve {
+  fill: none;
+  stroke: var(--chart-blue);
+  stroke-width: 4;
+  stroke-linecap: round;
+}
+
+.chartDot {
+  fill: var(--chart-blue);
+}
+
+.valveCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 390px;
+  padding: 1.65rem 1.45rem 1.8rem;
+  text-align: center;
+}
+
+.valveStatus {
+  position: relative;
+  margin-top: 0.6rem;
+}
+
+.statusRing {
+  width: 138px;
+  height: 138px;
+  border-radius: 50%;
+  border: 4px solid #58bf9a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.statusIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #58bf9a;
+  color: #ffffff;
+  font-size: 1.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.statusChip {
+  position: absolute;
+  left: 50%;
+  bottom: -10px;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: #57c49d;
+  color: #ffffff;
+  font-size: 0.81rem;
+  font-weight: 700;
+  padding: 0.26rem 0.82rem;
+  letter-spacing: 0.03em;
+}
+
+.valveDescription {
+  max-width: 290px;
+  color: var(--text-color);
+  font-size: 1rem;
+  line-height: 1.4;
+  font-weight: 600;
+  margin-top: 0.8rem;
+}
+
+.valveButton {
+  border: 0;
+  border-radius: 12px;
+  width: 70%;
+  padding: 1rem 0.6rem;
+  background: #5ac7a2;
+  color: #ffffff;
+  font-size: 0.9rem;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  box-shadow: 0 14px 24px rgba(234, 132, 132, 0.28);
+  transition:
+    transform 0.2s ease,
+    filter 0.2s ease;
+}
+
+.valveButton:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.02);
+}
+
+.buttonCheck {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.alertsCard {
+  padding: 1.2rem 1.25rem 1.3rem;
+}
+
+.alertsHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.95rem;
+}
+
+.alertsTitle {
+  color: #111111;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.viewAllButton {
+  border: 0;
+  background: none;
+  color: #1b1f28;
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-decoration: underline;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.viewAllButton:hover {
+  opacity: 0.72;
+}
+
+.alertList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+@media (max-width: 1500px) {
+  .cardTitle {
+    font-size: 1.28rem;
+  }
+
+  .chartValue {
+    font-size: 2.5rem;
+  }
+
+  .chartValue span {
+    font-size: 1.45rem;
+  }
+
+  .valveButton {
+    font-size: 1.3rem;
+  }
+
+  .buttonCheck {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .alertsTitle {
+    font-size: 2.65rem;
+  }
+
+  .viewAllButton {
+    font-size: 1.68rem;
+  }
+
+  .alertInfo h3 {
+    font-size: 1.4rem;
+  }
+
+  .alertInfo p,
+  .alertLevel {
+    font-size: 1.08rem;
+  }
+}
+
+@media (max-width: 1240px) {
+  .topRow {
+    grid-template-columns: 1fr;
+  }
+
+  .chartCard,
+  .valveCard {
+    min-height: 350px;
+  }
+
+  .valveCard {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .statusChip {
+    left: 58px;
+  }
+
+  .alertsTitle {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 940px) {
+  .chartCard {
+    padding: 1.2rem 1rem;
+  }
+
+  .deltaBadge {
+    font-size: 0.8rem;
+  }
+
+  .cardTitle {
+    font-size: 1.02rem;
+  }
+
+  .chartArea {
+    border-radius: 20px;
+  }
+
+  .alertsCard {
+    padding: 1rem 0.85rem;
+  }
+
+  .alertsHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .viewAllButton {
+    font-size: 1.05rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .chartHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .chartValue {
+    font-size: 2rem;
+  }
+
+  .chartValue span {
+    font-size: 1.05rem;
+  }
+
+  .statusRing {
+    width: 112px;
+    height: 112px;
+  }
+
+  .statusIcon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.35rem;
+  }
+
+  .alertIconBox {
+    width: 52px;
+    height: 52px;
+    font-size: 1.45rem;
+  }
+}

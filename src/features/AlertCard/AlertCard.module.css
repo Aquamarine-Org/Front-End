@@ -1,0 +1,87 @@
+.alertRow {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 1rem;
+  background: rgba(236, 238, 242, 0.95);
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+}
+
+.alertIconBox {
+  width: 68px;
+  height: 68px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  font-size: 2.05rem;
+}
+
+.icon-warning {
+  background: #f5d170;
+  color: #826204;
+}
+
+.icon-normal {
+  background: #8cd7bc;
+  color: #00583a;
+}
+
+.icon-danger {
+  background: #eaa0a0;
+  color: #8e1111;
+}
+
+.alertInfo {
+  min-width: 0;
+}
+
+.alertInfo h3 {
+  color: #1f1f1f;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.alertInfo p {
+  margin-top: 0.3rem;
+  color: #6f7787;
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.alertLevel {
+  min-width: 150px;
+  text-align: center;
+  border-radius: 999px;
+  padding: 0.36rem 0.9rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.level-warning {
+  background: #f0cd6f;
+  color: #836013;
+}
+
+.level-normal {
+  background: #85d4b6;
+  color: #18674d;
+}
+
+.level-danger {
+  background: #e19191;
+  color: #8f1f1f;
+}
+
+@media (max-width: 940px) {
+  .alertRow {
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 0.75rem;
+  }
+
+  .alertLevel {
+    grid-column: 1 / -1;
+    justify-self: start;
+  }
+}
