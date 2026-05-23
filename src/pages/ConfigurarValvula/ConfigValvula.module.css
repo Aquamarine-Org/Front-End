@@ -1,0 +1,154 @@
+.conectarDispositivoCard {
+  width: 100%;
+  max-width: 787px;
+  background: #ffffff;
+  border-radius: 32px;
+  box-shadow: 0 12px 40px rgba(24, 28, 35, 0.06);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 39px 64px;
+  margin: 0 auto;
+}
+
+.progressContainer {
+  width: 100%;
+  max-width: 547px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.progressItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  color: #414755;
+  font-size: 16px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.progressItem.active {
+  color: #1a6b8a;
+}
+
+.progressCircle {
+  width: 50px;
+  height: 50px;
+  border: 1px solid #414755;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+}
+
+.progressItem.active .progressCircle {
+  background: #1a6b8a;
+  border-color: #1a6b8a;
+  color: #ffffff;
+}
+
+.progressLine {
+  width: 180px;
+  height: 1px;
+  background: #414755;
+  margin-top: 25px;
+}
+
+.qrSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 27px;
+}
+
+.qrSection img {
+  width: 268px;
+  height: 268px;
+  object-fit: contain;
+}
+
+.qrSection p {
+  color: #414755;
+  font-size: 30px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.optionsDivider {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 18px;
+}
+
+.optionsDivider span {
+  flex: 1;
+  height: 1px;
+  background: #414755;
+}
+
+.optionsDivider p {
+  color: #414755;
+  font-size: 24px;
+  white-space: nowrap;
+}
+
+.connectForm {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 21px;
+}
+
+.connectInputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.connectInputGroup label {
+  color: #414755;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.connectInputGroup input {
+  width: 100%;
+  height: 45px;
+  border: 1px solid #414755;
+  border-radius: 100px;
+  color: #414755;
+  font-size: 14px;
+  padding: 0 19px;
+  outline: none;
+}
+
+.connectInputGroup input::placeholder {
+  color: #41475580;
+}
+
+.connectButton {
+  height: 40px;
+  background: #16a34a;
+  border: none;
+  border-radius: 100px;
+  box-shadow: 0 4px 5px 1px #16a34a40;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0 30px;
+  align-self: center;
+  transition: 0.2s;
+}
+
+.connectButton:hover {
+  opacity: 0.9;
+}

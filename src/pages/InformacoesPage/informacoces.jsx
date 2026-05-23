@@ -1,7 +1,7 @@
 import { useState } from "react";
-import logoAquamarine from "/public/logo.png";
+import logoAquamarine from "/logo.png";
 
-import "./InformacoesPage.css";
+import styles from "./InformacoesPage.module.css";
 
 function InformacoesPage() {
   const [cpf, setCpf] = useState("");
@@ -39,24 +39,24 @@ function InformacoesPage() {
   };
 
   return (
-    <div className="informacoes-page">
+    <div className={styles.informacoesPage}>
       <img
         src={logoAquamarine}
         alt="Logo Aquamarine"
-        className="informacoes-logo"
+        className={styles.informacoesLogo}
       />
 
-      <section className="informacoes-background">
-        <div className="informacoes-card">
-          <div className="informacoes-title">
-            <h1>Entre com suas informações adicionais</h1>
+      <section className={styles.informacoesBackground}>
+        <div className={styles.informacoesCard}>
+          <div className={styles.informacoesTitle}>
+            <h1>Informe seus dados adicionais</h1>
             <p>
               Precisamos de mais informações antes de finalizar seu cadastro
             </p>
           </div>
 
-          <form className="informacoes-form">
-            <div className="input-group">
+          <form className={styles.informacoesForm}>
+            <div className={styles.inputGroup}>
               <label>CPF</label>
               <input
                 type="tel"
@@ -68,17 +68,17 @@ function InformacoesPage() {
               />
             </div>
 
-            <div className="input-group">
-              <label>Endereço Completo</label>
+            <div className={styles.inputGroup}>
+              <label>Endereço completo</label>
               <input
                 type="text"
-                placeholder="Entre com seu endereço"
+                placeholder="Digite seu endereço"
                 value={endereco}
                 onChange={(event) => setEndereco(event.target.value)}
               />
             </div>
 
-            <div className="input-group">
+            <div className={styles.inputGroup}>
               <label>CEP</label>
               <input
                 type="tel"
@@ -90,7 +90,7 @@ function InformacoesPage() {
               />
             </div>
 
-            <div className="input-group">
+            <div className={styles.inputGroup}>
               <label>Telefone</label>
               <input
                 type="tel"
@@ -102,7 +102,7 @@ function InformacoesPage() {
               />
             </div>
 
-            <button type="submit" className="informacoes-button">
+            <button type="submit" className={styles.informacoesButton}>
               Cadastrar-se
             </button>
           </form>
