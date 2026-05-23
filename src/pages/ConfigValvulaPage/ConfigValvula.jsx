@@ -1,4 +1,6 @@
 import DashboardLayout from "@src/layouts/DashboardLayout/DashboardLayout.jsx";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { IoWifiOutline, IoCameraOutline } from "react-icons/io5";
 import { TbDeviceAnalytics } from "react-icons/tb";
 import { PiSealCheckBold } from "react-icons/pi";
@@ -6,6 +8,27 @@ import { PiSealCheckBold } from "react-icons/pi";
 import styles from "./ConfigValvula.module.css";
 
 function ConectarDispositivo() {
+  const navigate = useNavigate();
+  const [serialNumber, setSerialNumber] = useState("");
+
+  const formatSerialNumber = (value) => {
+    return value
+      .replace(/[^a-zA-Z0-9]/g, "")
+      .toUpperCase()
+      .slice(0, 16)
+      .replace(/(.{4})/g, "$1-")
+      .replace(/-$/, "");
+  };
+
+  const handleSerialNumberChange = (event) => {
+    setSerialNumber(formatSerialNumber(event.target.value));
+  };
+
+  const handleConnectDevice = (event) => {
+    event.preventDefault();
+    navigate("/ConfigWifi");
+  };
+
   return (
     <DashboardLayout
       currentPage="configurar-valvulas"
@@ -66,11 +89,17 @@ function ConectarDispositivo() {
             <span></span>
           </div>
 
-          <form className={styles.connectForm}>
+          <form className={styles.connectForm} onSubmit={handleConnectDevice}>
             <div className={styles.connectInputGroup}>
               <label>Número de série do dispositivo</label>
 
-              <input type="text" placeholder="AAAA-AAAA-AAAA-AAAA" />
+              <input
+                type="text"
+                placeholder="AAAA-AAAA-AAAA-AAAA"
+                value={serialNumber}
+                onChange={handleSerialNumberChange}
+                maxLength={19}
+              />
             </div>
 
             <div className={styles.connectInputGroup}>

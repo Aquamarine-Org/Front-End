@@ -8,6 +8,7 @@ import InformacoesPage from "./pages/InformacoesPage/informacoces";
 import HomePage from "./pages/HomePage/HomePage";
 import ConfigValvulaPage from "./pages/ConfigValvulaPage/ConfigValvula";
 import ConfigWifi from "./pages/ConfigWifi/configwifi";
+import CalibracaoConfig from "./pages/Calibracaoconfig/calibracao";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/home" element={<HomePage />} />
         <Route path="/ConfigValvulaPage" element={<ConfigValvulaPage />} />
         <Route path="/ConfigWifi" element={<ConfigWifi />} />
+        <Route path="/CalibracaoConfig" element={<CalibracaoConfig />} />
       </Routes>
     </Router>
   );

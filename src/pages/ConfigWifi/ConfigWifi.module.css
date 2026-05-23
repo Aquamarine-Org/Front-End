@@ -12,7 +12,7 @@
 .configWifiCard {
   width: 100%;
   max-width: 787px;
-  min-height: 690px;
+  height: 690px;
   background: #ffffff;
   border-radius: 32px;
   box-shadow: 0 12px 40px rgba(24, 28, 35, 0.06);
@@ -42,6 +42,18 @@
   font-size: 16px;
   font-weight: 600;
   white-space: nowrap;
+}
+
+.progressButton {
+  border: none;
+  background: transparent;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+}
+
+.progressButton:hover {
+  color: #097cd8;
 }
 
 .progressCircle {
@@ -91,7 +103,7 @@
 
 .networkList {
   width: 100%;
-  max-height: 350px;
+  max-height: 390px;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
@@ -134,10 +146,24 @@
     transform 0.2s ease;
 }
 
+.networkButton span {
+  flex: 1;
+}
+
 .networkButton:hover {
   background: #e8f2fb;
   color: #097cd8;
   transform: translateY(-1px);
+}
+
+.connectedNetwork {
+  background: #e9f7ef;
+  color: #16803f;
+  box-shadow: inset 0 0 0 1px #9bd8b2;
+}
+
+.networkCheck {
+  flex-shrink: 0;
 }
 
 .continueButton {
@@ -156,6 +182,188 @@
   transition: 0.2s;
 }
 
-.continueButton:hover {
+.continueButton:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.continueButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  background: rgba(15, 23, 42, 0.36);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.connectionModal {
+  width: 100%;
+  max-width: 430px;
+  position: relative;
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 24px 70px rgba(24, 28, 35, 0.22);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 32px;
+}
+
+.closeModalButton {
+  width: 36px;
+  height: 36px;
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  border: none;
+  border-radius: 50%;
+  background: #f1f1f5;
+  color: #414755;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.closeModalButton:hover {
+  background: #e8f2fb;
+  color: #097cd8;
+}
+
+.modalHeader {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-right: 42px;
+}
+
+.modalIcon {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: #e8f2fb;
+  color: #1a6b8a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.modalHeader h3 {
+  color: #181c23;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.modalHeader p {
+  color: #414755;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.passwordGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  color: #414755;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.passwordInput {
+  height: 42px;
+  border: 1px solid #c5c5c5;
+  border-radius: 10px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 12px;
+  color: #6b7280;
+}
+
+.passwordInput input {
+  min-width: 0;
+  flex: 1;
+  border: none;
+  outline: none;
+  color: #414755;
+  font-size: 14px;
+  background: transparent;
+}
+
+.passwordInput input::placeholder {
+  color: #9ca3af;
+}
+
+.passwordInput button {
+  border: none;
+  background: transparent;
+  color: #6b7280;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+}
+
+.connectWifiButton {
+  height: 42px;
+  background: #097cd8;
+  border: none;
+  border-radius: 100px;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0 28px;
+  align-self: center;
+  transition: 0.2s;
+}
+
+.connectWifiButton:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.connectWifiButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.connectedMessage {
+  min-height: 20px;
+  color: #16803f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.modalContinueButton {
+  height: 40px;
+  background: #16a34a;
+  border: none;
+  border-radius: 100px;
+  box-shadow: 0 4px 5px 1px #16a34a40;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0 32px;
+  align-self: center;
+  transition: 0.2s;
+}
+
+.modalContinueButton:hover {
   opacity: 0.9;
 }

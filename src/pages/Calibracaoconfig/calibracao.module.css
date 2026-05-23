@@ -1,0 +1,187 @@
+.calibracaoWrapper {
+  width: 100%;
+  align-self: stretch;
+  min-height: calc(100vh - 80px);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 40px;
+  box-sizing: border-box;
+}
+
+.calibracaoCard {
+  width: 100%;
+  max-width: 787px;
+  height: 690px;
+  background: #ffffff;
+  border-radius: 32px;
+  box-shadow: 0 12px 40px rgba(24, 28, 35, 0.06);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 39px 64px 56px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.progressContainer {
+  width: 100%;
+  max-width: 547px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  margin-bottom: 34px;
+}
+
+.progressItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  color: #414755;
+  font-size: 16px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.progressButton {
+  border: none;
+  background: transparent;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+}
+
+.progressButton:hover {
+  color: #097cd8;
+}
+
+.progressCircle {
+  width: 50px;
+  height: 50px;
+  border: 1px solid #414755;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+}
+
+.progressItem.active,
+.progressItem.completed {
+  color: #1a6b8a;
+}
+
+.progressItem.active .progressCircle,
+.progressItem.completed .progressCircle {
+  background: #1a6b8a;
+  border-color: #1a6b8a;
+  color: #ffffff;
+}
+
+.progressLine {
+  width: 180px;
+  height: 1px;
+  background: #414755;
+  margin-top: 25px;
+}
+
+.calibracaoContent {
+  width: 100%;
+  max-width: 560px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 22px;
+  padding-bottom: 8px;
+}
+
+.calibracaoContent h2 {
+  color: #414755;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.alertBox {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #e8f2fb;
+  border: 1px solid #b8d9f0;
+  border-radius: 10px;
+  color: #1a6b8a;
+  padding: 18px 20px;
+}
+
+.alertBox svg {
+  flex-shrink: 0;
+}
+
+.alertBox p {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.calibrationButton {
+  width: 100%;
+  height: 55px;
+  background: #16a34a;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 5px 1px #16a34a40;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.calibrationButton:hover:not(:disabled) {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.calibrationButton:disabled {
+  cursor: progress;
+  opacity: 0.85;
+}
+
+.progressArea {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.calibrationTrack {
+  width: 100%;
+  height: 12px;
+  background: #c5c5c5;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.calibrationFill {
+  height: 100%;
+  background: #16a34a;
+  border-radius: 999px;
+  transition: width 0.08s linear;
+}
+
+.progressArea p {
+  color: #16803f;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.successMessage {
+  color: #16803f;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+}
