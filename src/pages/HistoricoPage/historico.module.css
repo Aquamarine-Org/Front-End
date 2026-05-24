@@ -1,4 +1,4 @@
-.historyPage {
+.paginaHistorico {
   width: min(100%, 1180px);
   display: flex;
   flex-direction: column;
@@ -6,23 +6,23 @@
   padding: 20px 32px 40px 0;
 }
 
-.toolbar {
+.barraFerramentas {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 18px;
 }
 
-.toolbarActions {
+.acoesBarra {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-.dateButton,
-.secondaryButton,
-.whatsappButton,
-.filterButton {
+.botaoData,
+.botaoSecundario,
+.botaoWhatsapp,
+.botaoFiltro {
   height: 38px;
   border: none;
   border-radius: 100px;
@@ -36,30 +36,30 @@
   cursor: pointer;
 }
 
-.dateButton,
-.filterButton {
+.botaoData,
+.botaoFiltro {
   background: #097cd8;
   color: #ffffff;
 }
 
-.secondaryButton {
+.botaoSecundario {
   background: #ffffff;
   color: #097cd8;
 }
 
-.whatsappButton {
+.botaoWhatsapp {
   background: #16a34a;
   color: #ffffff;
   box-shadow: 0 4px 5px 1px #16a34a30;
 }
 
-.summaryGrid {
+.gradeResumo {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 14px;
 }
 
-.summaryCard {
+.cartaoResumo {
   min-height: 94px;
   background: #ffffff;
   border-radius: 14px;
@@ -71,184 +71,259 @@
   color: #1a6b8a;
 }
 
-.summaryCard span {
+.cartaoResumo span {
   color: #414755;
   font-size: 14px;
   font-weight: 700;
 }
 
-.summaryCard strong {
+.cartaoResumo strong {
   color: #181c23;
   font-size: 22px;
   font-weight: 800;
 }
 
-.contentGrid {
+.gradeConteudo {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: 18px;
 }
 
-.chartCard,
-.aiCard,
-.tableCard {
+.cartaoGrafico,
+.cartaoIa,
+.cartaoTabela {
   background: #ffffff;
   border-radius: 18px;
   box-shadow: 0 12px 32px rgba(24, 28, 35, 0.06);
   padding: 22px;
 }
 
-.cardHeader {
+.cabecalhoCartao {
   display: flex;
   justify-content: space-between;
   gap: 16px;
   margin-bottom: 18px;
 }
 
-.cardHeader h2 {
+.cabecalhoCartao h2 {
   color: #181c23;
   font-size: 20px;
   font-weight: 800;
 }
 
-.cardHeader p {
+.cabecalhoCartao p {
   color: #5f6675;
   font-size: 14px;
   font-weight: 600;
   margin-top: 4px;
 }
 
-.legend {
+.listaAnalises {
   display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  justify-content: flex-end;
+  flex-direction: column;
   gap: 10px;
-  color: #414755;
-  font-size: 12px;
-  font-weight: 700;
 }
 
-.legendItem {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.legendItem i {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  display: inline-block;
-}
-
-.analysisList {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
-}
-
-.analysisItem {
+.itemAnalise {
+  min-height: 0;
   border-radius: 12px;
   border: 1px solid #d8e5ed;
+  border-left: 5px solid #1a6b8a;
+  background: #ffffff;
   display: grid;
-  grid-template-columns: 48px 1fr;
-  gap: 12px;
-  padding: 14px;
+  grid-template-columns: minmax(210px, 0.9fr) minmax(250px, 1fr) minmax(
+      240px,
+      0.9fr
+    );
+  gap: 16px;
+  align-items: start;
+  padding: 16px;
 }
 
-@media (max-width: 1180px) {
-  .toolbar,
-  .cardHeader {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .toolbarActions,
-  .summaryGrid,
-  .analysisList {
-    width: 100%;
-  }
-
-  .toolbarActions {
-    flex-wrap: wrap;
-  }
-
-  .summaryGrid,
-  .analysisList {
-    grid-template-columns: 1fr;
-  }
+.itemAnalise.alerta {
+  border-left-color: #b91c1c;
 }
 
-.analysisItem > span {
+.itemAnalise.aviso {
+  border-left-color: #b45309;
+}
+
+.itemAnalise.normal {
+  border-left-color: #15803d;
+}
+
+.resumoDiagnostico {
+  align-self: flex-start;
+  border: 1px solid #cfe0ec;
+  border-radius: 8px;
+  background: #f8fbfe;
   color: #1a6b8a;
-  font-size: 13px;
+  padding: 7px 10px;
+  font-size: 12px;
   font-weight: 800;
 }
 
-.analysisItem strong {
+.topoAnalise {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  grid-column: 1;
+}
+
+.topoAnalise strong {
   display: block;
   color: #181c23;
-  font-size: 15px;
-  font-weight: 800;
+  font-size: 16px;
+  font-weight: 900;
+  line-height: 1.2;
+  margin: 8px 0 4px;
 }
 
-.analysisItem small {
+.topoAnalise small {
   display: block;
   color: #5f6675;
   font-size: 12px;
-  font-weight: 700;
-  margin: 3px 0 6px;
+  font-weight: 800;
 }
 
-.analysisItem p {
+.codigoAnalise,
+.seloCriticidade {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 24px;
+  border-radius: 7px;
+  padding: 0 9px;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.codigoAnalise {
+  background: #eef3f8;
+  color: #414755;
+}
+
+.seloCriticidade {
+  flex-shrink: 0;
+  background: #f3f5fa;
+  color: #414755;
+}
+
+.itemAnalise.alerta .seloCriticidade {
+  background: #ffe4e6;
+  color: #be123c;
+}
+
+.itemAnalise.aviso .seloCriticidade {
+  background: #fff1cf;
+  color: #92400e;
+}
+
+.itemAnalise.normal .seloCriticidade {
+  background: #def8e8;
+  color: #16803f;
+}
+
+.estadoAnalise {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  border-radius: 8px;
+  background: #f8fbfe;
+  padding: 9px 10px;
+  grid-column: 1;
+}
+
+.estadoAnalise span {
+  color: #5f6675;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.estadoAnalise strong {
+  color: #181c23;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.indicadorAnalise {
+  color: #181c23;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.35;
+  grid-column: 2;
+}
+
+.blocoEvidencias,
+.acaoRecomendada {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.blocoEvidencias {
+  grid-column: 2;
+}
+
+.acaoRecomendada {
+  grid-column: 3;
+}
+
+.blocoEvidencias > span,
+.acaoRecomendada > span {
+  color: #1a6b8a;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.blocoEvidencias ul {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-left: 16px;
+}
+
+.blocoEvidencias li,
+.acaoRecomendada p {
   color: #414755;
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1.35;
 }
 
-.alert {
-  background: #fff5f5;
-  border-color: #ffd2d2;
+.acaoRecomendada {
+  margin-top: 0;
+  border-top: 1px solid #e2e9f2;
+  padding-top: 12px;
 }
 
-.warning {
-  background: #fff9e8;
-  border-color: #ffe1a6;
-}
-
-.normal {
-  background: #eefaf3;
-  border-color: #c8efd7;
-}
-
-.historyTable {
+.tabelaHistorico {
   width: 100%;
   border-collapse: collapse;
   overflow: hidden;
 }
 
-.historyTable th,
-.historyTable td {
+.tabelaHistorico th,
+.tabelaHistorico td {
   text-align: left;
   padding: 14px 12px;
   font-size: 13px;
 }
 
-.historyTable th {
+.tabelaHistorico th {
   color: #414755;
   background: #f3f5fa;
   font-weight: 800;
 }
 
-.historyTable td {
+.tabelaHistorico td {
   color: #181c23;
   border-bottom: 1px solid #edf0f5;
   font-weight: 600;
 }
 
-.statusBadge {
+.seloStatus {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -260,12 +335,210 @@
   font-weight: 800;
 }
 
-.statusBadge.normal {
+.seloStatus.normal {
   color: #16803f;
   background: #def8e8;
 }
 
-.statusBadge.alert {
+.seloStatus.alerta {
   color: #be123c;
   background: #ffe4e6;
+}
+
+.estadoVazio,
+.celulaTabelaVazia {
+  color: #5f6675;
+  font-size: 14px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.estadoVazio {
+  min-height: 180px;
+  border: 1px dashed #cfe0ec;
+  border-radius: 14px;
+  background: #f8fbfe;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.celulaTabelaVazia {
+  padding: 28px 12px;
+}
+
+.sobreposicaoFiltro {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  background: rgba(7, 23, 38, 0.42);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.modalFiltro {
+  position: relative;
+  width: min(360px, 100%);
+  border-radius: 24px;
+  background: #ffffff;
+  box-shadow: 0 24px 60px rgba(11, 34, 55, 0.26);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 16px;
+  padding: 28px 26px 26px;
+}
+
+.botaoFecharFiltro {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 50%;
+  background: #f3f7fb;
+  color: #5f6675;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.iconeFiltro {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #eaf6ff;
+  color: #097cd8;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+}
+
+.textoFiltro {
+  color: #5f6675;
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.modosFiltro {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.modosFiltro button {
+  height: 28px;
+  border: 1px solid #097cd8;
+  border-radius: 100px;
+  background: #ffffff;
+  color: #097cd8;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.modosFiltro .modoAtivo {
+  background: #097cd8;
+  color: #ffffff;
+  box-shadow: 0 8px 16px rgba(9, 124, 216, 0.2);
+}
+
+.camposFiltro {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.camposFiltro label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.camposFiltro span {
+  color: #414755;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.camposFiltro input,
+.camposFiltro select {
+  width: 100%;
+  height: 38px;
+  border: none;
+  border-bottom: 1px solid #aab5c4;
+  border-radius: 0;
+  background: transparent;
+  color: #181c23;
+  font-size: 13px;
+  font-weight: 700;
+  outline: none;
+}
+
+.camposFiltro input:focus,
+.camposFiltro select:focus {
+  border-bottom-color: #097cd8;
+}
+
+.botaoAplicarFiltro {
+  height: 44px;
+  border: none;
+  border-radius: 100px;
+  background: #097cd8;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 0 10px 18px rgba(9, 124, 216, 0.24);
+}
+
+.botaoAplicarFiltro:hover {
+  background: #086fc2;
+}
+
+@media (max-width: 1180px) {
+  .barraFerramentas,
+  .cabecalhoCartao {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .acoesBarra,
+  .gradeResumo,
+  .listaAnalises {
+    width: 100%;
+  }
+
+  .acoesBarra {
+    flex-wrap: wrap;
+  }
+
+  .gradeResumo,
+  .listaAnalises {
+    grid-template-columns: 1fr;
+  }
+
+  .itemAnalise {
+    grid-template-columns: 1fr;
+  }
+
+  .topoAnalise,
+  .estadoAnalise,
+  .indicadorAnalise,
+  .blocoEvidencias,
+  .acaoRecomendada {
+    grid-column: auto;
+  }
 }

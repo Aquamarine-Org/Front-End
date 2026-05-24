@@ -18,14 +18,13 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/cadastro" element={<CadastroPage />} />
-        <Route path="/verficaremail" element={<VerificarEmail />} />
-        <Route path="/dados" element={<InformacoesPage />} />
+        <Route path="/verficar-email" element={<VerificarEmail />} />
+        <Route path="/informacoes" element={<InformacoesPage />} />
         <Route path="/home" element={<HomePage />} />
-        <Route path="/ConfigValvulaPage" element={<ConfigValvulaPage />} />
-        <Route path="/ConfigWifi" element={<ConfigWifi />} />
-        <Route path="/CalibracaoConfig" element={<CalibracaoConfig />} />
+        <Route path="/configurar-valvula" element={<ConfigValvulaPage />} />
+        <Route path="/configurar-wifi" element={<ConfigWifi />} />
+        <Route path="/calbiracao" element={<CalibracaoConfig />} />
         <Route path="/historico" element={<HistoricoPage />} />
-        <Route path="/HistoricoPage" element={<HistoricoPage />} />
       </Routes>
     </Router>
   );
