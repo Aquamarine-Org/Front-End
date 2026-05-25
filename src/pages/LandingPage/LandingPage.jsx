@@ -74,9 +74,9 @@ function LandingPage() {
             <button className={styles.gradientButton}>Começar</button>
           </Link>
 
-          <Link to="/planos">
+          <a href="#planos">
             <button className={styles.glassButton}>Ver planos</button>
-          </Link>
+          </a>
         </div>
       </section>
 
@@ -90,9 +90,9 @@ function LandingPage() {
           notifica se houver qualquer tipo de alerta.
         </p>
 
-        <Link to="/planos">
+        <a href="#planos">
           Ver planos <FaArrowRight />
-        </Link>
+        </a>
 
         <div className={styles.containerCardInformativo}>
           <CardInformativoFuncionalidades

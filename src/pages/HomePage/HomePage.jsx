@@ -1,15 +1,35 @@
 import DashboardLayout from "@src/layouts/DashboardLayout/DashboardLayout.jsx";
 import styles from "./HomePage.module.css";
+
 import {
   FiAlertTriangle,
   FiArrowUpRight,
   FiCheck,
   FiTrendingDown,
   FiTrendingUp,
+  FiX,
 } from "react-icons/fi";
+
 import { LuGauge } from "react-icons/lu";
+
 import ActionButton from "@src/components/ActionButton/ActionButton.jsx";
 import AlertCard from "@src/features/AlertCard/AlertCard.jsx";
+
+import { useNavigate } from "react-router-dom";
+import Modal from "../../components/Modal/Modal";
+
+import { useMemo, useState } from "react";
+
+import {
+  Area,
+  AreaChart,
+  CartesianGrid,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+  Line,
+} from "recharts";
 
 const ALERTS = [
   {
@@ -36,17 +56,35 @@ const ALERTS = [
     tone: "danger",
     icon: FiAlertTriangle,
   },
-  {
-    id: 4,
-    title: "Consumo Elevado",
-    time: "Ha 2 semanas",
-    level: "Medio",
-    tone: "warning",
-    icon: FiTrendingUp,
-  },
+];
+
+const chartData = [
+  { hour: "00h", fluxo: 10, pressao: 22 },
+  { hour: "04h", fluxo: 15, pressao: 18 },
+  { hour: "08h", fluxo: 12, pressao: 26 },
+  { hour: "12h", fluxo: 18, pressao: 20 },
+  { hour: "16h", fluxo: 14, pressao: 24 },
+  { hour: "20h", fluxo: 11, pressao: 19 },
+  { hour: "24h", fluxo: 13, pressao: 21 },
 ];
 
 function HomePage() {
+  const navigate = useNavigate();
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isValveOpen, setIsValveOpen] = useState(true);
+
+  const averageFlow = useMemo(() => {
+    const total = chartData.reduce((acc, item) => acc + item.fluxo, 0);
+
+    return (total / chartData.length).toFixed(1);
+  }, []);
+
+  const handleToggleValve = () => {
+    setIsValveOpen((prev) => !prev);
+    setIsModalOpen(false);
+  };
+
   return (
     <DashboardLayout pageTitle="Inicio" currentPage="inicio">
       <div className={styles.home}>
@@ -64,63 +102,63 @@ function HomePage() {
             </div>
 
             <p className={styles.chartValue}>
-              12.4 <span>L/min</span>
+              {averageFlow}
+              <span>L/min</span>
             </p>
 
             <div className={styles.chartArea}>
-              <svg
-                viewBox="0 0 760 250"
-                className={styles.chartSvg}
-                aria-label="Grafico de fluxo e pressao"
-                role="img"
-              >
-                <defs>
-                  <linearGradient id="flow-fill" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="rgba(235, 78, 81, 0.32)" />
-                    <stop offset="100%" stopColor="rgba(235, 78, 81, 0.02)" />
-                  </linearGradient>
-                </defs>
+              <ResponsiveContainer width="100%" height="100%">
+                <AreaChart data={chartData}>
+                  <defs>
+                    <linearGradient
+                      id="flowGradient"
+                      x1="0"
+                      y1="0"
+                      x2="0"
+                      y2="1"
+                    >
+                      <stop
+                        offset="5%"
+                        stopColor="#ea4a4a"
+                        stopOpacity={0.3}
+                      />
 
-                <line
-                  className={styles.gridLine}
-                  x1="510"
-                  y1="0"
-                  x2="510"
-                  y2="250"
-                />
-                <line
-                  className={styles.gridLine}
-                  x1="620"
-                  y1="0"
-                  x2="620"
-                  y2="250"
-                />
-                <line
-                  className={styles.gridLine}
-                  x1="700"
-                  y1="0"
-                  x2="700"
-                  y2="250"
-                />
+                      <stop
+                        offset="95%"
+                        stopColor="#ea4a4a"
+                        stopOpacity={0}
+                      />
+                    </linearGradient>
+                  </defs>
 
-                <path
-                  d="M 0 135 C 70 165, 140 80, 205 125 C 290 185, 360 102, 420 150 C 500 222, 575 65, 650 112 C 690 138, 730 165, 760 145 L 760 250 L 0 250 Z"
-                  fill="url(#flow-fill)"
-                />
+                  <CartesianGrid
+                    strokeDasharray="3 3"
+                    stroke="#dfe6ee"
+                  />
 
-                <path
-                  d="M 0 135 C 70 165, 140 80, 205 125 C 290 185, 360 102, 420 150 C 500 222, 575 65, 650 112 C 690 138, 730 165, 760 145"
-                  className={styles.redCurve}
-                />
+                  <XAxis dataKey="hour" />
 
-                <path
-                  d="M 0 120 C 100 70, 165 185, 240 138 C 315 90, 370 202, 445 160 C 520 118, 600 170, 675 145 C 720 130, 742 124, 760 124"
-                  className={styles.blueCurve}
-                />
+                  <YAxis />
 
-                <circle cx="268" cy="143" r="5" className={styles.chartDot} />
-                <circle cx="465" cy="157" r="5" className={styles.chartDot} />
-              </svg>
+                  <Tooltip />
+
+                  <Area
+                    type="monotone"
+                    dataKey="fluxo"
+                    stroke="#ea4a4a"
+                    fill="url(#flowGradient)"
+                    strokeWidth={3}
+                  />
+
+                  <Line
+                    type="monotone"
+                    dataKey="pressao"
+                    stroke="#1f769b"
+                    strokeWidth={3}
+                    dot
+                  />
+                </AreaChart>
+              </ResponsiveContainer>
             </div>
           </section>
 
@@ -128,21 +166,36 @@ function HomePage() {
             <h2 className={styles.cardTitle}>VALVULA PRINCIPAL</h2>
 
             <div className={styles.valveStatus}>
-              <div className={styles.statusRing}>
-                <div className={styles.statusIcon}>
-                  <FiCheck />
+              <div
+                className={`${styles.statusRing} ${
+                  isValveOpen ? styles.openRing : styles.closedRing
+                }`}
+              >
+                <div
+                  className={`${styles.statusIcon} ${
+                    isValveOpen ? styles.openIcon : styles.closedIcon
+                  }`}
+                >
+                  {isValveOpen ? <FiCheck /> : <FiX />}
                 </div>
               </div>
 
-              <span className={styles.statusChip}>ABERTO</span>
+              <span
+                className={`${styles.statusChip} ${
+                  isValveOpen ? styles.openChip : styles.closedChip
+                }`}
+              >
+                {isValveOpen ? "ABERTA" : "FECHADA"}
+              </span>
             </div>
 
             <p className={styles.valveDescription}>
-              A valvula nao esta ligada. Ligue-a para retornar a operacao.
+              {isValveOpen
+                ? "A valvula esta aberta e funcionando normalmente."
+                : "A valvula esta fechada. Abra-a para retornar a operacao."}
             </p>
 
             <ActionButton
-              backgroundColor="#5ac7a2"
               className={styles.valveButton}
               style={{
                 width: "70%",
@@ -150,12 +203,47 @@ function HomePage() {
                 fontSize: "0.9rem",
                 letterSpacing: "0.04em",
                 gap: "0.5rem",
-                boxShadow: "0 14px 24px rgba(234, 132, 132, 0.28)",
+                backgroundColor: isValveOpen ? "#ea4a4a" : "#5ac7a2",
               }}
+              onClick={() => setIsModalOpen(true)}
             >
-              ABRIR VALVULA
-              <FiCheck className={styles.buttonCheck} />
+              {isValveOpen ? "FECHAR VALVULA" : "ABRIR VALVULA"}
+
+              {isValveOpen ? (
+                <FiX className={styles.buttonCheck} />
+              ) : (
+                <FiCheck className={styles.buttonCheck} />
+              )}
             </ActionButton>
+
+            <Modal
+              isOpen={isModalOpen}
+              onClose={() => setIsModalOpen(false)}
+              title="Confirmar acao"
+            >
+              <div className={styles.modalContent}>
+                <p>
+                  Deseja realmente{" "}
+                  {isValveOpen ? "fechar" : "abrir"} a valvula principal?
+                </p>
+
+                <div className={styles.modalActions}>
+                  <button
+                    className={styles.cancelButton}
+                    onClick={() => setIsModalOpen(false)}
+                  >
+                    Cancelar
+                  </button>
+
+                  <button
+                    className={styles.confirmButton}
+                    onClick={handleToggleValve}
+                  >
+                    Confirmar
+                  </button>
+                </div>
+              </div>
+            </Modal>
           </section>
         </div>
 
@@ -163,7 +251,11 @@ function HomePage() {
           <header className={styles.alertsHeader}>
             <h2 className={styles.alertsTitle}>Alertas recentes</h2>
 
-            <button type="button" className={styles.viewAllButton}>
+            <button
+              type="button"
+              className={styles.viewAllButton}
+              onClick={() => navigate("/alertas")}
+            >
               VER TODOS
               <FiArrowUpRight />
             </button>

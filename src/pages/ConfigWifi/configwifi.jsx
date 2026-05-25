@@ -1,9 +1,9 @@
 import { useState } from "react";
 import DashboardLayout from "@src/layouts/DashboardLayout/DashboardLayout.jsx";
+import Modal from "@src/components/Modal/Modal.jsx";
 import { useNavigate } from "react-router-dom";
 import {
   IoCheckmarkCircleOutline,
-  IoCloseOutline,
   IoEyeOffOutline,
   IoEyeOutline,
   IoLockClosedOutline,
@@ -133,7 +133,7 @@ function ConfigWifi() {
             <button
               type="button"
               className={styles.continueButton}
-              onClick={() => navigate("/CalibracaoConfig")}
+              onClick={() => navigate("/configurar-calibracao")}
               disabled={!connectedNetwork}
             >
               Continuar
@@ -141,86 +141,65 @@ function ConfigWifi() {
           </div>
         </section>
 
-        {selectedNetwork && isModalOpen && (
-          <div className={styles.modalOverlay}>
-            <form
-              className={styles.connectionModal}
-              onSubmit={handleConnect}
-              role="dialog"
-              aria-modal="true"
-              aria-labelledby="wifi-modal-title"
-            >
+        <Modal
+          isOpen={selectedNetwork && isModalOpen}
+          onClose={handleCloseModal}
+          icon={IoWifiOutline}
+          title="Conectar ao Wi-Fi"
+          subtitle={selectedNetwork}
+          aria_labelledby="wifi-modal-title"
+          onSubmit={handleConnect}
+        >
+          <label className={styles.passwordGroup}>
+            Senha da rede
+            <div className={styles.passwordInput}>
+              <IoLockClosedOutline size={18} />
+              <input
+                type={showPassword ? "text" : "password"}
+                placeholder="Digite a senha"
+                value={password}
+                onChange={(event) => setPassword(event.target.value)}
+                disabled={isConnecting}
+              />
               <button
                 type="button"
-                className={styles.closeModalButton}
-                onClick={handleCloseModal}
-                aria-label="Fechar conexão Wi-Fi"
+                onClick={() => setShowPassword((current) => !current)}
+                aria-label={showPassword ? "Ocultar senha" : "Mostrar senha"}
               >
-                <IoCloseOutline size={24} />
+                {showPassword ? (
+                  <IoEyeOffOutline size={20} />
+                ) : (
+                  <IoEyeOutline size={20} />
+                )}
               </button>
+            </div>
+          </label>
 
-              <div className={styles.modalHeader}>
-                <div className={styles.modalIcon}>
-                  <IoWifiOutline size={28} />
-                </div>
-                <div>
-                  <h3 id="wifi-modal-title">Conectar ao Wi-Fi</h3>
-                  <p>{selectedNetwork}</p>
-                </div>
-              </div>
+          <button
+            type="submit"
+            className={styles.connectWifiButton}
+            disabled={!password.trim() || isConnecting}
+          >
+            {isConnecting ? "Conectando..." : "Conectar"}
+          </button>
 
-              <label className={styles.passwordGroup}>
-                Senha da rede
-                <div className={styles.passwordInput}>
-                  <IoLockClosedOutline size={18} />
-                  <input
-                    type={showPassword ? "text" : "password"}
-                    placeholder="Digite a senha"
-                    value={password}
-                    onChange={(event) => setPassword(event.target.value)}
-                    disabled={isConnecting}
-                  />
-                  <button
-                    type="button"
-                    onClick={() => setShowPassword((current) => !current)}
-                    aria-label={showPassword ? "Ocultar senha" : "Mostrar senha"}
-                  >
-                    {showPassword ? (
-                      <IoEyeOffOutline size={20} />
-                    ) : (
-                      <IoEyeOutline size={20} />
-                    )}
-                  </button>
-                </div>
-              </label>
+          {connectedNetwork === selectedNetwork && (
+            <p className={styles.connectedMessage}>
+              <IoCheckmarkCircleOutline size={20} />
+              Conectado com sucesso
+            </p>
+          )}
 
-              <button
-                type="submit"
-                className={styles.connectWifiButton}
-                disabled={!password.trim() || isConnecting}
-              >
-                {isConnecting ? "Conectando..." : "Conectar"}
-              </button>
-
-              {connectedNetwork === selectedNetwork && (
-                <p className={styles.connectedMessage}>
-                  <IoCheckmarkCircleOutline size={20} />
-                  Conectado com sucesso
-                </p>
-              )}
-
-              {connectedNetwork === selectedNetwork && (
-                <button
-                  type="button"
-                  className={styles.modalContinueButton}
-                  onClick={() => navigate("/CalibracaoConfig")}
-                >
-                  Continuar
-                </button>
-              )}
-            </form>
-          </div>
-        )}
+          {connectedNetwork === selectedNetwork && (
+            <button
+              type="button"
+              className={styles.modalContinueButton}
+              onClick={() => navigate("/configurar-calibracao")}
+            >
+              Continuar
+            </button>
+          )}
+        </Modal>
       </div>
     </DashboardLayout>
   );

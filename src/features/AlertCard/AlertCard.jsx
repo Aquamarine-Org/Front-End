@@ -1,8 +1,11 @@
 import styles from "./AlertCard.module.css";
+import { useNavigate } from "react-router-dom";
 
 function AlertCard({ icon: Icon, title, time, level, tone }) {
+  const navigate = useNavigate();
+
   return (
-    <article className={styles.alertRow}>
+    <article className={styles.alertRow} onClick={() => navigate("/alertas")}>
       <div className={`${styles.alertIconBox} ${styles[`icon-${tone}`]}`}>
         <Icon />
       </div>

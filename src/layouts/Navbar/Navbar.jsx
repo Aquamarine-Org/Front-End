@@ -16,36 +16,43 @@ const NAVIGATION_ITEMS = [
     id: "inicio",
     label: "Início",
     icon: FiHome,
+    path: "/home",
   },
   {
     id: "dashboard",
     label: "Dashboard",
     icon: MdOutlineDashboard,
+    path: "/dashboard",
   },
   {
     id: "alertas",
     label: "Alertas",
     icon: GrAlert,
+    path: "/alertas",
   },
   {
     id: "historico",
     label: "Histórico",
     icon: MdOutlineHistory,
+    path: "/historico",
   },
   {
     id: "valvulas",
     label: "Válvulas",
     icon: GiValve,
+    path: "/valvulas",
   },
   {
     id: "configurar-valvulas",
     label: "Configurar válvulas",
     icon: BsHouseGear,
+    path: "/configurar-valvula",
   },
   {
     id: "configuracoes",
     label: "Configurações",
     icon: FaGear,
+    path: "/dados",
   },
 ];
 
@@ -73,8 +80,9 @@ function Navbar({ currentPage = "inicio" }) {
               const Icon = item.icon;
 
               return (
-                <div
+                <Link
                   key={item.id}
+                  to={item.path}
                   className={`${styles.navigationItem} ${
                     currentPage === item.id ? styles.active : ""
                   }`}
@@ -82,33 +90,39 @@ function Navbar({ currentPage = "inicio" }) {
                   <Icon className={styles.navigationIcon} />
 
                   <span className={styles.navigationText}>{item.label}</span>
-                </div>
+                </Link>
               );
             })}
           </div>
         </div>
 
         <div className={styles.bottomContent}>
-          <ActionButton backgroundColor="#097cd8">
-            <div className={styles.buttonContent}>
-              <BsHouseX className={styles.buttonIcon} />
+          <Link to="/configurar-valvula" className={styles.actionButtonLink}>
+            <ActionButton backgroundColor="#097cd8">
+              <div className={styles.buttonContent}>
+                <BsHouseX className={styles.buttonIcon} />
 
-              <span className={styles.buttonText}>Abrir válvula</span>
-            </div>
-          </ActionButton>
+                <span className={styles.buttonText}>Abrir válvula</span>
+              </div>
+            </ActionButton>
+          </Link>
 
           <div className={styles.footerActions}>
-            <div className={styles.supportItem}>
-              <FaRegCircleQuestion className={styles.supportIcon} />
+            <Link to="/dados" className={styles.footerLink}>
+              <div className={styles.supportItem}>
+                <FaRegCircleQuestion className={styles.supportIcon} />
 
-              <span className={styles.footerText}>Suporte</span>
-            </div>
+                <span className={styles.footerText}>Suporte</span>
+              </div>
+            </Link>
 
-            <div className={styles.logoutItem}>
-              <MdExitToApp className={styles.logoutIcon} />
+            <Link to="/" className={styles.footerLink}>
+              <div className={styles.logoutItem}>
+                <MdExitToApp className={styles.logoutIcon} />
 
-              <span className={styles.footerText}>Sair</span>
-            </div>
+                <span className={styles.footerText}>Sair</span>
+              </div>
+            </Link>
           </div>
         </div>
       </div>

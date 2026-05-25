@@ -380,3 +380,73 @@
     font-size: 1.45rem;
   }
 }
+
+.openRing {
+  border-color: #58bf9a;
+}
+
+.closedRing {
+  border-color: #ea4a4a;
+}
+
+.openIcon {
+  background: #58bf9a;
+}
+
+.closedIcon {
+  background: #ea4a4a;
+}
+
+.openChip {
+  background: #58bf9a;
+}
+
+.closedChip {
+  background: #ea4a4a;
+}
+
+.modalContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 0 1.25rem;
+}
+
+.modalContent p {
+  color: #2f3542;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.modalActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.cancelButton,
+.confirmButton {
+  border: none;
+  border-radius: 10px;
+  padding: 0.85rem 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.cancelButton {
+  background: #e9edf3;
+  color: #2f3542;
+}
+
+.confirmButton {
+  background: #1f769b;
+  color: #ffffff;
+}
+
+.cancelButton:hover,
+.confirmButton:hover {
+  filter: brightness(0.96);
+}

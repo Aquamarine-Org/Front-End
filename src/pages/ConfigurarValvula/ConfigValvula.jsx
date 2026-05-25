@@ -29,7 +29,7 @@ function ConectarDispositivo() {
 
   const handleConnectDevice = (event) => {
     event.preventDefault();
-    navigate("/ConfigWifi");
+    navigate("/configuracao-calibracao");
   };
 
   return (

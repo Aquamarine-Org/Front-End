@@ -1,0 +1,62 @@
+.alertsPage {
+  width: min(100%, 1180px);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 18px 24px 32px 0;
+}
+
+.summaryGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.alertsPanel {
+  background: #f8f8f8;
+  border-radius: 15px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 0;
+}
+
+.alertsList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.emptyState {
+  min-height: 120px;
+  border-radius: 14px;
+  background: #f4f4f5;
+  color: #505869;
+  font-size: 1.1rem;
+  font-weight: 600;
+  display: grid;
+  place-items: center;
+}
+
+@media (max-width: 1180px) {
+  .alertsPage {
+    width: 100%;
+    padding-right: 0;
+  }
+
+  .summaryGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 800px) {
+  .summaryGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .alertsPanel {
+    border-radius: 18px;
+    padding: 12px;
+  }
+}

@@ -112,6 +112,8 @@
   padding: 16px 0;
 
   cursor: pointer;
+  text-decoration: none;
+  color: inherit;
 
   transition:
     background-color 0.2s ease,
@@ -194,6 +196,8 @@
   font-weight: 700;
 
   margin-right: 18px;
+
+  text-align: center;
 }
 
 .footerActions {
@@ -229,4 +233,21 @@
 
   font-size: 16px;
   font-weight: 700;
+}
+
+.actionButtonLink {
+  width: 100%;
+  text-decoration: none;
+}
+
+.footerLink {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  transition: opacity 0.2s ease;
+}
+
+.footerLink:hover {
+  opacity: 0.7;
 }
