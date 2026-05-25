@@ -69,7 +69,7 @@ function ConfigWifi() {
 
   return (
     <DashboardLayout
-      currentPage="configurar-valvulas"
+      currentPage="configurar-dispositivos"
       pageTitle="Configuração do Wi-Fi"
     >
       <div className={styles.configWifiWrapper}>
@@ -78,7 +78,7 @@ function ConfigWifi() {
             <button
               type="button"
               className={`${styles.progressItem} ${styles.completed} ${styles.progressButton}`}
-              onClick={() => navigate("/ConfigValvulaPage")}
+              onClick={() => navigate("/configurar-dispositivo")}
             >
               <div className={styles.progressCircle}>
                 <TbDeviceAnalytics size={22} />

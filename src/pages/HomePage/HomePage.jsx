@@ -117,24 +117,13 @@ function HomePage() {
                       x2="0"
                       y2="1"
                     >
-                      <stop
-                        offset="5%"
-                        stopColor="#ea4a4a"
-                        stopOpacity={0.3}
-                      />
+                      <stop offset="5%" stopColor="#ea4a4a" stopOpacity={0.3} />
 
-                      <stop
-                        offset="95%"
-                        stopColor="#ea4a4a"
-                        stopOpacity={0}
-                      />
+                      <stop offset="95%" stopColor="#ea4a4a" stopOpacity={0} />
                     </linearGradient>
                   </defs>
 
-                  <CartesianGrid
-                    strokeDasharray="3 3"
-                    stroke="#dfe6ee"
-                  />
+                  <CartesianGrid strokeDasharray="3 3" stroke="#dfe6ee" />
 
                   <XAxis dataKey="hour" />
 
@@ -163,7 +152,7 @@ function HomePage() {
           </section>
 
           <section className={`${styles.card} ${styles.valveCard}`}>
-            <h2 className={styles.cardTitle}>VALVULA PRINCIPAL</h2>
+            <h2 className={styles.cardTitle}>DISPOSITIVO PRINCIPAL</h2>
 
             <div className={styles.valveStatus}>
               <div
@@ -191,8 +180,8 @@ function HomePage() {
 
             <p className={styles.valveDescription}>
               {isValveOpen
-                ? "A valvula esta aberta e funcionando normalmente."
-                : "A valvula esta fechada. Abra-a para retornar a operacao."}
+                ? "O dispositivo esta aberto e funcionando normalmente."
+                : "O dispositivo esta fechado. Abra-o para retornar a operacao."}
             </p>
 
             <ActionButton
@@ -207,7 +196,7 @@ function HomePage() {
               }}
               onClick={() => setIsModalOpen(true)}
             >
-              {isValveOpen ? "FECHAR VALVULA" : "ABRIR VALVULA"}
+              {isValveOpen ? "FECHAR DISPOSITIVO" : "ABRIR DISPOSITIVO"}
 
               {isValveOpen ? (
                 <FiX className={styles.buttonCheck} />
@@ -223,8 +212,8 @@ function HomePage() {
             >
               <div className={styles.modalContent}>
                 <p>
-                  Deseja realmente{" "}
-                  {isValveOpen ? "fechar" : "abrir"} a valvula principal?
+                  Deseja realmente {isValveOpen ? "fechar" : "abrir"} o
+                  dispositivo principal?
                 </p>
 
                 <div className={styles.modalActions}>

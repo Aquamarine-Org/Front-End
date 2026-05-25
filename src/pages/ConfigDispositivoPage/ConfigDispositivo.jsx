@@ -1,13 +1,20 @@
-import DashboardLayout from "@src/layouts/DashboardLayout/DashboardLayout.jsx";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { IoWifiOutline, IoCameraOutline } from "react-icons/io5";
 import { TbDeviceAnalytics } from "react-icons/tb";
 import { PiSealCheckBold } from "react-icons/pi";
 
-import styles from "./ConfigValvula.module.css";
+import DashboardLayout from "@src/layouts/DashboardLayout/DashboardLayout";
 
-function ConectarDispositivo() {
+import styles from "./ConfigDispositivo.module.css";
+
+// Constantes de validação
+const SERIAL_NUMBER_MAX_LENGTH = 16;
+const SERIAL_NUMBER_GROUP_SIZE = 4;
+const SERIAL_NUMBER_PLACEHOLDER = "AAAA-AAAA-AAAA-AAAA";
+const FORMATTED_LENGTH_WITH_DASHES = 19;
+
+function ConfigDispositivo() {
   const navigate = useNavigate();
   const [serialNumber, setSerialNumber] = useState("");
 
@@ -15,8 +22,8 @@ function ConectarDispositivo() {
     return value
       .replace(/[^a-zA-Z0-9]/g, "")
       .toUpperCase()
-      .slice(0, 16)
-      .replace(/(.{4})/g, "$1-")
+      .slice(0, SERIAL_NUMBER_MAX_LENGTH)
+      .replace(new RegExp(`(.{${SERIAL_NUMBER_GROUP_SIZE}})`, "g"), "$1-")
       .replace(/-$/, "");
   };
 
@@ -31,8 +38,8 @@ function ConectarDispositivo() {
 
   return (
     <DashboardLayout
-      currentPage="configurar-valvulas"
-      pageTitle="Configuração da Válvula"
+      currentPage="configurar-dispositivos"
+      pageTitle="Configuração do Dispositivo"
     >
       <div className={styles.conectarDispositivoWrapper}>
         <section className={styles.conectarDispositivoCard}>
@@ -95,17 +102,18 @@ function ConectarDispositivo() {
 
               <input
                 type="text"
-                placeholder="AAAA-AAAA-AAAA-AAAA"
+                placeholder={SERIAL_NUMBER_PLACEHOLDER}
                 value={serialNumber}
                 onChange={handleSerialNumberChange}
-                maxLength={19}
+                maxLength={FORMATTED_LENGTH_WITH_DASHES}
+                required
               />
             </div>
 
             <div className={styles.connectInputGroup}>
               <label>Zona de instalação</label>
 
-              <input type="text" placeholder="Medidor da cozinha" />
+              <input type="text" placeholder="Medidor da cozinha" required />
             </div>
 
             <button type="submit" className={styles.connectButton}>
@@ -118,4 +126,4 @@ function ConectarDispositivo() {
   );
 }
 
-export default ConectarDispositivo;
+export default ConfigDispositivo;

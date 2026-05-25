@@ -37,16 +37,16 @@ const NAVIGATION_ITEMS = [
     path: "/historico",
   },
   {
-    id: "valvulas",
-    label: "Válvulas",
+    id: "dispositivos",
+    label: "Dispositivos",
     icon: GiValve,
-    path: "/valvulas",
+    path: "/dispositivos",
   },
   {
-    id: "configurar-valvulas",
-    label: "Configurar válvulas",
+    id: "configurar-dispositivos",
+    label: "Configurar dispositivos",
     icon: BsHouseGear,
-    path: "/configurar-valvula",
+    path: "/configurar-dispositivo",
   },
   {
     id: "configuracoes",
@@ -97,12 +97,15 @@ function Navbar({ currentPage = "inicio" }) {
         </div>
 
         <div className={styles.bottomContent}>
-          <Link to="/configurar-valvula" className={styles.actionButtonLink}>
+          <Link
+            to="/configurar-dispositivo"
+            className={styles.actionButtonLink}
+          >
             <ActionButton backgroundColor="#097cd8">
               <div className={styles.buttonContent}>
                 <BsHouseX className={styles.buttonIcon} />
 
-                <span className={styles.buttonText}>Abrir válvula</span>
+                <span className={styles.buttonText}>Abrir dispositivo</span>
               </div>
             </ActionButton>
           </Link>

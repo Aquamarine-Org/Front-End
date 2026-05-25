@@ -46,8 +46,8 @@ const ALERT_ITEMS = [
     description:
       "Fluxo anormal de 15 MPa detectado as 14:32. Padrao incompativel com uso residencial normal.",
     aiSuggestion:
-      "Feche imediatamente a valvula principal e verifique os encanamentos visiveis.",
-    actionLabel: "Fechar valvula",
+      "Feche imediatamente o dispositivo principal e verifique os encanamentos visiveis.",
+    actionLabel: "Fechar dispositivo",
   },
   {
     id: "pressao-anomala",
@@ -90,7 +90,7 @@ const ALERT_ITEMS = [
 function AlertasPage() {
   const [searchTerm, setSearchTerm] = useState("");
   const [expandedAlertId, setExpandedAlertId] = useState(
-    "consumo-elevado-principal"
+    "consumo-elevado-principal",
   );
 
   const filteredAlerts = useMemo(() => {
@@ -101,7 +101,7 @@ function AlertasPage() {
     }
 
     return ALERT_ITEMS.filter((alert) =>
-      alert.title.toLowerCase().includes(normalizedTerm)
+      alert.title.toLowerCase().includes(normalizedTerm),
     );
   }, [searchTerm]);
 

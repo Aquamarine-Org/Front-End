@@ -1,0 +1,24 @@
+.devicesPage {
+  width: min(100%, 1180px);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 10px 24px 32px 0;
+}
+
+.topGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(420px, 0.98fr);
+  gap: 18px;
+}
+
+@media (max-width: 1240px) {
+  .devicesPage {
+    width: 100%;
+    padding-right: 0;
+  }
+
+  .topGrid {
+    grid-template-columns: 1fr;
+  }
+}

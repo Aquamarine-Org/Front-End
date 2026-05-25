@@ -41,8 +41,8 @@ function CalibracaoConfig() {
 
   return (
     <DashboardLayout
-      currentPage="configurar-valvulas"
-      pageTitle="Configuração da Válvula"
+      currentPage="configurar-dispositivos"
+      pageTitle="Configuração do Dispositivo"
     >
       <div className={styles.calibracaoWrapper}>
         <section className={styles.calibracaoCard}>
@@ -50,7 +50,7 @@ function CalibracaoConfig() {
             <button
               type="button"
               className={`${styles.progressItem} ${styles.completed} ${styles.progressButton}`}
-              onClick={() => navigate("/ConfigValvulaPage")}
+              onClick={() => navigate("/configurar-dispositivo")}
             >
               <div className={styles.progressCircle}>
                 <TbDeviceAnalytics size={22} />
@@ -63,7 +63,7 @@ function CalibracaoConfig() {
             <button
               type="button"
               className={`${styles.progressItem} ${styles.completed} ${styles.progressButton}`}
-              onClick={() => navigate("/ConfigWifi")}
+              onClick={() => navigate("/configurar-wifi")}
             >
               <div className={styles.progressCircle}>
                 <IoWifiOutline size={22} />
@@ -82,7 +82,7 @@ function CalibracaoConfig() {
           </div>
 
           <div className={styles.calibracaoContent}>
-            <h2>Calibrar válvula</h2>
+            <h2>Calibrar dispositivo</h2>
 
             <div className={styles.alertBox}>
               <IoAlertCircleOutline size={26} />

@@ -6,12 +6,13 @@ import CadastroPage from "./pages/CadastroPage/CadastroPage";
 import VerificarEmail from "./pages/VerificaEmail/VerificaEmailPage";
 import InformacoesPage from "./pages/InformacoesPage/informacoces";
 import HomePage from "./pages/HomePage/HomePage";
-import ConfigValvulaPage from "./pages/ConfigValvulaPage/ConfigValvula";
+import ConfigDispositivoPage from "./pages/ConfigDispositivoPage/ConfigDispositivo";
 import ConfigWifi from "./pages/ConfigWifi/configwifi";
 import CalibracaoConfig from "./pages/Calibracaoconfig/calibracao";
 import HistoricoPage from "./pages/HistoricoPage/historico";
 import DashboardPage from "./pages/DashboardPage/DashboardPage";
 import AlertasPage from "./pages/AlertasPage/AlertasPage";
+import DispositivosPage from "./pages/DispositivosPage/DispositivosPage";
 
 function App() {
   return (
@@ -23,12 +24,16 @@ function App() {
         <Route path="/verificar-email" element={<VerificarEmail />} />
         <Route path="/dados" element={<InformacoesPage />} />
         <Route path="/home" element={<HomePage />} />
-        <Route path="/configurar-valvula" element={<ConfigValvulaPage />} />
+        <Route
+          path="/configurar-dispositivo"
+          element={<ConfigDispositivoPage />}
+        />
         <Route path="/configurar-wifi" element={<ConfigWifi />} />
         <Route path="/configurar-calibracao" element={<CalibracaoConfig />} />
         <Route path="/historico" element={<HistoricoPage />} />
         <Route path="/dashboard" element={<DashboardPage />} />
         <Route path="/alertas" element={<AlertasPage />} />
+        <Route path="/dispositivos" element={<DispositivosPage />} />
       </Routes>
     </Router>
   );

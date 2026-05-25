@@ -1,0 +1,36 @@
+.card {
+  background: #f7f7f7;
+  border-radius: 22px;
+  box-shadow: 0 12px 32px rgba(24, 28, 35, 0.06);
+  padding: 24px 30px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.card h2 {
+  align-self: center;
+  color: #0f0f0f;
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.actionsList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+@media (max-width: 1200px) {
+  .card {
+    border-radius: 16px;
+    padding: 18px;
+  }
+
+  .card h2 {
+    font-size: 1.35rem;
+    text-align: center;
+  }
+}

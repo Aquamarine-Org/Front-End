@@ -39,7 +39,7 @@ const planos = [
     funcionalidades: [
       "Análise do fluxo de pressão",
       "Alerta de vazamento",
-      "Fechamento de válvulas",
+      "Fechamento de dispositivos",
     ],
   },
   {
@@ -52,7 +52,7 @@ const planos = [
     funcionalidades: [
       "Análise do fluxo de pressão",
       "Alerta de vazamento",
-      "Fechamento de válvulas",
+      "Fechamento de dispositivos",
       "IA integrada",
     ],
   },
@@ -110,7 +110,7 @@ function LandingPage() {
           <CardInformativoFuncionalidades
             imagem={imagem3}
             alt="Produto da Aquamarine"
-            descricao="Fechamento de válvula remoto"
+            descricao="Fechamento de dispositivo remoto"
           />
         </div>
       </section>
