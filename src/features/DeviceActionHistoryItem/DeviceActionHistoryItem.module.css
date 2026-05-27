@@ -11,22 +11,22 @@
 
 .content h3 {
   color: #171717;
-  font-size: 1.95rem;
+  font-size: 1.25rem;
   font-weight: 500;
 }
 
 .content p {
   margin-top: 3px;
   color: #232323;
-  font-size: 1.35rem;
-  font-weight: 500;
+  font-size: 1.15rem;
+
   letter-spacing: 0.04em;
 }
 
 .item > span {
   flex-shrink: 0;
   color: #222222;
-  font-size: 1.5rem;
+  font-size: 1.15rem;
   font-weight: 500;
 }
 

@@ -1,5 +1,5 @@
 .loginPage {
-  min-height: 100dvh;
+  height: 100%;
   background-color: #ffffff;
   display: flex;
   align-items: center;
@@ -24,6 +24,7 @@
   text-align: center;
   color: #ffffff;
   padding: 0 24px;
+  height: 100%;
 }
 
 .loginBannerContent {
