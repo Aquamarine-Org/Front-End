@@ -1,0 +1,291 @@
+.dashboardTitle {
+  font-size: 3rem;
+  line-height: 1;
+  font-weight: 800;
+}
+
+.dashboardPage {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 0 24px 40px 0;
+}
+
+.statusGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.statusCard {
+  min-height: 126px;
+  border-radius: 17px;
+  background: #ffffff;
+  box-shadow:
+    0 9px 22px rgba(15, 37, 67, 0.16),
+    inset 0 0 0 1px rgba(13, 50, 199, 0.04);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 28px 24px;
+}
+
+.statusText {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.statusText span {
+  max-width: 150px;
+  color: #677081;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: 0.16em;
+}
+
+.statusText strong {
+  color: #171b25;
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.statusIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #0d83df;
+  color: #ffffff;
+  display: grid;
+  place-items: center;
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.floorPanel {
+  min-height: 690px;
+  border-radius: 17px;
+  background: #ffffff;
+  box-shadow:
+    0 12px 28px rgba(15, 37, 67, 0.16),
+    inset 0 0 0 1px rgba(13, 50, 199, 0.04);
+  padding: 38px 52px 26px;
+}
+
+.floorHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 10px;
+}
+
+.floorHeader h2 {
+  color: #08090d;
+  font-size: 30px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.floorActions {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.floorActionButton {
+  min-width: 172px;
+  height: 34px;
+  border: none;
+  border-radius: 999px;
+  background: #0d83df;
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 0 20px;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.floorActionButton:hover {
+  background: #0977cc;
+  transform: translateY(-1px);
+}
+
+.floorActionButton svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.floorCanvas {
+  min-height: 580px;
+  border-radius: 8px;
+  background: #efefef;
+  overflow: hidden;
+  padding: 15px 28px;
+}
+
+.roomStack {
+  width: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.roomCard {
+  width: 180px;
+  border-radius: 8px;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  padding: 23px 13px 7px;
+}
+
+.normal {
+  min-height: 260px;
+  border: 1px solid #08c95c;
+}
+
+.risk {
+  min-height: 160px;
+  border: 1px solid #e80c0c;
+}
+
+.roomHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.roomHeader h3 {
+  color: #0f0f0f;
+  font-size: 20px;
+  font-weight: 900;
+  line-height: 1.15;
+}
+
+.roomViewButton {
+  width: 24px;
+  height: 24px;
+  border: none;
+  border-radius: 5px;
+  background: #d9d9d9;
+  color: #000000;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.roomViewButton svg {
+  width: 15px;
+  height: 15px;
+}
+
+.roomMetrics {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  color: #0f0f0f;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.15;
+}
+
+.normal .roomMetrics {
+  margin-top: 72px;
+}
+
+.risk .roomMetrics {
+  margin-top: 15px;
+}
+
+.roomStatus {
+  width: 100%;
+  min-height: 25px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: auto;
+  color: #000000;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.normalStatus {
+  border: 1px solid #08a64d;
+  background: #9ff4bd;
+}
+
+.riskStatus {
+  border: 1px solid #cf2222;
+  background: #ff9c9c;
+}
+
+.connector {
+  height: 27px;
+  border-left: 3px dotted #0d83df;
+}
+
+@media (max-width: 1320px) {
+  .dashboardPage {
+    width: 100%;
+    padding-right: 0;
+  }
+
+  .statusGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .dashboardTitle {
+    font-size: 2.4rem;
+  }
+
+  .statusGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .floorPanel {
+    min-height: 0;
+    padding: 24px 20px;
+  }
+
+  .floorHeader {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .floorActions {
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .floorActionButton {
+    min-width: 0;
+    flex: 1;
+  }
+
+  .floorCanvas {
+    min-height: 500px;
+    padding: 14px;
+  }
+}

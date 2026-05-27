@@ -13,6 +13,7 @@ import HistoricoPage from "./pages/HistoricoPage/historico";
 import DashboardPage from "./pages/DashboardPage/DashboardPage";
 import AlertasPage from "./pages/AlertasPage/AlertasPage";
 import DispositivosPage from "./pages/DispositivosPage/DispositivosPage";
+import PlantaCasaPage from "./pages/PlantaCasaPage/PlantaCasaPage";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         <Route path="/configurar-calibracao" element={<CalibracaoConfig />} />
         <Route path="/historico" element={<HistoricoPage />} />
         <Route path="/dashboard" element={<DashboardPage />} />
+        <Route path="/planta-da-casa" element={<PlantaCasaPage />} />
         <Route path="/alertas" element={<AlertasPage />} />
         <Route path="/dispositivos" element={<DispositivosPage />} />
       </Routes>

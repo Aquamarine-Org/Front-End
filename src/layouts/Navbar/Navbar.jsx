@@ -44,7 +44,7 @@ const NAVIGATION_ITEMS = [
   },
   {
     id: "configurar-dispositivos",
-    label: "Configurar dispositivos",
+    label: "Configurar válvulas",
     icon: BsHouseGear,
     path: "/configurar-dispositivo",
   },
@@ -97,15 +97,12 @@ function Navbar({ currentPage = "inicio" }) {
         </div>
 
         <div className={styles.bottomContent}>
-          <Link
-            to="/configurar-dispositivo"
-            className={styles.actionButtonLink}
-          >
+          <Link to="/dispositivos" className={styles.actionButtonLink}>
             <ActionButton backgroundColor="#097cd8">
               <div className={styles.buttonContent}>
                 <BsHouseX className={styles.buttonIcon} />
 
-                <span className={styles.buttonText}>Abrir dispositivo</span>
+                <span className={styles.buttonText}>Fechar Válvula</span>
               </div>
             </ActionButton>
           </Link>
