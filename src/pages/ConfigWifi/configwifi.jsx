@@ -190,6 +190,7 @@ function ConfigWifi() {
             </p>
           )}
 
+<<<<<<< HEAD
           {connectedNetwork === selectedNetwork && (
             <button
               type="button"
@@ -200,6 +201,35 @@ function ConfigWifi() {
             </button>
           )}
         </Modal>
+=======
+              <button
+                type="submit"
+                className={styles.connectWifiButton}
+                disabled={!password.trim() || isConnecting}
+              >
+                {isConnecting ? "Conectando..." : "Conectar"}
+              </button>
+
+              {connectedNetwork === selectedNetwork && (
+                <p className={styles.connectedMessage}>
+                  <IoCheckmarkCircleOutline size={20} />
+                  Conectado com sucesso
+                </p>
+              )}
+
+              {connectedNetwork === selectedNetwork && (
+                <button
+                  type="button"
+                  className={styles.modalContinueButton}
+                  onClick={() => navigate("/calibracao")}
+                >
+                  Continuar
+                </button>
+              )}
+            </form>
+          </div>
+        )}
+>>>>>>> wip/salvar-local
       </div>
     </DashboardLayout>
   );

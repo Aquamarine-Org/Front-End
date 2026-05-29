@@ -52,7 +52,7 @@ const NAVIGATION_ITEMS = [
     id: "configuracoes",
     label: "Configurações",
     icon: FaGear,
-    path: "/dados",
+    path: "/configuracoes",
   },
 ];
 
@@ -79,18 +79,34 @@ function Navbar({ currentPage = "inicio" }) {
             {NAVIGATION_ITEMS.map((item) => {
               const Icon = item.icon;
 
-              return (
-                <Link
-                  key={item.id}
-                  to={item.path}
-                  className={`${styles.navigationItem} ${
-                    currentPage === item.id ? styles.active : ""
-                  }`}
-                >
+              const navigationContent = (
+                <>
                   <Icon className={styles.navigationIcon} />
 
                   <span className={styles.navigationText}>{item.label}</span>
-                </Link>
+                </>
+              );
+
+              const navigationClassName = `${styles.navigationItem} ${
+                currentPage === item.id ? styles.active : ""
+              }`;
+
+              if (item.path) {
+                return (
+                  <Link
+                    key={item.id}
+                    to={item.path}
+                    className={navigationClassName}
+                  >
+                    {navigationContent}
+                  </Link>
+                );
+              }
+
+              return (
+                <div key={item.id} className={navigationClassName}>
+                  {navigationContent}
+                </div>
               );
             })}
           </div>

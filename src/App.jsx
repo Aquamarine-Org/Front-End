@@ -14,6 +14,7 @@ import DashboardPage from "./pages/DashboardPage/DashboardPage";
 import AlertasPage from "./pages/AlertasPage/AlertasPage";
 import DispositivosPage from "./pages/DispositivosPage/DispositivosPage";
 import PlantaCasaPage from "./pages/PlantaCasaPage/PlantaCasaPage";
+import ConfiguracoesPage from "./pages/ConfiguracoesPage/ConfiguracoesPage";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/cadastro" element={<CadastroPage />} />
         <Route path="/verificar-email" element={<VerificarEmail />} />
         <Route path="/dados" element={<InformacoesPage />} />
+        <Route path="/informacoes" element={<InformacoesPage />} />
         <Route path="/home" element={<HomePage />} />
         <Route
           path="/configurar-dispositivo"
@@ -36,6 +38,7 @@ function App() {
         <Route path="/planta-da-casa" element={<PlantaCasaPage />} />
         <Route path="/alertas" element={<AlertasPage />} />
         <Route path="/dispositivos" element={<DispositivosPage />} />
+        <Route path="/configuracoes" element={<ConfiguracoesPage />} />
       </Routes>
     </Router>
   );
