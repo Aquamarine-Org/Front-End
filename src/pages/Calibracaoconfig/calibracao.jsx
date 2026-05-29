@@ -50,7 +50,7 @@ function CalibracaoConfig() {
             <button
               type="button"
               className={`${styles.progressItem} ${styles.completed} ${styles.progressButton}`}
-              onClick={() => navigate("/ConfigValvulaPage")}
+              onClick={() => navigate("/configurar-valvula")}
             >
               <div className={styles.progressCircle}>
                 <TbDeviceAnalytics size={22} />
@@ -63,7 +63,7 @@ function CalibracaoConfig() {
             <button
               type="button"
               className={`${styles.progressItem} ${styles.completed} ${styles.progressButton}`}
-              onClick={() => navigate("/ConfigWifi")}
+              onClick={() => navigate("/configurar-wifi")}
             >
               <div className={styles.progressCircle}>
                 <IoWifiOutline size={22} />

@@ -78,7 +78,7 @@ function ConfigWifi() {
             <button
               type="button"
               className={`${styles.progressItem} ${styles.completed} ${styles.progressButton}`}
-              onClick={() => navigate("/ConfigValvulaPage")}
+              onClick={() => navigate("/configurar-valvula")}
             >
               <div className={styles.progressCircle}>
                 <TbDeviceAnalytics size={22} />
@@ -133,7 +133,7 @@ function ConfigWifi() {
             <button
               type="button"
               className={styles.continueButton}
-              onClick={() => navigate("/CalibracaoConfig")}
+              onClick={() => navigate("/calibracao")}
               disabled={!connectedNetwork}
             >
               Continuar
@@ -213,7 +213,7 @@ function ConfigWifi() {
                 <button
                   type="button"
                   className={styles.modalContinueButton}
-                  onClick={() => navigate("/CalibracaoConfig")}
+                  onClick={() => navigate("/calibracao")}
                 >
                   Continuar
                 </button>

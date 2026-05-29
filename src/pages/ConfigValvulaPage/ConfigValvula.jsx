@@ -26,7 +26,7 @@ function ConectarDispositivo() {
 
   const handleConnectDevice = (event) => {
     event.preventDefault();
-    navigate("/ConfigWifi");
+    navigate("/configurar-wifi");
   };
 
   return (

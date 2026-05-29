@@ -10,6 +10,7 @@ import ConfigValvulaPage from "./pages/ConfigValvulaPage/ConfigValvula";
 import ConfigWifi from "./pages/ConfigWifi/configwifi";
 import CalibracaoConfig from "./pages/Calibracaoconfig/calibracao";
 import HistoricoPage from "./pages/HistoricoPage/historico";
+import ConfiguracoesPage from "./pages/ConfiguracoesPage/ConfiguracoesPage";
 
 function App() {
   return (
@@ -22,9 +23,14 @@ function App() {
         <Route path="/informacoes" element={<InformacoesPage />} />
         <Route path="/home" element={<HomePage />} />
         <Route path="/configurar-valvula" element={<ConfigValvulaPage />} />
+        <Route path="/ConfigValvulaPage" element={<ConfigValvulaPage />} />
         <Route path="/configurar-wifi" element={<ConfigWifi />} />
+        <Route path="/ConfigWifi" element={<ConfigWifi />} />
+        <Route path="/calibracao" element={<CalibracaoConfig />} />
+        <Route path="/CalibracaoConfig" element={<CalibracaoConfig />} />
         <Route path="/calbiracao" element={<CalibracaoConfig />} />
         <Route path="/historico" element={<HistoricoPage />} />
+        <Route path="/configuracoes" element={<ConfiguracoesPage />} />
       </Routes>
     </Router>
   );
