@@ -1,44 +1,50 @@
-.informacoes-page {
-  height: 100dvh;
-  max-height: 100dvh;
+.informacoesPage {
+  min-height: 100vh;
   background-color: #ffffff;
   background-image: url("../../assets/login_e_cadastro/d1039ad1-0b10-4882-9597-d83c96f84722.png");
   background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  position: relative;
-  overflow: hidden;
+  background-size: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: entradaSuave 0.45s ease both;
+}
+
+.informacoesContainer {
+  width: 100%;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  gap: 24px;
-  padding: 24px;
-  font-family: "Quicksand", sans-serif;
+  justify-content: center;
+  padding: 0 24px;
+  overflow-y: auto;
 }
 
 .informacoesLogo {
   width: 139px;
   height: 120px;
   object-fit: contain;
-  margin-bottom: 20px;
+  margin-bottom: 48px;
 }
 
 .informacoesBackground {
   width: 100%;
+  max-width: 620px;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0;
-  overflow-y: auto;
+  background: transparent;
 }
 
 .informacoesCard {
+  position: relative;
   width: 100%;
-  max-width: 780px;
-  height: fit-content;
+  max-width: 560px;
+  overflow: hidden;
   background: rgba(255, 255, 255, 0.35);
-  border-radius: 50px;
+  border-radius: 36px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
   box-shadow:
     0 20px 60px rgba(15, 23, 42, 0.12),
     inset 0 1px 1px rgba(255, 255, 255, 0.4);
@@ -47,35 +53,53 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 32px;
-  padding: 32px 36px 40px;
+  padding: 30px 32px 34px;
+}
+
+.informacoesCard::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.28),
+    rgba(255, 255, 255, 0.02)
+  );
+  pointer-events: none;
+}
+
+.informacoesTitle,
+.informacoesForm {
+  position: relative;
+  z-index: 1;
 }
 
 .informacoesTitle {
   text-align: center;
+  margin-bottom: 22px;
 }
 
 .informacoesTitle h1 {
-  color: #181c23;
-  font-size: 28px;
-  font-weight: 600;
-  margin-bottom: 15px;
+  color: #0f172a;
+  font-size: 30px;
+  font-weight: 800;
+  margin-bottom: 10px;
 }
 
 .informacoesTitle p {
-  color: #414755;
-  font-size: 24px;
-  line-height: 28px;
-  max-width: 493px;
+  max-width: 420px;
+  color: #64748b;
+  font-size: 17px;
+  line-height: 1.35;
+  margin: 0;
 }
 
 .informacoesForm {
   width: 100%;
-  max-width: 550px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 30px;
+  align-items: stretch;
+  gap: 14px;
 }
 
 .inputGroup {
@@ -86,32 +110,406 @@
 }
 
 .inputGroup label {
-  color: #000000;
-  font-size: 24px;
-  font-weight: 600;
+  color: #0f172a;
+  font-size: 16px;
+  font-weight: 800;
 }
 
 .inputGroup input {
   width: 100%;
-  height: 50px;
-  background: #ffffff;
-  border: 0.5px solid #c5c5c5;
-  border-radius: 10px;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
-  color: #868686;
-  font-size: 18px;
-  padding: 0 19px;
+  height: 48px;
+  background: #f8f8fb;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  border-radius: 14px;
+  color: #0f172a;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 0 18px;
   outline: none;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.inputGroup input::placeholder {
+  color: #8b8f98;
+}
+
+.inputGroup input:focus {
+  border-color: #097cd8;
+  box-shadow: 0 0 0 4px rgba(9, 124, 216, 0.12);
+  transform: translateY(-1px);
 }
 
 .informacoesButton {
-  width: 170px;
-  height: 50px;
+  width: 100%;
   background: #097cd8;
+  border-radius: 16px;
   border: none;
-  border-radius: 10px;
+  padding: 14px 0;
   color: #ffffff;
   font-size: 18px;
   font-weight: 700;
   cursor: pointer;
+  margin-top: 8px;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+@media (max-height: 780px) {
+  .informacoesLogo {
+    width: 112px;
+    height: 96px;
+    margin-bottom: 28px;
+  }
+
+  .informacoesCard {
+    padding: 26px 30px 30px;
+  }
+
+  .informacoesTitle h1 {
+    font-size: 27px;
+  }
+
+  .informacoesTitle p {
+    font-size: 15px;
+  }
+
+  .inputGroup input {
+    height: 44px;
+  }
+
+  .informacoesForm {
+    gap: 11px;
+  }
+}
+
+.informacoesButton:hover {
+  background: #086fc2;
+  transform: translateY(-1px);
+}
+
+.mensagemErro {
+  border-radius: 12px;
+  background: rgba(220, 38, 38, 0.1);
+  color: #b91c1c;
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.35;
+  margin: 0;
+  padding: 10px 12px;
+}
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: rgba(7, 23, 38, 0.42);
+  backdrop-filter: blur(9px);
+  -webkit-backdrop-filter: blur(9px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.modalCard {
+  position: relative;
+  width: min(720px, 100%);
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 24px 70px rgba(11, 34, 55, 0.28);
+  padding: 30px;
+}
+
+.modalClose {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 50%;
+  background: #f2f6fb;
+  color: #475569;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.modalHeader {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding-right: 42px;
+  margin-bottom: 22px;
+}
+
+.modalIcone {
+  flex: 0 0 auto;
+  width: 48px;
+  height: 48px;
+  border-radius: 16px;
+  background: #e7f4ff;
+  color: #097cd8;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+}
+
+.modalHeader h2 {
+  color: #0f172a;
+  font-size: 26px;
+  font-weight: 900;
+  line-height: 1.15;
+  margin: 0 0 8px;
+}
+
+.modalHeader p {
+  color: #64748b;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.45;
+  margin: 0;
+}
+
+.formularioResidencia {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.modalGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.formularioResidencia label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: #0f172a;
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.formularioResidencia input,
+.formularioResidencia select,
+.formularioResidencia textarea {
+  width: 100%;
+  border: 1px solid rgba(15, 23, 42, 0.14);
+  border-radius: 14px;
+  background: #f8fbfe;
+  color: #0f172a;
+  font-size: 15px;
+  font-weight: 700;
+  outline: none;
+  padding: 0 14px;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.formularioResidencia input,
+.formularioResidencia select {
+  height: 46px;
+}
+
+.formularioResidencia textarea {
+  min-height: 92px;
+  resize: vertical;
+  padding-top: 12px;
+  line-height: 1.35;
+}
+
+.formularioResidencia input::placeholder,
+.formularioResidencia textarea::placeholder {
+  color: #8b8f98;
+}
+
+.formularioResidencia input:focus,
+.formularioResidencia select:focus,
+.formularioResidencia textarea:focus {
+  border-color: #097cd8;
+  box-shadow: 0 0 0 4px rgba(9, 124, 216, 0.12);
+}
+
+.campoCompleto {
+  grid-column: 1 / -1;
+}
+
+.acoesModal {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  border-top: 1px solid rgba(15, 23, 42, 0.08);
+  padding-top: 18px;
+}
+
+.botaoModalPrimario,
+.botaoModalSecundario {
+  min-height: 44px;
+  border: none;
+  border-radius: 100px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 0 20px;
+  font-size: 15px;
+  font-weight: 900;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.botaoModalPrimario {
+  background: #097cd8;
+  color: #ffffff;
+  box-shadow: 0 10px 18px rgba(9, 124, 216, 0.22);
+}
+
+.botaoModalPrimario:hover:not(:disabled) {
+  background: #086fc2;
+  transform: translateY(-1px);
+}
+
+.botaoModalPrimario:disabled {
+  cursor: wait;
+  opacity: 0.88;
+}
+
+.botaoCarregando::before {
+  content: "";
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.45);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: girar 0.75s linear infinite;
+}
+
+.botaoModalSecundario {
+  background: #eef3f8;
+  color: #475569;
+}
+
+.botaoModalSecundario:hover {
+  background: #e3ebf3;
+  transform: translateY(-1px);
+}
+
+.estadoSalvo {
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  text-align: center;
+}
+
+.estadoSalvo svg {
+  color: #16a34a;
+  font-size: 42px;
+}
+
+.estadoSalvo h3 {
+  color: #0f172a;
+  font-size: 24px;
+  font-weight: 900;
+  margin: 0;
+}
+
+.estadoSalvo p {
+  max-width: 440px;
+  color: #64748b;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.45;
+  margin: 0 0 8px;
+}
+
+@media (max-width: 760px) {
+  .informacoesPage {
+    background-size: cover;
+    background-position: center;
+  }
+
+  .informacoesContainer {
+    justify-content: flex-start;
+    padding: 36px 18px;
+  }
+
+  .informacoesLogo {
+    width: 112px;
+    height: 96px;
+    margin-bottom: 42px;
+  }
+
+  .informacoesCard {
+    border-radius: 28px;
+    padding: 30px 22px 34px;
+  }
+
+  .informacoesTitle h1 {
+    font-size: 25px;
+  }
+
+  .informacoesTitle p {
+    font-size: 15px;
+  }
+
+  .modalOverlay {
+    padding: 16px;
+  }
+
+  .modalCard {
+    border-radius: 22px;
+    padding: 24px 18px;
+  }
+
+  .modalHeader,
+  .acoesModal {
+    flex-direction: column;
+  }
+
+  .modalHeader {
+    padding-right: 42px;
+  }
+
+  .modalGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .botaoModalPrimario,
+  .botaoModalSecundario {
+    width: 100%;
+  }
+}
+
+@keyframes entradaSuave {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes girar {
+  to {
+    transform: rotate(360deg);
+  }
 }

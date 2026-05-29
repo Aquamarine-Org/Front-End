@@ -6,6 +6,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  animation: entradaSuave 0.45s ease both;
 }
 
 .cadastroContainer {
@@ -119,6 +120,35 @@
   font-weight: 700;
   cursor: pointer;
   align-self: center;
+  min-width: 190px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.cadastroButton:hover:not(:disabled) {
+  background: #086fc2;
+  transform: translateY(-1px);
+}
+
+.cadastroButton:disabled {
+  cursor: wait;
+  opacity: 0.88;
+}
+
+.botaoCarregando::before {
+  content: "";
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.45);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: girar 0.75s linear infinite;
 }
 
 .divider {
@@ -201,4 +231,22 @@
 .cadastroBanner p {
   font-size: 28px;
   font-weight: 700;
+}
+
+@keyframes entradaSuave {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes girar {
+  to {
+    transform: rotate(360deg);
+  }
 }

@@ -1,12 +1,14 @@
 ﻿import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { IoEyeSharp, IoEyeOffSharp } from "react-icons/io5";
 import logoAquamarine from "/logo.png";
 import styles from "./CadastroPage.module.css";
 
 function CadastroPage() {
+  const navigate = useNavigate();
   const [mostrarSenha, setMostrarSenha] = useState(false);
   const [cpf, setCpf] = useState("");
+  const [enviandoCadastro, setEnviandoCadastro] = useState(false);
 
   const handleCpfChange = (event) => {
     let value = event.target.value.replace(/\D/g, "").slice(0, 11);
@@ -14,6 +16,19 @@ function CadastroPage() {
     value = value.replace(/(\d{3})\.(\d{3})(\d)/, "$1.$2.$3");
     value = value.replace(/(\d{3})\.(\d{3})\.(\d{3})(\d)/, "$1.$2.$3-$4");
     setCpf(value);
+  };
+
+  const handleCadastro = (event) => {
+    event.preventDefault();
+
+    if (enviandoCadastro) {
+      return;
+    }
+
+    setEnviandoCadastro(true);
+    window.setTimeout(() => {
+      navigate("/verificar-email", { state: { origem: "cadastro" } });
+    }, 900);
   };
 
   return (
@@ -31,7 +46,7 @@ function CadastroPage() {
             <p>Acesso seguro a sistemas de controle de precisão</p>
           </div>
 
-          <form className={styles.cadastroForm}>
+          <form className={styles.cadastroForm} onSubmit={handleCadastro}>
             <div className={styles.inputGroup}>
               <label>Nome</label>
               <input type="text" placeholder="Digite seu nome" />
@@ -72,8 +87,15 @@ function CadastroPage() {
               </div>
             </div>
 
-            <button type="submit" className={styles.cadastroButton}>
-              Cadastrar-se
+            <button
+              type="submit"
+              className={`${styles.cadastroButton} ${
+                enviandoCadastro ? styles.botaoCarregando : ""
+              }`}
+              disabled={enviandoCadastro}
+              aria-busy={enviandoCadastro}
+            >
+              {enviandoCadastro ? "Enviando código..." : "Cadastrar-se"}
             </button>
           </form>
 

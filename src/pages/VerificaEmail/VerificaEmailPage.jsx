@@ -1,9 +1,13 @@
 import { useRef, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import logoAquamarine from "/logo.png";
 import styles from "./VerificarEmail.module.css";
 
 function VerificarEmail() {
+  const navigate = useNavigate();
+  const location = useLocation();
   const [code, setCode] = useState(Array(6).fill(""));
+  const [verificandoEmail, setVerificandoEmail] = useState(false);
   const inputRefs = useRef([]);
 
   const handleChange = (value, index) => {
@@ -20,6 +24,20 @@ function VerificarEmail() {
     if (event.key === "Backspace" && !code[index] && index > 0) {
       inputRefs.current[index - 1]?.focus();
     }
+  };
+
+  const handleVerificarEmail = () => {
+    if (verificandoEmail) {
+      return;
+    }
+
+    const proximaRota =
+      location.state?.origem === "cadastro" ? "/informacoes" : "/home";
+
+    setVerificandoEmail(true);
+    window.setTimeout(() => {
+      navigate(proximaRota);
+    }, 900);
   };
 
   return (
@@ -55,8 +73,16 @@ function VerificarEmail() {
               ))}
             </div>
 
-            <button type="button" className={styles.verificarButton}>
-              Verificar e-mail
+            <button
+              type="button"
+              className={`${styles.verificarButton} ${
+                verificandoEmail ? styles.botaoCarregando : ""
+              }`}
+              disabled={verificandoEmail}
+              aria-busy={verificandoEmail}
+              onClick={handleVerificarEmail}
+            >
+              {verificandoEmail ? "Verificando..." : "Verificar e-mail"}
             </button>
 
             <button type="button" className={styles.reenviarButton}>

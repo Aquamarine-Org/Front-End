@@ -1,11 +1,26 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logoAquamarine from "/logo.png";
 import { IoEyeSharp, IoEyeOffSharp } from "react-icons/io5";
 import styles from "./LoginPage.module.css";
 
 function LoginPage() {
+  const navigate = useNavigate();
   const [mostrarSenha, setMostrarSenha] = useState(false);
+  const [estaEntrando, setEstaEntrando] = useState(false);
+
+  const handleLogin = (event) => {
+    event.preventDefault();
+
+    if (estaEntrando) {
+      return;
+    }
+
+    setEstaEntrando(true);
+    window.setTimeout(() => {
+      navigate("/verificar-email", { state: { origem: "login" } });
+    }, 850);
+  };
 
   return (
     <div className={styles.loginPage}>
@@ -29,7 +44,7 @@ function LoginPage() {
             <p>Acesso seguro a sistemas de controle de precisão</p>
           </div>
 
-          <form className={styles.loginForm}>
+          <form className={styles.loginForm} onSubmit={handleLogin}>
             <div className={styles.inputGroup}>
               <label>E-mail</label>
               <input type="email" placeholder="Entre com seu e-mail" />
@@ -51,8 +66,15 @@ function LoginPage() {
               </div>
             </div>
 
-            <button type="submit" className={styles.loginButton}>
-              Login
+            <button
+              type="submit"
+              className={`${styles.loginButton} ${
+                estaEntrando ? styles.botaoCarregando : ""
+              }`}
+              disabled={estaEntrando}
+              aria-busy={estaEntrando}
+            >
+              {estaEntrando ? "Entrando..." : "Login"}
             </button>
           </form>
 

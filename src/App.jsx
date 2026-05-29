@@ -13,6 +13,7 @@ import HistoricoPage from "./pages/HistoricoPage/historico";
 import DashboardPage from "./pages/DashboardPage/DashboardPage";
 import AlertasPage from "./pages/AlertasPage/AlertasPage";
 import DispositivosPage from "./pages/DispositivosPage/DispositivosPage";
+import DispositivosGerenciarPage from "./pages/DispositivosGerenciarPage/DispositivosGerenciarPage";
 import PlantaCasaPage from "./pages/PlantaCasaPage/PlantaCasaPage";
 import ConfiguracoesPage from "./pages/ConfiguracoesPage/ConfiguracoesPage";
 
@@ -38,6 +39,10 @@ function App() {
         <Route path="/planta-da-casa" element={<PlantaCasaPage />} />
         <Route path="/alertas" element={<AlertasPage />} />
         <Route path="/dispositivos" element={<DispositivosPage />} />
+        <Route
+          path="/dispositivos/gerenciar"
+          element={<DispositivosGerenciarPage />}
+        />
         <Route path="/configuracoes" element={<ConfiguracoesPage />} />
       </Routes>
     </Router>
