@@ -391,6 +391,10 @@ function HistoricoPage() {
     setFiltroAberto(true);
   };
 
+  const exportarHistoricoParaPdf = () => {
+    window.print();
+  };
+
   const aplicarFiltro = () => {
     setFiltroAplicado(normalizarFiltroPeriodo(rascunhoFiltro));
     setFiltroAberto(false);
@@ -419,13 +423,21 @@ function HistoricoPage() {
     <DashboardLayout currentPage="historico" pageTitle="Histórico">
       <section className={estilos.paginaHistorico}>
         <div className={estilos.barraFerramentas}>
-          <button type="button" className={estilos.botaoData}>
+          <button
+            type="button"
+            className={estilos.botaoData}
+            onClick={abrirFiltro}
+          >
             <IoCalendarClearOutline size={16} />
             {obterRotuloFiltro(filtroAplicado)}
           </button>
 
           <div className={estilos.acoesBarra}>
-            <button type="button" className={estilos.botaoSecundario}>
+            <button
+              type="button"
+              className={estilos.botaoSecundario}
+              onClick={exportarHistoricoParaPdf}
+            >
               <IoDocumentTextOutline size={16} />
               Exportar PDF
             </button>

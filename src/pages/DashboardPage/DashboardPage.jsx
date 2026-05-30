@@ -4,6 +4,8 @@ import { IoEyeOutline, IoWaterOutline } from "react-icons/io5";
 import { GiValve } from "react-icons/gi";
 import { FaStairs } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import Modal from "@src/components/Modal/Modal.jsx";
 import styles from "./DashboardPage.module.css";
 
 const STATUS_CARDS = [
@@ -53,7 +55,7 @@ const ROOMS = [
   },
 ];
 
-function RoomCard({ room }) {
+function RoomCard({ room, onView }) {
   return (
     <article className={`${styles.roomCard} ${styles[room.tone]}`}>
       <header className={styles.roomHeader}>
@@ -64,6 +66,7 @@ function RoomCard({ room }) {
             type="button"
             className={styles.roomViewButton}
             aria-label={`Visualizar ${room.name}`}
+            onClick={() => onView(room)}
           >
             <IoEyeOutline />
           </button>
@@ -84,6 +87,9 @@ function RoomCard({ room }) {
 
 function DashboardPage() {
   const navigate = useNavigate();
+  const [modalDashboard, setModalDashboard] = useState(null);
+
+  const closeModal = () => setModalDashboard(null);
 
   return (
     <DashboardLayout
@@ -116,7 +122,11 @@ function DashboardPage() {
             <h2>Térreo</h2>
 
             <div className={styles.floorActions}>
-              <button type="button" className={styles.floorActionButton}>
+              <button
+                type="button"
+                className={styles.floorActionButton}
+                onClick={() => setModalDashboard({ type: "floors" })}
+              >
                 <FaStairs />
                 Andares
               </button>
@@ -134,15 +144,60 @@ function DashboardPage() {
 
           <div className={styles.floorCanvas}>
             <div className={styles.roomStack}>
-              <RoomCard room={ROOMS[0]} />
+              <RoomCard
+                room={ROOMS[0]}
+                onView={(room) => setModalDashboard({ type: "room", room })}
+              />
 
               <span className={styles.connector} aria-hidden="true"></span>
 
-              <RoomCard room={ROOMS[1]} />
+              <RoomCard
+                room={ROOMS[1]}
+                onView={(room) => setModalDashboard({ type: "room", room })}
+              />
             </div>
           </div>
         </article>
       </section>
+
+      <Modal
+        isOpen={modalDashboard?.type === "floors"}
+        onClose={closeModal}
+        icon={FaStairs}
+        title="Andares da residência"
+      >
+        <div className={styles.dashboardModalContent}>
+          <p>Há 1 andar cadastrado no mapa atual.</p>
+          <button
+            type="button"
+            className={styles.modalPrimaryButton}
+            onClick={() => navigate("/planta-da-casa")}
+          >
+            Editar andares
+          </button>
+        </div>
+      </Modal>
+
+      <Modal
+        isOpen={modalDashboard?.type === "room"}
+        onClose={closeModal}
+        icon={IoEyeOutline}
+        title={modalDashboard?.room?.name}
+        subtitle={modalDashboard?.room?.status}
+      >
+        <div className={styles.dashboardModalContent}>
+          <p>
+            {modalDashboard?.room?.area} · {modalDashboard?.room?.sensors}
+          </p>
+          <button
+            type="button"
+            className={styles.modalPrimaryButton}
+            onClick={() => navigate("/planta-da-casa")}
+          >
+            Abrir no mapa
+          </button>
+        </div>
+      </Modal>
     </DashboardLayout>
   );
 }

@@ -8,6 +8,13 @@ import AlertsFilterBar from "@src/features/AlertsFilterBar/AlertsFilterBar.jsx";
 import AlertsFeedItem from "@src/features/AlertsFeedItem/AlertsFeedItem.jsx";
 import styles from "./AlertasPage.module.css";
 
+const FILTER_SCOPES = [
+  { id: "todos", label: "Todos" },
+  { id: "criticos", label: "Criticos" },
+  { id: "atencao", label: "Atencao" },
+  { id: "normais", label: "Normais" },
+];
+
 const SUMMARY_CARDS = [
   {
     id: "nao-resolvidos",
@@ -89,24 +96,41 @@ const ALERT_ITEMS = [
 
 function AlertasPage() {
   const [searchTerm, setSearchTerm] = useState("");
+  const [scopeIndex, setScopeIndex] = useState(0);
+  const [actionFeedback, setActionFeedback] = useState("");
   const [expandedAlertId, setExpandedAlertId] = useState(
     "consumo-elevado-principal",
   );
+  const activeScope = FILTER_SCOPES[scopeIndex];
 
   const filteredAlerts = useMemo(() => {
     const normalizedTerm = searchTerm.trim().toLowerCase();
 
-    if (!normalizedTerm) {
-      return ALERT_ITEMS;
-    }
+    return ALERT_ITEMS.filter((alert) => {
+      const matchesSearch =
+        !normalizedTerm || alert.title.toLowerCase().includes(normalizedTerm);
+      const matchesScope =
+        activeScope.id === "todos" ||
+        (activeScope.id === "criticos" && alert.tone === "danger") ||
+        (activeScope.id === "atencao" && alert.tone === "warning") ||
+        (activeScope.id === "normais" && alert.tone === "normal");
 
-    return ALERT_ITEMS.filter((alert) =>
-      alert.title.toLowerCase().includes(normalizedTerm),
-    );
-  }, [searchTerm]);
+      return matchesSearch && matchesScope;
+    });
+  }, [activeScope.id, searchTerm]);
 
   const handleToggleAlert = (alertId) => {
     setExpandedAlertId((currentId) => (currentId === alertId ? null : alertId));
+  };
+
+  const handleScopeClick = () => {
+    setScopeIndex((currentIndex) => (currentIndex + 1) % FILTER_SCOPES.length);
+  };
+
+  const handleAlertAction = (title) => {
+    setActionFeedback(
+      `${title}: comando enviado. Acompanhe o status em Dispositivos.`,
+    );
   };
 
   return (
@@ -127,9 +151,15 @@ function AlertasPage() {
 
         <article className={styles.alertsPanel}>
           <AlertsFilterBar
+            scopeLabel={activeScope.label}
             searchValue={searchTerm}
             onSearchChange={(event) => setSearchTerm(event.target.value)}
+            onScopeClick={handleScopeClick}
           />
+
+          {actionFeedback && (
+            <p className={styles.actionFeedback}>{actionFeedback}</p>
+          )}
 
           <div className={styles.alertsList}>
             {filteredAlerts.length > 0 ? (
@@ -144,6 +174,7 @@ function AlertasPage() {
                   description={alert.description}
                   aiSuggestion={alert.aiSuggestion}
                   actionLabel={alert.actionLabel}
+                  onAction={() => handleAlertAction(alert.title)}
                   expanded={expandedAlertId === alert.id}
                   onToggle={() => handleToggleAlert(alert.id)}
                 />

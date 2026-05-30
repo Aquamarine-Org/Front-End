@@ -1,9 +1,11 @@
 .paginaDispositivos {
-  width: min(100%, 1180px);
+  width: 100%;
+  flex: 1;
   display: flex;
   flex-direction: column;
   gap: 18px;
-  padding: 10px 24px 40px 0;
+  padding: 10px 0 40px 0;
+  box-sizing: border-box;
 }
 
 .topoDispositivos {

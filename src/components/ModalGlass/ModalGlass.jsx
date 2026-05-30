@@ -57,7 +57,11 @@ function ModalGlass({
         onClick={handleContentClick}
       >
         {showCloseButton && (
-          <button className={styles.closeButton} onClick={onClose}>
+          <button
+            type="button"
+            className={styles.closeButton}
+            onClick={onClose}
+          >
             <IoClose />
           </button>
         )}

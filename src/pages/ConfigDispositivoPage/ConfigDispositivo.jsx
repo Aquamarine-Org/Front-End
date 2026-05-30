@@ -5,6 +5,7 @@ import { TbDeviceAnalytics } from "react-icons/tb";
 import { PiSealCheckBold } from "react-icons/pi";
 
 import DashboardLayout from "@src/layouts/DashboardLayout/DashboardLayout";
+import Modal from "@src/components/Modal/Modal.jsx";
 
 import styles from "./ConfigDispositivo.module.css";
 
@@ -17,6 +18,7 @@ const FORMATTED_LENGTH_WITH_DASHES = 19;
 function ConfigDispositivo() {
   const navigate = useNavigate();
   const [serialNumber, setSerialNumber] = useState("");
+  const [cameraModalOpen, setCameraModalOpen] = useState(false);
 
   const formatSerialNumber = (value) => {
     return value
@@ -81,7 +83,11 @@ function ConfigDispositivo() {
 
               <div className={styles.scanLine}></div>
 
-              <button type="button" className={styles.cameraButton}>
+              <button
+                type="button"
+                className={styles.cameraButton}
+                onClick={() => setCameraModalOpen(true)}
+              >
                 <IoCameraOutline size={16} />
                 Abrir câmera
               </button>
@@ -121,6 +127,28 @@ function ConfigDispositivo() {
             </button>
           </form>
         </section>
+
+        <Modal
+          isOpen={cameraModalOpen}
+          onClose={() => setCameraModalOpen(false)}
+          icon={IoCameraOutline}
+          title="Leitor de QR Code"
+        >
+          <div className={styles.cameraModalContent}>
+            <p>
+              A leitura por câmera fica pronta para integração com o dispositivo.
+              Por enquanto, use o número de série para continuar a configuração.
+            </p>
+
+            <button
+              type="button"
+              className={styles.cameraModalButton}
+              onClick={() => setCameraModalOpen(false)}
+            >
+              Inserir número manualmente
+            </button>
+          </div>
+        </Modal>
       </div>
     </DashboardLayout>
   );

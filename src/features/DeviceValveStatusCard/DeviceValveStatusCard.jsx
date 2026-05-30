@@ -87,7 +87,9 @@ function DeviceValveStatusCard({
 
       <button
         type="button"
-        className={styles.actionButton}
+        className={`${styles.actionButton} ${
+          isOpen ? "" : styles.openActionButton
+        }`}
         onClick={handleActionClick}
       >
         {isOpen ? <FiX /> : <FiCheck />}

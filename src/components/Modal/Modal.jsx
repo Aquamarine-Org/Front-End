@@ -13,11 +13,20 @@ function Modal({
 }) {
   if (!isOpen) return null;
 
+  const handleSubmit = (event) => {
+    if (onSubmit) {
+      onSubmit(event);
+      return;
+    }
+
+    event.preventDefault();
+  };
+
   return (
     <div className={styles.modalOverlay}>
       <form
         className={styles.connectionModal}
-        onSubmit={onSubmit}
+        onSubmit={handleSubmit}
         role="dialog"
         aria-modal="true"
         aria-labelledby={aria_labelledby}
@@ -31,11 +40,13 @@ function Modal({
           <IoCloseOutline size={24} />
         </button>
 
-        {Icon && (
+        {(Icon || title) && (
           <div className={styles.modalHeader}>
-            <div className={styles.modalIcon}>
-              <Icon size={28} />
-            </div>
+            {Icon && (
+              <div className={styles.modalIcon}>
+                <Icon size={28} />
+              </div>
+            )}
             <div>
               <h3 id={aria_labelledby}>{title}</h3>
               {subtitle && <p>{subtitle}</p>}

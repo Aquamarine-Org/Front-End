@@ -11,6 +11,7 @@ function AlertsFeedItem({
   description,
   aiSuggestion,
   actionLabel,
+  onAction,
   expanded = false,
   onToggle,
 }) {
@@ -60,7 +61,11 @@ function AlertsFeedItem({
           </div>
 
           {actionLabel ? (
-            <button type="button" className={styles.actionButton}>
+            <button
+              type="button"
+              className={styles.actionButton}
+              onClick={onAction}
+            >
               {actionLabel}
             </button>
           ) : null}

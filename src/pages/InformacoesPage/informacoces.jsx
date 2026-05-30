@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { FiCheckCircle, FiHome, FiX } from "react-icons/fi";
 import logoAquamarine from "/logo.png";
@@ -12,10 +12,10 @@ function InformacoesPage() {
   const [cep, setCep] = useState("");
   const [telefone, setTelefone] = useState("");
   const [erroCadastro, setErroCadastro] = useState("");
-  const [modalResidenciaAberto, setModalResidenciaAberto] = useState(false);
   const [perfilResidenciaSalvo, setPerfilResidenciaSalvo] = useState(false);
   const [salvandoPerfilResidencia, setSalvandoPerfilResidencia] =
     useState(false);
+  const [mostrarModalResidencia, setMostrarModalResidencia] = useState(false);
   const [perfilResidencia, setPerfilResidencia] = useState({
     moradores: "",
     comodos: "",
@@ -63,33 +63,46 @@ function InformacoesPage() {
     }));
   };
 
+  const dadosPessoaisValidos = () =>
+    cpf.length === 14 &&
+    endereco.trim().length >= 5 &&
+    cep.length === 9 &&
+    telefone.length === 13;
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    const cadastroValido =
-      cpf.length === 14 &&
-      endereco.trim().length >= 5 &&
-      cep.length === 9 &&
-      telefone.length === 13;
-
-    if (!cadastroValido) {
-      setErroCadastro("Preencha todos os dados corretamente antes de continuar.");
+    if (!dadosPessoaisValidos()) {
+      setErroCadastro(
+        "Preencha todos os dados corretamente antes de continuar.",
+      );
       return;
     }
 
     setErroCadastro("");
     setPerfilResidenciaSalvo(false);
-    setModalResidenciaAberto(true);
+    setMostrarModalResidencia(true);
   };
 
   const fecharModalResidencia = () => {
-    setModalResidenciaAberto(false);
-    setPerfilResidenciaSalvo(false);
-    setSalvandoPerfilResidencia(false);
+    setMostrarModalResidencia(false);
+    document
+      .getElementById("dados-pessoais")
+      ?.scrollIntoView({ behavior: "smooth", block: "center" });
   };
 
   const salvarPerfilResidencia = (event) => {
     event.preventDefault();
+
+    if (!dadosPessoaisValidos()) {
+      setErroCadastro(
+        "Preencha seus dados pessoais antes de salvar o perfil da residência.",
+      );
+      document
+        .getElementById("dados-pessoais")
+        ?.scrollIntoView({ behavior: "smooth", block: "center" });
+      return;
+    }
 
     if (salvandoPerfilResidencia) {
       return;
@@ -110,14 +123,20 @@ function InformacoesPage() {
     window.setTimeout(() => {
       localStorage.setItem(
         "aquamarine-cadastro-complementar",
-        JSON.stringify(dadosCadastro)
+        JSON.stringify(dadosCadastro),
       );
 
       setPerfilResidenciaSalvo(true);
       setSalvandoPerfilResidencia(false);
+      setMostrarModalResidencia(true);
       window.setTimeout(() => navigate("/home"), 1400);
     }, 650);
   };
+
+  useEffect(() => {
+    document.body.style.overflow = mostrarModalResidencia ? "hidden" : "";
+    return () => (document.body.style.overflow = "");
+  }, [mostrarModalResidencia]);
 
   const finalizarCadastro = () => {
     navigate("/home");
@@ -133,7 +152,7 @@ function InformacoesPage() {
         />
 
         <div className={styles.informacoesBackground}>
-          <div className={styles.informacoesCard}>
+          <div id="dados-pessoais" className={styles.informacoesCard}>
             <div className={styles.informacoesTitle}>
               <h1>Informe seus dados adicionais</h1>
               <p>
@@ -201,20 +220,21 @@ function InformacoesPage() {
               )}
 
               <button type="submit" className={styles.informacoesButton}>
-                Cadastrar-se
+                Continuar para dados da casa
               </button>
             </form>
           </div>
         </div>
       </section>
 
-      {modalResidenciaAberto && (
-        <div className={styles.modalOverlay} role="presentation">
+      {mostrarModalResidencia && (
+        <div className={styles.modalOverlay}>
           <section
-            className={styles.modalCard}
+            id="perfil-residencia"
+            className={`${styles.modalCard} ${styles.residenciaCard}`}
+            aria-labelledby="perfil-residencia-titulo"
             role="dialog"
             aria-modal="true"
-            aria-labelledby="perfil-residencia-titulo"
           >
             <button
               type="button"
@@ -230,9 +250,7 @@ function InformacoesPage() {
                 <FiHome />
               </span>
               <div>
-                <h2 id="perfil-residencia-titulo">
-                  Perfil da sua residência
-                </h2>
+                <h2 id="perfil-residencia-titulo">Perfil da sua residência</h2>
                 <p>
                   Essas informações ajudam o Aquamarine a entender o consumo de
                   água da casa e identificar comportamentos fora do padrão.
@@ -274,7 +292,7 @@ function InformacoesPage() {
                       onChange={(event) =>
                         handlePerfilResidenciaChange(
                           "moradores",
-                          event.target.value
+                          event.target.value,
                         )
                       }
                     />
@@ -292,7 +310,7 @@ function InformacoesPage() {
                       onChange={(event) =>
                         handlePerfilResidenciaChange(
                           "comodos",
-                          event.target.value
+                          event.target.value,
                         )
                       }
                     />
@@ -310,7 +328,7 @@ function InformacoesPage() {
                       onChange={(event) =>
                         handlePerfilResidenciaChange(
                           "banheiros",
-                          event.target.value
+                          event.target.value,
                         )
                       }
                     />
@@ -328,7 +346,7 @@ function InformacoesPage() {
                       onChange={(event) =>
                         handlePerfilResidenciaChange(
                           "pontosAgua",
-                          event.target.value
+                          event.target.value,
                         )
                       }
                     />
@@ -342,7 +360,7 @@ function InformacoesPage() {
                       onChange={(event) =>
                         handlePerfilResidenciaChange(
                           "caixaAgua",
-                          event.target.value
+                          event.target.value,
                         )
                       }
                     >
@@ -360,7 +378,7 @@ function InformacoesPage() {
                       onChange={(event) =>
                         handlePerfilResidenciaChange(
                           "areaExterna",
-                          event.target.value
+                          event.target.value,
                         )
                       }
                     >
@@ -379,7 +397,7 @@ function InformacoesPage() {
                     onChange={(event) =>
                       handlePerfilResidenciaChange(
                         "maiorUso",
-                        event.target.value
+                        event.target.value,
                       )
                     }
                   >
@@ -400,7 +418,7 @@ function InformacoesPage() {
                     onChange={(event) =>
                       handlePerfilResidenciaChange(
                         "observacoes",
-                        event.target.value
+                        event.target.value,
                       )
                     }
                   />

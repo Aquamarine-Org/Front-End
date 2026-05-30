@@ -2,6 +2,7 @@ import DashboardLayout from "@src/layouts/DashboardLayout/DashboardLayout.jsx";
 import DeviceValveStatusCard from "@src/features/DeviceValveStatusCard/DeviceValveStatusCard.jsx";
 import DeviceControlCard from "@src/features/DeviceControlCard/DeviceControlCard.jsx";
 import DeviceActionHistoryCard from "@src/features/DeviceActionHistoryCard/DeviceActionHistoryCard.jsx";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./DispositivosPage.module.css";
 
@@ -40,6 +41,7 @@ const DEVICE_ACTIONS = [
 
 function DispositivosPage() {
   const navigate = useNavigate();
+  const [valvulaAberta, setValvulaAberta] = useState(true);
 
   return (
     <DashboardLayout pageTitle="Dispositivos" currentPage="dispositivos">
@@ -47,10 +49,15 @@ function DispositivosPage() {
         <div className={styles.topGrid}>
           <DeviceValveStatusCard
             title="Válvula principal"
-            isOpen
-            statusLabel="ABERTA"
-            description="A válvula está operando normalmente. Em caso de vazamento, feche imediatamente."
-            actionLabel="Fechar válvula"
+            isOpen={valvulaAberta}
+            statusLabel={valvulaAberta ? "ABERTA" : "FECHADA"}
+            description={
+              valvulaAberta
+                ? "A válvula está operando normalmente. Em caso de vazamento, feche imediatamente."
+                : "A válvula está fechada. Abra novamente quando a verificação estiver concluída."
+            }
+            actionLabel={valvulaAberta ? "Fechar válvula" : "Abrir válvula"}
+            onAction={() => setValvulaAberta((estadoAtual) => !estadoAtual)}
           />
 
           <DeviceControlCard

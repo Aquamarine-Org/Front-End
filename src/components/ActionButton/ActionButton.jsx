@@ -1,8 +1,24 @@
 import styles from "./ActionButton.module.css";
 
-function ActionButton({ children, backgroundColor = "#097cd8", ...props }) {
+function ActionButton({
+  children,
+  backgroundColor = "#097cd8",
+  className = "",
+  style,
+  type = "button",
+  ...props
+}) {
+  const buttonClassName = className
+    ? `${styles.button} ${className}`
+    : styles.button;
+
   return (
-    <button className={styles.button} style={{ backgroundColor }} {...props}>
+    <button
+      className={buttonClassName}
+      style={{ backgroundColor, ...style }}
+      type={type}
+      {...props}
+    >
       {children}
     </button>
   );

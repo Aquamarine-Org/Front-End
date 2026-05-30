@@ -256,19 +256,19 @@
 
 @media (max-width: 1500px) {
   .cardTitle {
-    font-size: 1.28rem;
+    font-size: 1rem;
   }
 
   .chartValue {
-    font-size: 2.5rem;
+    font-size: 1.8rem;
   }
 
   .chartValue span {
-    font-size: 1.45rem;
+    font-size: 1.05rem;
   }
 
   .valveButton {
-    font-size: 1.3rem;
+    font-size: 0.98rem;
   }
 
   .buttonCheck {
@@ -277,11 +277,11 @@
   }
 
   .alertsTitle {
-    font-size: 2.65rem;
+    font-size: 1.35rem;
   }
 
   .viewAllButton {
-    font-size: 1.68rem;
+    font-size: 1rem;
   }
 
   .alertInfo h3 {

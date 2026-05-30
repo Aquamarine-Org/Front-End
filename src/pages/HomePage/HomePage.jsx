@@ -218,6 +218,7 @@ function HomePage() {
 
                 <div className={styles.modalActions}>
                   <button
+                    type="button"
                     className={styles.cancelButton}
                     onClick={() => setIsModalOpen(false)}
                   >
@@ -225,6 +226,7 @@ function HomePage() {
                   </button>
 
                   <button
+                    type="button"
                     className={styles.confirmButton}
                     onClick={handleToggleValve}
                   >

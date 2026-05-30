@@ -8,6 +8,18 @@
   font-family: "Quicksand", sans-serif;
 }
 
+button {
+  font: inherit;
+}
+
+button:not(:disabled):hover {
+  filter: brightness(0.98);
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 @tailwind base;

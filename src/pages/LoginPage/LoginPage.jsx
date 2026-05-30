@@ -22,6 +22,17 @@ function LoginPage() {
     }, 850);
   };
 
+  const handleGoogleLogin = () => {
+    if (estaEntrando) {
+      return;
+    }
+
+    setEstaEntrando(true);
+    window.setTimeout(() => {
+      navigate("/verificar-email", { state: { origem: "login" } });
+    }, 850);
+  };
+
   return (
     <div className={styles.loginPage}>
       <section className={styles.loginContainer}>
@@ -84,13 +95,18 @@ function LoginPage() {
             <span></span>
           </div>
 
-          <button className={styles.googleButton}>
+          <button
+            type="button"
+            className={styles.googleButton}
+            onClick={handleGoogleLogin}
+            disabled={estaEntrando}
+          >
             <img
               src="https://www.google.com/favicon.ico"
               alt="Google"
               className={styles.googleIcon}
             />
-            Entrar com Google
+            {estaEntrando ? "Conectando..." : "Entrar com Google"}
           </button>
 
           <p className={styles.registerText}>

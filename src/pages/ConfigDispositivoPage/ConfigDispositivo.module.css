@@ -253,6 +253,41 @@
   opacity: 0.9;
 }
 
+.cameraModalContent {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-top: 18px;
+}
+
+.cameraModalContent p {
+  color: #414755;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.cameraModalButton {
+  align-self: flex-start;
+  min-height: 42px;
+  border: none;
+  border-radius: 100px;
+  background: #097cd8;
+  color: #ffffff;
+  padding: 0 18px;
+  font-size: 14px;
+  font-weight: 900;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.cameraModalButton:hover {
+  background: #086fc2;
+  transform: translateY(-1px);
+}
+
 @keyframes scannerAnimation {
   0% {
     top: 15%;

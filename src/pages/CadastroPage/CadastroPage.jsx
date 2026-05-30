@@ -31,6 +31,17 @@ function CadastroPage() {
     }, 900);
   };
 
+  const handleGoogleCadastro = () => {
+    if (enviandoCadastro) {
+      return;
+    }
+
+    setEnviandoCadastro(true);
+    window.setTimeout(() => {
+      navigate("/verificar-email", { state: { origem: "cadastro" } });
+    }, 900);
+  };
+
   return (
     <div className={styles.cadastroPage}>
       <section className={styles.cadastroContainer}>
@@ -105,13 +116,18 @@ function CadastroPage() {
             <span></span>
           </div>
 
-          <button className={styles.googleButton}>
+          <button
+            type="button"
+            className={styles.googleButton}
+            onClick={handleGoogleCadastro}
+            disabled={enviandoCadastro}
+          >
             <img
               src="https://www.google.com/favicon.ico"
               alt="Google"
               className={styles.googleIcon}
             />
-            Entrar com Google
+            {enviandoCadastro ? "Conectando..." : "Entrar com Google"}
           </button>
 
           <p className={styles.loginText}>

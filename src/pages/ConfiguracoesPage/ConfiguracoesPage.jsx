@@ -220,6 +220,9 @@ function Interruptor({ ativo, titulo, descricao, aoAlternar }) {
 function ConfiguracoesPage() {
   const [abaAtiva, setAbaAtiva] = useState("perfil");
   const [dadosUsuario, setDadosUsuario] = useState(() => carregarDadosUsuario());
+  const [dispositivosConectados, setDispositivosConectados] = useState(
+    DISPOSITIVOS_CONECTADOS,
+  );
   const [senha, setSenha] = useState({
     atual: "",
     nova: "",
@@ -340,6 +343,16 @@ function ConfiguracoesPage() {
     evento.preventDefault();
     setSenha({ atual: "", nova: "", confirmacao: "" });
     setMensagemSalva("Senha atualizada com sucesso.");
+  };
+
+  const removerAcessoDispositivo = (nomeDispositivo) => {
+    setDispositivosConectados((dispositivosAtuais) =>
+      dispositivosAtuais.filter(
+        (dispositivo) => dispositivo.nome !== nomeDispositivo,
+      ),
+    );
+    setMensagemErro("");
+    setMensagemSalva(`Acesso de ${nomeDispositivo} removido.`);
   };
 
   return (
@@ -737,7 +750,7 @@ function ConfiguracoesPage() {
             </header>
 
             <div className={styles.listaDispositivos}>
-              {DISPOSITIVOS_CONECTADOS.map((dispositivo) => (
+              {dispositivosConectados.map((dispositivo) => (
                 <article
                   className={styles.itemDispositivo}
                   key={dispositivo.nome}
@@ -759,7 +772,11 @@ function ConfiguracoesPage() {
                   {dispositivo.atual ? (
                     <span className={styles.seloAtual}>Dispositivo atual</span>
                   ) : (
-                    <button type="button" className={styles.botaoSecundario}>
+                    <button
+                      type="button"
+                      className={styles.botaoSecundario}
+                      onClick={() => removerAcessoDispositivo(dispositivo.nome)}
+                    >
                       Remover acesso
                     </button>
                   )}

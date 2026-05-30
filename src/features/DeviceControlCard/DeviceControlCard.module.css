@@ -34,6 +34,14 @@
   place-items: center;
   font-size: 1.6rem;
   cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.settingsButton:hover {
+  background: #0977cc;
+  transform: translateY(-1px);
 }
 
 .metricsList {

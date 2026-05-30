@@ -1,6 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import styles from "./PlanosCard.module.css";
 
 function PlanosCard({ plano }) {
+  const navigate = useNavigate();
+
   return (
     <article
       className={`${styles.card} ${plano.destaque ? styles.cardDestaque : ""}`}
@@ -35,7 +38,11 @@ function PlanosCard({ plano }) {
         ))}
       </ul>
 
-      <button className={styles.botao} type="button">
+      <button
+        className={styles.botao}
+        type="button"
+        onClick={() => navigate("/cadastro", { state: { plano: plano.nome } })}
+      >
         {plano.botao}
       </button>
     </article>

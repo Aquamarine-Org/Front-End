@@ -8,6 +8,7 @@ function VerificarEmail() {
   const location = useLocation();
   const [code, setCode] = useState(Array(6).fill(""));
   const [verificandoEmail, setVerificandoEmail] = useState(false);
+  const [mensagemReenvio, setMensagemReenvio] = useState("");
   const inputRefs = useRef([]);
 
   const handleChange = (value, index) => {
@@ -38,6 +39,12 @@ function VerificarEmail() {
     window.setTimeout(() => {
       navigate(proximaRota);
     }, 900);
+  };
+
+  const handleReenviarCodigo = () => {
+    setCode(Array(6).fill(""));
+    setMensagemReenvio("Código reenviado. Confira sua caixa de entrada.");
+    inputRefs.current[0]?.focus();
   };
 
   return (
@@ -85,9 +92,17 @@ function VerificarEmail() {
               {verificandoEmail ? "Verificando..." : "Verificar e-mail"}
             </button>
 
-            <button type="button" className={styles.reenviarButton}>
+            <button
+              type="button"
+              className={styles.reenviarButton}
+              onClick={handleReenviarCodigo}
+            >
               Reenviar código
             </button>
+
+            {mensagemReenvio && (
+              <p className={styles.reenvioMensagem}>{mensagemReenvio}</p>
+            )}
           </div>
         </div>
       </section>

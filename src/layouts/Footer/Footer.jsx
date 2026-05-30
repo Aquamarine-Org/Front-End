@@ -25,15 +25,27 @@ function Footer() {
             <p>Sistema de monitoramento inteligente de encanamentos</p>
 
             <div className={styles.socialLinks}>
-              <a href="https://www.instagram.com/somosaquamarine/">
+              <a
+                href="https://www.instagram.com/somosaquamarine/"
+                target="_blank"
+                rel="noreferrer"
+              >
                 <FaInstagram />
               </a>
 
-              <a href="https://www.linkedin.com/company/somos-aquamarine">
+              <a
+                href="https://www.linkedin.com/company/somos-aquamarine"
+                target="_blank"
+                rel="noreferrer"
+              >
                 <FaLinkedin />
               </a>
 
-              <a href="https://linktr.ee/somos_aquamarine   ">
+              <a
+                href="https://linktr.ee/somos_aquamarine"
+                target="_blank"
+                rel="noreferrer"
+              >
                 <FaLink />
               </a>
             </div>
@@ -52,20 +64,41 @@ function Footer() {
             <div className={styles.linksColumn}>
               <h3>Links úteis</h3>
 
-              <a href="https://www.linkedin.com/company/somos-aquamarine">
+              <a
+                href="https://www.linkedin.com/company/somos-aquamarine"
+                target="_blank"
+                rel="noreferrer"
+              >
                 LinkedIn
               </a>
-              <a href="https://www.instagram.com/somosaquamarine/">Instagram</a>
-              <a href="https://linktr.ee/somos_aquamarine">Linktree</a>
+              <a
+                href="https://www.instagram.com/somosaquamarine/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Instagram
+              </a>
+              <a
+                href="https://linktr.ee/somos_aquamarine"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Linktree
+              </a>
             </div>
 
             <div className={styles.linksColumn}>
               <h3>Recursos</h3>
 
-              <button onClick={() => setIsModalOpenPrivacidade(true)}>
+              <button
+                type="button"
+                onClick={() => setIsModalOpenPrivacidade(true)}
+              >
                 Privacidade
               </button>
-              <button onClick={() => setIsModalOpenAjuda(true)}>Ajuda</button>
+              <button type="button" onClick={() => setIsModalOpenAjuda(true)}>
+                Ajuda
+              </button>
 
               <Modal
                 isOpen={isModalOpenPrivacidade}
@@ -117,6 +150,7 @@ function Footer() {
 
                   <div className={styles.modalFooter}>
                     <button
+                      type="button"
                       className={styles.modalButton}
                       onClick={() => setIsModalOpenPrivacidade(false)}
                     >
@@ -175,6 +209,7 @@ function Footer() {
 
                   <div className={styles.modalFooter}>
                     <button
+                      type="button"
                       className={styles.modalButton}
                       onClick={() => setIsModalOpenAjuda(false)}
                     >

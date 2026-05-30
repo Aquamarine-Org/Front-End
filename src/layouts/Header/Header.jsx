@@ -25,7 +25,9 @@ function Header() {
 
         <div className={styles.navbarActions}>
           <Link to="/login">
-            <button className={styles.navbarLoginButton}>Entrar</button>
+            <button type="button" className={styles.navbarLoginButton}>
+              Entrar
+            </button>
           </Link>
         </div>
       </div>

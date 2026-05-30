@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import { FaArrowRight, FaInstagram, FaLinkedin } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 
@@ -59,6 +60,14 @@ const planos = [
 ];
 
 function LandingPage() {
+  const [contactFeedback, setContactFeedback] = useState("");
+
+  const handleContactSubmit = (event) => {
+    event.preventDefault();
+    event.currentTarget.reset();
+    setContactFeedback("Mensagem registrada. Nossa equipe entrará em contato.");
+  };
+
   return (
     <div>
       <Header />
@@ -71,11 +80,15 @@ function LandingPage() {
 
         <div className={styles.linkButtons}>
           <Link to="/cadastro">
-            <button className={styles.gradientButton}>Começar</button>
+            <button type="button" className={styles.gradientButton}>
+              Começar
+            </button>
           </Link>
 
           <a href="#planos">
-            <button className={styles.glassButton}>Ver planos</button>
+            <button type="button" className={styles.glassButton}>
+              Ver planos
+            </button>
           </a>
         </div>
       </section>
@@ -174,7 +187,7 @@ function LandingPage() {
             Fale com a nossa equipe.
           </p>
 
-          <form className={styles.contactForm}>
+          <form className={styles.contactForm} onSubmit={handleContactSubmit}>
             <div className={styles.inputGroup}>
               <label htmlFor="nome">Nome</label>
 
@@ -216,18 +229,30 @@ function LandingPage() {
                 Enviar mensagem
               </ActionButton>
             </div>
+
+            {contactFeedback && (
+              <p className={styles.contactFeedback}>{contactFeedback}</p>
+            )}
           </form>
 
           <div className={styles.socialLinks}>
-            <a href="#">
+            <a
+              href="https://www.instagram.com/somosaquamarine/"
+              target="_blank"
+              rel="noreferrer"
+            >
               <FaInstagram />
             </a>
 
-            <a href="#">
+            <a
+              href="https://www.linkedin.com/company/somos-aquamarine"
+              target="_blank"
+              rel="noreferrer"
+            >
               <FaLinkedin />
             </a>
 
-            <a href="#">
+            <a href="mailto:contato@somosaquamarine.com.br">
               <MdEmail />
             </a>
           </div>

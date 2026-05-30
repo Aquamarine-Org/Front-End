@@ -42,11 +42,14 @@
   font-weight: bold;
   color: #fff;
   box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.4);
-  transition: background 2s ease;
+  transition:
+    transform 0.2s ease,
+    filter 0.2s ease;
 }
 
 .linkButtons .gradientButton:hover {
-  background: linear-gradient(to right, #238dd8 0%, #07a7a2 100%);
+  filter: brightness(1.03);
+  transform: translateY(-1px);
   cursor: pointer;
 }
 
@@ -63,8 +66,15 @@
   font-weight: bold;
   color: #fff;
   box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.4);
-  transition: background 2s ease;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
   cursor: pointer;
+}
+
+.glassButton:hover {
+  background: rgba(255, 255, 255, 0.18);
+  transform: translateY(-1px);
 }
 
 .containerSub {
@@ -317,6 +327,17 @@
   transform: translateY(-3px);
 
   opacity: 0.9;
+}
+
+.contactFeedback {
+  align-self: center;
+  color: #16803f;
+  background: #ecfdf3;
+  border-left: 4px solid #16a34a;
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-size: 0.95rem;
+  font-weight: 800;
 }
 
 .socialLinks {

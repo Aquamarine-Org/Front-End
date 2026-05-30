@@ -175,6 +175,24 @@
   font-weight: 700;
   text-decoration: none;
   cursor: pointer;
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.reenviarButton:hover {
+  color: #097cd8;
+  transform: translateY(-1px);
+}
+
+.reenvioMensagem {
+  position: relative;
+  z-index: 1;
+  color: #16803f;
+  font-size: 13px;
+  font-weight: 800;
+  margin-top: 14px;
+  text-align: center;
 }
 
 @keyframes entradaSuave {

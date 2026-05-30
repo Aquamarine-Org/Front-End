@@ -180,6 +180,19 @@
   display: inline-flex;
   align-items: center;
   gap: 12px;
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.googleButton:hover:not(:disabled) {
+  color: #097cd8;
+  transform: translateY(-1px);
+}
+
+.googleButton:disabled {
+  opacity: 0.7;
 }
 
 .googleIcon {

@@ -6,10 +6,16 @@ function AlertsFilterBar({
   searchPlaceholder = "Buscar chamado",
   searchValue,
   onSearchChange,
+  onScopeClick,
 }) {
   return (
     <div className={styles.wrapper}>
-      <button type="button" className={styles.scopeButton}>
+      <button
+        type="button"
+        className={styles.scopeButton}
+        onClick={onScopeClick}
+        aria-label="Alterar filtro de alertas"
+      >
         {scopeLabel}
       </button>
 

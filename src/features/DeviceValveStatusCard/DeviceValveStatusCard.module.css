@@ -98,6 +98,22 @@
   justify-content: center;
   gap: 8px;
   cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.actionButton:hover {
+  background: #d83c3c;
+  transform: translateY(-1px);
+}
+
+.openActionButton {
+  background: #56c49b;
+}
+
+.openActionButton:hover {
+  background: #45b38b;
 }
 
 .modalContent {
