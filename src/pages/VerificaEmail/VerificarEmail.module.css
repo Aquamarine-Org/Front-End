@@ -1,9 +1,11 @@
 .verificarPage {
-  min-height: 100vh;
+  min-height: 100dvh;
+  width: 100%;
   background-color: #ffffff;
   background-image: url("../../assets/login_e_cadastro/d1039ad1-0b10-4882-9597-d83c96f84722.png");
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: cover;
+  background-position: center top;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -12,20 +14,23 @@
 
 .verificarContainer {
   width: 100%;
-  min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 0 24px;
+  padding: clamp(24px, 7vw, 48px) clamp(14px, 5vw, 24px);
   overflow-y: auto;
 }
 
 .verificarLogo {
-  width: 139px;
-  height: 120px;
+  width: clamp(92px, 30vw, 139px);
+  height: auto;
+  max-width: 100%;
+  aspect-ratio: 139 / 120;
   object-fit: contain;
-  margin-bottom: 100px;
+  display: block;
+  margin-bottom: clamp(32px, 10vw, 100px);
 }
 
 .verificarBackground {
@@ -42,9 +47,10 @@
   position: relative;
   width: 100%;
   max-width: 520px;
+  min-width: 0;
   overflow: hidden;
   background: rgba(255, 255, 255, 0.35);
-  border-radius: 36px;
+  border-radius: clamp(24px, 7vw, 36px);
   border: 1px solid rgba(255, 255, 255, 0.35);
   box-shadow:
     0 20px 60px rgba(15, 23, 42, 0.12),
@@ -54,7 +60,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 36px 32px 42px;
+  padding: clamp(26px, 7vw, 36px) clamp(16px, 6vw, 32px)
+    clamp(30px, 8vw, 42px);
 }
 
 .verificarCard::before {
@@ -79,38 +86,43 @@
 
 .verificarTitle {
   text-align: center;
-  margin-bottom: 42px;
+  margin-bottom: clamp(26px, 8vw, 42px);
 }
 
 .verificarTitle h1 {
   color: #0f172a;
-  font-size: 34px;
+  font-size: clamp(25px, 7.5vw, 34px);
   font-weight: 800;
+  line-height: 1.1;
   margin-bottom: 10px;
 }
 
 .verificarTitle p {
   color: #64748b;
-  font-size: 16px;
+  font-size: clamp(14px, 4.4vw, 16px);
+  line-height: 1.35;
   margin: 0;
 }
 
 .codigoContainer {
-  display: flex;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   align-items: center;
   justify-content: center;
-  gap: 16px;
-  margin-bottom: 48px;
+  gap: clamp(6px, 2.6vw, 16px);
+  margin-bottom: clamp(30px, 9vw, 48px);
 }
 
 .codigoContainer input {
-  width: 64px;
-  height: 84px;
+  width: 100%;
+  min-width: 0;
+  height: clamp(52px, 16vw, 84px);
   background: #f8f8fb;
   border: 1px solid rgba(15, 23, 42, 0.12);
-  border-radius: 18px;
+  border-radius: clamp(12px, 4vw, 18px);
   color: #0f172a;
-  font-size: 36px;
+  font-size: clamp(24px, 8vw, 36px);
   font-weight: 800;
   text-align: center;
   outline: none;
@@ -131,9 +143,9 @@
   background: #097cd8;
   border-radius: 16px;
   border: none;
-  padding: 16px 0;
+  padding: 16px 18px;
   color: #ffffff;
-  font-size: 18px;
+  font-size: clamp(16px, 4.8vw, 18px);
   font-weight: 700;
   cursor: pointer;
   margin-bottom: 24px;
@@ -171,7 +183,7 @@
   background: transparent;
   border: none;
   color: #475569;
-  font-size: 16px;
+  font-size: clamp(15px, 4.5vw, 16px);
   font-weight: 700;
   text-decoration: none;
   cursor: pointer;
@@ -189,7 +201,7 @@
   position: relative;
   z-index: 1;
   color: #16803f;
-  font-size: 13px;
+  font-size: clamp(12px, 3.8vw, 13px);
   font-weight: 800;
   margin-top: 14px;
   text-align: center;

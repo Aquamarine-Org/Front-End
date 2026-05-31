@@ -1,5 +1,6 @@
 .informacoesPage {
-  min-height: 100vh;
+  min-height: 100dvh;
+  width: 100%;
   background-color: #ffffff;
   background-image: url("../../assets/login_e_cadastro/d1039ad1-0b10-4882-9597-d83c96f84722.png");
   background-repeat: no-repeat;
@@ -13,21 +14,25 @@
 
 .informacoesContainer {
   width: 100%;
-  min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 32px;
-  padding: 36px 24px 56px;
-  overflow-y: visible;
+  gap: clamp(22px, 7vw, 32px);
+  padding: clamp(28px, 8vw, 36px) clamp(14px, 5vw, 24px)
+    clamp(36px, 10vw, 56px);
+  overflow-y: auto;
 }
 
 .informacoesLogo {
-  width: 139px;
-  height: 120px;
+  width: clamp(92px, 30vw, 139px);
+  height: auto;
+  max-width: 100%;
+  aspect-ratio: 139 / 120;
   object-fit: contain;
-  margin-bottom: 28px;
+  display: block;
+  margin-bottom: clamp(8px, 4vw, 28px);
 }
 
 .informacoesBackground {
@@ -41,11 +46,12 @@
 .informacoesCard {
   width: 100%;
   max-width: 850px;
+  min-width: 0;
 
   position: relative;
   overflow: hidden;
   background: rgba(255, 255, 255, 0.35);
-  border-radius: 36px;
+  border-radius: clamp(24px, 7vw, 36px);
   border: 1px solid rgba(255, 255, 255, 0.35);
   box-shadow:
     0 20px 60px rgba(15, 23, 42, 0.12),
@@ -53,7 +59,7 @@
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
 
-  padding: 40px 48px;
+  padding: clamp(28px, 7vw, 40px) clamp(16px, 6vw, 48px);
 }
 
 .informacoesCard::before {
@@ -82,14 +88,15 @@
 
 .informacoesTitle h1 {
   color: #0f172a;
-  font-size: 30px;
+  font-size: clamp(24px, 7vw, 30px);
   font-weight: 800;
+  line-height: 1.15;
   margin-bottom: 10px;
 }
 
 .informacoesTitle p {
   color: #64748b;
-  font-size: 17px;
+  font-size: clamp(14px, 4.4vw, 17px);
   line-height: 1.35;
   margin: 0;
 }
@@ -97,12 +104,13 @@
 .informacoesForm {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+  grid-template-columns: 1fr;
+  gap: clamp(14px, 4vw, 20px);
 }
 
 .inputGroup {
   width: 100%;
+  min-width: 0;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -116,6 +124,7 @@
 
 .inputGroup input {
   width: 100%;
+  min-width: 0;
   height: 48px;
   background: #f8f8fb;
   border: 1px solid rgba(15, 23, 42, 0.12);
@@ -152,7 +161,7 @@
   border: none;
   padding: 14px 0;
   color: #ffffff;
-  font-size: 18px;
+  font-size: clamp(16px, 4.8vw, 18px);
   font-weight: 700;
   cursor: pointer;
   margin-top: 8px;
@@ -213,20 +222,22 @@
   backdrop-filter: blur(9px);
   -webkit-backdrop-filter: blur(9px);
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  padding: 24px;
+  padding: clamp(14px, 5vw, 24px);
+  overflow-y: auto;
 }
 
 .modalCard {
   position: relative;
-  width: 70%;
-  max-height: none;
-  overflow: visible;
-  border-radius: 28px;
+  width: 100%;
+  max-width: 860px;
+  max-height: calc(100dvh - clamp(28px, 10vw, 48px));
+  overflow-y: auto;
+  border-radius: clamp(20px, 6vw, 28px);
   background: rgba(255, 255, 255, 0.94);
   box-shadow: 0 24px 70px rgba(11, 34, 55, 0.28);
-  padding: 30px;
+  padding: clamp(22px, 6vw, 30px);
 }
 
 .residenciaCard {
@@ -251,6 +262,7 @@
 
 .modalHeader {
   display: flex;
+  flex-direction: column;
   align-items: flex-start;
   gap: 16px;
   padding-right: 42px;
@@ -259,8 +271,8 @@
 
 .modalIcone {
   flex: 0 0 auto;
-  width: 48px;
-  height: 48px;
+  width: clamp(42px, 12vw, 48px);
+  height: clamp(42px, 12vw, 48px);
   border-radius: 16px;
   background: #e7f4ff;
   color: #097cd8;
@@ -272,7 +284,7 @@
 
 .modalHeader h2 {
   color: #0f172a;
-  font-size: 26px;
+  font-size: clamp(22px, 6vw, 26px);
   font-weight: 900;
   line-height: 1.15;
   margin: 0 0 8px;
@@ -280,7 +292,7 @@
 
 .modalHeader p {
   color: #64748b;
-  font-size: 15px;
+  font-size: clamp(14px, 4vw, 15px);
   font-weight: 700;
   line-height: 1.45;
   margin: 0;
@@ -294,7 +306,7 @@
 
 .modalGrid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: 1fr;
   gap: 14px;
 }
 
@@ -311,6 +323,7 @@
 .formularioResidencia select,
 .formularioResidencia textarea {
   width: 100%;
+  min-width: 0;
   border: 1px solid rgba(15, 23, 42, 0.14);
   border-radius: 14px;
   background: #f8fbfe;
@@ -354,6 +367,7 @@
 
 .acoesModal {
   display: flex;
+  flex-direction: column;
   justify-content: flex-end;
   gap: 12px;
   border-top: 1px solid rgba(15, 23, 42, 0.08);
@@ -362,6 +376,7 @@
 
 .botaoModalPrimario,
 .botaoModalSecundario {
+  width: 100%;
   min-height: 44px;
   border: none;
   border-radius: 100px;
@@ -431,7 +446,7 @@
 
 .estadoSalvo h3 {
   color: #0f172a;
-  font-size: 24px;
+  font-size: clamp(21px, 6vw, 24px);
   font-weight: 900;
   margin: 0;
 }
@@ -484,22 +499,8 @@
     padding: 24px 18px;
   }
 
-  .modalHeader,
-  .acoesModal {
-    flex-direction: column;
-  }
-
   .modalHeader {
     padding-right: 42px;
-  }
-
-  .modalGrid {
-    grid-template-columns: 1fr;
-  }
-
-  .botaoModalPrimario,
-  .botaoModalSecundario {
-    width: 100%;
   }
 }
 
@@ -507,6 +508,34 @@
   .informacoesBackground {
     max-width: 720px;
     grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 761px) {
+  .informacoesForm,
+  .modalGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .modalOverlay {
+    align-items: center;
+  }
+
+  .modalCard {
+    width: min(92vw, 860px);
+  }
+
+  .modalHeader {
+    flex-direction: row;
+  }
+
+  .acoesModal {
+    flex-direction: row;
+  }
+
+  .botaoModalPrimario,
+  .botaoModalSecundario {
+    width: auto;
   }
 }
 

@@ -170,8 +170,7 @@
   grid-template-columns: minmax(0, 1fr);
   gap: var(--space-xl);
   width: 100%;
-  margin: clamp(-2rem, -6vw, -9rem) 0 clamp(-1.5rem, -4vw, -6rem);
-  padding: clamp(2rem, 6vw, 4rem) clamp(1rem, 4vw, 1.25rem);
+  padding: clamp(2rem, 100vw, 10rem) clamp(1rem, 4vw, 1.25rem);
   background: url("@assets/landing_page/background2.png");
   background-size: cover;
   background-position: center;
