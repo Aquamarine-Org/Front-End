@@ -1,89 +1,86 @@
 .footer {
   width: 100%;
-  padding: 3rem 4rem;
-
+  padding: 2rem clamp(1rem, 4vw, 4rem);
   background: url("@assets/landing_page/background5.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  box-sizing: border-box;
 }
 
 .overlay {
   width: 100%;
-  max-width: 1400px;
-
+  max-width: 87.5rem;
   margin: 0 auto;
-  padding: 4rem 5rem;
-
+  padding: clamp(1.75rem, 4vw, 4rem) clamp(1.25rem, 4vw, 5rem);
+  border-radius: clamp(1rem, 2vw, 1.5rem);
   background: rgba(0, 0, 0, 0.4);
-
-  border-radius: 24px;
-
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
+  box-sizing: border-box;
 }
 
 .content {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 5rem;
+  flex-direction: column;
+  align-items: stretch;
+  gap: clamp(2rem, 5vw, 3rem);
 }
 
 .brandSection {
   display: flex;
+  flex: 1 1 100%;
   flex-direction: column;
-  gap: 1.5rem;
-
-  max-width: 320px;
+  gap: 1.25rem;
+  min-width: 0;
 }
 
 .logoContainer {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: clamp(0.75rem, 2vw, 1rem);
+  min-width: 0;
 }
 
 .logoContainer img {
-  width: 45px;
-  height: 45px;
-
+  flex-shrink: 0;
+  width: clamp(2.25rem, 5vw, 2.8125rem);
+  height: clamp(2.25rem, 5vw, 2.8125rem);
+  max-width: 100%;
   object-fit: contain;
 }
 
 .logoContainer h2 {
-  font-size: 28px;
+  font-size: clamp(1.35rem, 3vw, 1.75rem);
   font-weight: 700;
   color: #ffffff;
 }
 
 .brandSection p {
-  font-size: 16px;
+  max-width: 28rem;
+  font-size: clamp(0.9375rem, 2vw, 1rem);
   line-height: 1.6;
   color: #e6e6e6;
 }
 
 .socialLinks {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 1rem;
+  gap: 0.75rem;
 }
 
 .socialLinks a {
   display: flex;
+  flex-shrink: 0;
   align-items: center;
   justify-content: center;
-
-  width: 42px;
-  height: 42px;
-
+  width: clamp(2.375rem, 6vw, 2.625rem);
+  height: clamp(2.375rem, 6vw, 2.625rem);
   border-radius: 50%;
-
   background: rgba(255, 255, 255, 0.08);
-
   color: #ffffff;
-  font-size: 18px;
-
+  font-size: clamp(1rem, 2.5vw, 1.125rem);
   transition:
     transform 0.2s ease,
     background 0.2s ease;
@@ -91,120 +88,196 @@
 
 .socialLinks a:hover {
   transform: translateY(-3px);
-
   background: rgba(255, 255, 255, 0.16);
 }
 
 .linksContainer {
   display: flex;
-  gap: 5rem;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-width: 0;
 }
 
 .linksColumn {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  min-width: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
 
-.linksColumn h3 {
-  margin-bottom: 0.5rem;
+.sectionToggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  padding: 0.875rem 0;
+  border: none;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+  text-align: left;
+}
 
-  font-size: 22px;
+.sectionToggle h3 {
+  margin: 0;
+  font-size: clamp(1.05rem, 2.5vw, 1.375rem);
   font-weight: 700;
   color: #ffffff;
 }
 
-.linksColumn button,
-.linksColumn a {
-  color: #e6e6e6;
-  border: none;
-  background: none;
-  text-decoration: none;
-
-  font-size: 18px;
-  font-weight: 500;
-
-  transition: color 0.2s ease;
-  cursor: pointer;
+.sectionChevron {
+  flex-shrink: 0;
+  color: #ffffff;
+  font-size: 0.875rem;
+  transition: transform 0.25s ease;
 }
 
-.linksColumn a:hover,
-.linksColumn button:hover {
+.sectionChevronOpen {
+  transform: rotate(180deg);
+}
+
+.sectionPanel {
+  display: none;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding-bottom: 1rem;
+}
+
+.sectionPanelOpen {
+  display: flex;
+}
+
+.sectionPanel a,
+.sectionPanel button {
+  width: fit-content;
+  max-width: 100%;
+  padding: 0;
+  border: none;
+  background: none;
+  color: #e6e6e6;
+  font-size: clamp(0.9375rem, 2vw, 1.125rem);
+  font-weight: 500;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.sectionPanel a:hover,
+.sectionPanel button:hover {
   color: #01b0a7;
 }
 
-@media (max-width: 1000px) {
+/* Tablet: 768px – 1024px */
+@media (min-width: 768px) {
   .content {
-    flex-direction: column;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: clamp(1.5rem, 4vw, 3rem);
+  }
+
+  .brandSection {
+    flex: 1 1 clamp(14rem, 30vw, 20rem);
   }
 
   .linksContainer {
-    width: 100%;
+    flex: 1 1 auto;
+    flex-flow: row wrap;
+    justify-content: flex-end;
+    gap: clamp(1.5rem, 4vw, 3rem);
+  }
 
-    justify-content: space-between;
-    flex-wrap: wrap;
+  .linksColumn {
+    flex: 1 1 clamp(9rem, 18vw, 12rem);
+    border-bottom: none;
+  }
 
-    gap: 3rem;
+  .sectionToggle {
+    padding: 0;
+    margin-bottom: 0.75rem;
+    pointer-events: none;
+    cursor: default;
+  }
+
+  .sectionChevron {
+    display: none;
+  }
+
+  .sectionPanel,
+  .sectionPanelOpen {
+    display: flex;
+    padding-bottom: 0;
   }
 }
 
-@media (max-width: 768px) {
-  .footer {
-    padding: 4rem 1.5rem;
+/* Desktop: acima de 1024px */
+@media (min-width: 1025px) {
+  .content {
+    gap: clamp(2rem, 5vw, 5rem);
   }
 
-  .overlay {
-    padding: 3rem 2rem;
+  .brandSection {
+    flex: 0 1 clamp(16rem, 22vw, 20rem);
   }
 
   .linksContainer {
-    flex-direction: column;
+    flex: 1 1 auto;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    gap: clamp(2rem, 5vw, 5rem);
   }
 
-  .logoContainer h2 {
-    font-size: 24px;
+  .linksColumn {
+    flex: 0 1 auto;
   }
 
-  .linksColumn h3 {
-    font-size: 20px;
+  .sectionToggle {
+    margin-bottom: 1rem;
   }
 
-  .linksColumn a {
-    font-size: 16px;
+  .sectionPanel {
+    gap: 1rem;
   }
 }
 
 .modalContent {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  align-items: stretch;
+  justify-content: flex-start;
   height: 100%;
+  min-height: 0;
   color: #ffffff;
 }
 
 .modalHeader {
-  margin-bottom: 2rem;
+  flex-shrink: 0;
+  margin-bottom: 1.5rem;
 }
 
 .modalHeader h2 {
-  font-size: 2rem;
+  margin: 0 0 0.8rem;
+  font-size: clamp(1.5rem, 4vw, 2rem);
   font-weight: 700;
   color: #ffffff;
-  margin-bottom: 0.8rem;
 }
 
 .modalHeader p {
-  font-size: 1rem;
+  margin: 0;
+  font-size: clamp(0.9375rem, 2vw, 1rem);
   line-height: 1.7;
   color: rgba(255, 255, 255, 0.75);
 }
 
 .modalBody {
   display: flex;
+  flex: 1;
   flex-direction: column;
-  gap: 1.5rem;
-
+  gap: 1rem;
+  min-height: 0;
   overflow-y: auto;
   padding-right: 0.5rem;
 }
@@ -222,50 +295,43 @@
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
-
-  padding: 1.3rem;
-
-  border-radius: 18px;
-
-  background: rgba(255, 255, 255, 0.06);
-
+  padding: clamp(1rem, 2.5vw, 1.3rem);
   border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1.125rem;
+  background: rgba(255, 255, 255, 0.06);
 }
 
 .modalSection h3 {
-  font-size: 1.1rem;
+  margin: 0;
+  font-size: clamp(1rem, 2.5vw, 1.1rem);
   font-weight: 700;
   color: #01b0a7;
 }
 
 .modalSection p {
-  font-size: 0.97rem;
+  margin: 0;
+  font-size: clamp(0.9rem, 2vw, 0.97rem);
   line-height: 1.7;
   color: rgba(255, 255, 255, 0.82);
 }
 
 .modalFooter {
   display: flex;
+  flex-shrink: 0;
   justify-content: flex-end;
-
-  margin-top: 2rem;
+  margin-top: 1.5rem;
 }
 
 .modalButton {
-  padding: 0.9rem 2rem;
-
+  min-height: 2.75rem;
+  padding: 0.75rem 1.5rem;
   border: none;
-  border-radius: 14px;
-
+  border-radius: 0.875rem;
   background: linear-gradient(90deg, #01b0a7 0%, #097cd8 100%);
-
   color: #ffffff;
-
-  font-size: 1rem;
+  font-size: clamp(0.9375rem, 2vw, 1rem);
   font-weight: 700;
-
   cursor: pointer;
-
   transition:
     transform 0.2s ease,
     opacity 0.2s ease;
@@ -274,4 +340,14 @@
 .modalButton:hover {
   transform: translateY(-2px);
   opacity: 0.9;
+}
+
+@media (max-width: 767px) {
+  .modalFooter {
+    justify-content: stretch;
+  }
+
+  .modalButton {
+    width: 100%;
+  }
 }

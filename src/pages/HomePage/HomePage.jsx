@@ -96,7 +96,7 @@ function HomePage() {
               </h2>
 
               <span className={styles.deltaBadge}>
-                <FiTrendingDown className={styles.deltaIcon} />
+                <FiTrendingDown className={styles.deltaIcon} aria-hidden="true" />
                 -4% vs. medio
               </span>
             </div>
@@ -108,7 +108,10 @@ function HomePage() {
 
             <div className={styles.chartArea}>
               <ResponsiveContainer width="100%" height="100%">
-                <AreaChart data={chartData}>
+                <AreaChart
+                  data={chartData}
+                  margin={{ top: 8, right: 8, left: -12, bottom: 0 }}
+                >
                   <defs>
                     <linearGradient
                       id="flowGradient"
@@ -125,9 +128,14 @@ function HomePage() {
 
                   <CartesianGrid strokeDasharray="3 3" stroke="#dfe6ee" />
 
-                  <XAxis dataKey="hour" />
+                  <XAxis
+                    dataKey="hour"
+                    tick={{ fontSize: 11 }}
+                    tickMargin={6}
+                    interval="preserveStartEnd"
+                  />
 
-                  <YAxis />
+                  <YAxis tick={{ fontSize: 11 }} width={32} />
 
                   <Tooltip />
 
@@ -136,15 +144,15 @@ function HomePage() {
                     dataKey="fluxo"
                     stroke="#ea4a4a"
                     fill="url(#flowGradient)"
-                    strokeWidth={3}
+                    strokeWidth={2.5}
                   />
 
                   <Line
                     type="monotone"
                     dataKey="pressao"
                     stroke="#1f769b"
-                    strokeWidth={3}
-                    dot
+                    strokeWidth={2.5}
+                    dot={false}
                   />
                 </AreaChart>
               </ResponsiveContainer>
@@ -185,23 +193,18 @@ function HomePage() {
             </p>
 
             <ActionButton
-              className={styles.valveButton}
-              style={{
-                width: "70%",
-                padding: "1rem 0.6rem",
-                fontSize: "0.9rem",
-                letterSpacing: "0.04em",
-                gap: "0.5rem",
-                backgroundColor: isValveOpen ? "#ea4a4a" : "#5ac7a2",
-              }}
+              backgroundColor={isValveOpen ? "#ea4a4a" : "#5ac7a2"}
+              className={`${styles.valveButton} ${
+                isValveOpen ? styles.valveButtonClose : styles.valveButtonOpen
+              }`}
               onClick={() => setIsModalOpen(true)}
             >
               {isValveOpen ? "FECHAR DISPOSITIVO" : "ABRIR DISPOSITIVO"}
 
               {isValveOpen ? (
-                <FiX className={styles.buttonCheck} />
+                <FiX className={styles.buttonCheck} aria-hidden="true" />
               ) : (
-                <FiCheck className={styles.buttonCheck} />
+                <FiCheck className={styles.buttonCheck} aria-hidden="true" />
               )}
             </ActionButton>
 
@@ -248,7 +251,7 @@ function HomePage() {
               onClick={() => navigate("/alertas")}
             >
               VER TODOS
-              <FiArrowUpRight />
+              <FiArrowUpRight aria-hidden="true" />
             </button>
           </header>
 

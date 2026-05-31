@@ -69,7 +69,7 @@ function LandingPage() {
   };
 
   return (
-    <div>
+    <div className={styles.page}>
       <Header />
 
       <section id="inicio" className={styles.mainSection}>
@@ -79,13 +79,13 @@ function LandingPage() {
         </h1>
 
         <div className={styles.linkButtons}>
-          <Link to="/cadastro">
+          <Link to="/cadastro" className={styles.linkButtonItem}>
             <button type="button" className={styles.gradientButton}>
               Começar
             </button>
           </Link>
 
-          <a href="#planos">
+          <a href="#planos" className={styles.linkButtonItem}>
             <button type="button" className={styles.glassButton}>
               Ver planos
             </button>
@@ -103,8 +103,8 @@ function LandingPage() {
           notifica se houver qualquer tipo de alerta.
         </p>
 
-        <a href="#planos">
-          Ver planos <FaArrowRight />
+        <a href="#planos" className={styles.ctaLink}>
+          Ver planos <FaArrowRight aria-hidden="true" />
         </a>
 
         <div className={styles.containerCardInformativo}>
@@ -145,7 +145,9 @@ function LandingPage() {
         <Testimonials />
       </section>
 
-      <section className={[styles.containerSub, styles.plansSection].join(" ")}>
+      <section
+        className={`${styles.containerSub} ${styles.plansSection}`}
+      >
         <div className={styles.plansHeader} id="planos">
           <h2 className={styles.subtitle}>Nossos planos</h2>
         </div>
@@ -159,19 +161,27 @@ function LandingPage() {
 
       <section
         id="parceiros"
-        className={[styles.containerSub, styles.partnersSection].join(" ")}
+        className={`${styles.containerSub} ${styles.partnersSection}`}
       >
         <h2 className={styles.subtitle}>Conheça nossos parceiros</h2>
 
         <div className={styles.partnersGrid}>
           <div className={styles.partnerCard}>
-            <img src={parceiro1} alt="Logo do Instituto PROA" />
+            <img
+              src={parceiro1}
+              alt="Logo do Instituto PROA"
+              className={styles.partnerLogo}
+            />
 
             <p>Instituto PROA</p>
           </div>
 
           <div className={styles.partnerCard}>
-            <img src={parceiro2} alt="Logo do Senac Lapa Tito" />
+            <img
+              src={parceiro2}
+              alt="Logo do Senac Lapa Tito"
+              className={styles.partnerLogo}
+            />
 
             <p>Senac Lapa Tito</p>
           </div>
@@ -230,9 +240,9 @@ function LandingPage() {
               </ActionButton>
             </div>
 
-            {contactFeedback && (
+            {contactFeedback ? (
               <p className={styles.contactFeedback}>{contactFeedback}</p>
-            )}
+            ) : null}
           </form>
 
           <div className={styles.socialLinks}>
@@ -240,6 +250,7 @@ function LandingPage() {
               href="https://www.instagram.com/somosaquamarine/"
               target="_blank"
               rel="noreferrer"
+              aria-label="Instagram da Aquamarine"
             >
               <FaInstagram />
             </a>
@@ -248,16 +259,21 @@ function LandingPage() {
               href="https://www.linkedin.com/company/somos-aquamarine"
               target="_blank"
               rel="noreferrer"
+              aria-label="LinkedIn da Aquamarine"
             >
               <FaLinkedin />
             </a>
 
-            <a href="mailto:contato@somosaquamarine.com.br">
+            <a
+              href="mailto:contato@somosaquamarine.com.br"
+              aria-label="Enviar e-mail para a Aquamarine"
+            >
               <MdEmail />
             </a>
           </div>
         </div>
       </section>
+
       <div className={styles.footerContainer}>
         <Footer />
       </div>

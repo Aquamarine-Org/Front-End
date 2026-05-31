@@ -157,9 +157,11 @@ function AlertasPage() {
             onScopeClick={handleScopeClick}
           />
 
-          {actionFeedback && (
-            <p className={styles.actionFeedback}>{actionFeedback}</p>
-          )}
+          {actionFeedback ? (
+            <p className={styles.actionFeedback} role="status">
+              {actionFeedback}
+            </p>
+          ) : null}
 
           <div className={styles.alertsList}>
             {filteredAlerts.length > 0 ? (

@@ -1,29 +1,61 @@
 .devicesPage {
+  --devices-space-sm: clamp(0.75rem, 3vw, 1rem);
+  --devices-space-md: clamp(1rem, 4vw, 1.25rem);
+  --devices-space-lg: clamp(1.25rem, 5vw, 2rem);
+
   width: 100%;
+  max-width: 100%;
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 18px;
-  padding: 10px 0 32px 0;
+  gap: var(--devices-space-md);
+  min-width: 0;
+  padding: var(--devices-space-sm) 0 var(--devices-space-lg);
   box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 .topGrid {
+  width: 100%;
+  min-width: 0;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(420px, 0.98fr);
-  gap: 18px;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--devices-space-md);
+  align-items: stretch;
+}
+
+.topGrid > *,
+.devicesPage > * {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.devicesPage img,
+.devicesPage svg {
+  max-width: 100%;
+}
+
+.manageActions {
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  justify-content: stretch;
 }
 
 .manageButton {
-  align-self: flex-end;
+  width: 100%;
+  max-width: 100%;
   min-height: 42px;
   border: none;
   border-radius: 100px;
   background: #097cd8;
   color: #ffffff;
-  padding: 0 22px;
-  font-size: 14px;
+  padding: 0.625rem 1.125rem;
+  font-size: clamp(0.875rem, 2.8vw, 0.95rem);
+  line-height: 1.2;
   font-weight: 900;
+  text-align: center;
+  overflow-wrap: anywhere;
   cursor: pointer;
   box-shadow: 0 10px 18px rgba(9, 124, 216, 0.22);
   transition:
@@ -36,17 +68,26 @@
   transform: translateY(-1px);
 }
 
-@media (max-width: 1240px) {
-  .devicesPage {
-    width: 100%;
-    padding-right: 0;
-  }
-
-  .topGrid {
-    grid-template-columns: 1fr;
+@media (min-width: 640px) {
+  .manageActions {
+    justify-content: flex-end;
   }
 
   .manageButton {
-    align-self: stretch;
+    width: auto;
+    min-width: min(100%, 13rem);
+  }
+}
+
+@media (min-width: 900px) {
+  .topGrid {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 23rem), 1fr));
+  }
+}
+
+@media (min-width: 1240px) {
+  .topGrid {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    gap: var(--devices-space-lg);
   }
 }

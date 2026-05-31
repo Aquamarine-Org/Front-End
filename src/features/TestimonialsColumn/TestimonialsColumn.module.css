@@ -1,31 +1,38 @@
 .column {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: clamp(1rem, 4vw, 1.5rem);
+  width: 100%;
+  min-width: 0;
 
-  padding-bottom: 1.5rem;
+  padding-bottom: clamp(1rem, 4vw, 1.5rem);
 
   background-color: var(--background);
 }
 
 .card {
   width: 100%;
-  max-width: 20rem;
+  max-width: none;
+  min-width: 0;
 
-  padding: 2.5rem;
+  padding: clamp(1rem, 5vw, 2.5rem);
 
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 1.5rem;
+  border-radius: clamp(1rem, 4vw, 1.5rem);
 
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
 }
 
 .text {
+  font-size: clamp(0.95rem, 3vw, 1rem);
   line-height: 1.6;
+  overflow-wrap: anywhere;
 }
 
 .user {
   display: flex;
+  min-width: 0;
   align-items: center;
   gap: 0.5rem;
 
@@ -35,6 +42,7 @@
 .avatar {
   width: 2.5rem;
   height: 2.5rem;
+  flex: 0 0 auto;
 
   border-radius: 9999px;
 
@@ -44,17 +52,20 @@
 .userInfo {
   display: flex;
   flex-direction: column;
+  min-width: 0;
 }
 
 .name {
   font-weight: 500;
   line-height: 1.25rem;
-  letter-spacing: -0.025em;
+  letter-spacing: 0;
+  overflow-wrap: anywhere;
 }
 
 .role {
   line-height: 1.25rem;
-  letter-spacing: -0.025em;
+  letter-spacing: 0;
+  overflow-wrap: anywhere;
 
   opacity: 0.6;
 }

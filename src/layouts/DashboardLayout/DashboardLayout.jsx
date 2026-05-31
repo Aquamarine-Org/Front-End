@@ -13,10 +13,16 @@ function DashboardLayout({
 
   return (
     <div className={styles.content}>
-      <Navbar currentPage={currentPage}></Navbar>
-      <main>
-        <h1 className={titleClassName}>{pageTitle}</h1>
-        {children}
+      <Navbar currentPage={currentPage} />
+
+      <main className={styles.main}>
+        {pageTitle ? (
+          <header className={styles.pageHeader}>
+            <h1 className={titleClassName}>{pageTitle}</h1>
+          </header>
+        ) : null}
+
+        <div className={styles.pageBody}>{children}</div>
       </main>
     </div>
   );

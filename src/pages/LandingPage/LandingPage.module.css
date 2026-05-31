@@ -1,20 +1,47 @@
-﻿.mainSection {
+﻿.page {
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+
+  --radius-sm: 0.625rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.25rem;
+  --radius-xl: 2rem;
+
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+.mainSection {
   display: flex;
   flex-direction: column;
-  align-items: start;
+  align-items: flex-start;
   justify-content: center;
-  padding: 0px 0px 5px 3rem;
+  width: 100%;
+  min-height: 100svh;
+  padding: clamp(5.5rem, 14vw, 8rem) clamp(1rem, 4vw, 3rem)
+    clamp(2rem, 5vw, 3rem);
   background: url("../../assets/landing_page/background1.png");
   background-size: cover;
   background-position: center;
-  width: 100%;
-  height: 100vh;
+  box-sizing: border-box;
 }
 
 .mainSection h1 {
-  font-size: 70px;
-  width: 750px;
+  width: 100%;
+  max-width: 47rem;
+  margin: 0;
   color: #13364b;
+  font-size: clamp(2rem, 8vw, 4.375rem);
+  line-height: 1.08;
+  font-weight: 700;
+  overflow-wrap: anywhere;
 }
 
 .mainSection h1 span {
@@ -26,50 +53,54 @@
 
 .linkButtons {
   display: flex;
-  justify-content: space-between;
-  width: 600px;
-  margin-top: 2rem;
-  gap: 30px;
+  flex-direction: column;
+  gap: var(--space-md);
+  width: 100%;
+  max-width: 38rem;
+  margin-top: var(--space-xl);
 }
 
-.linkButtons .gradientButton {
-  background: linear-gradient(to right, #07a7a2 0%, #238dd8 100%);
-  width: 300px;
-  height: 60px;
-  border: none;
-  border-radius: 10px;
-  font-size: 25px;
-  font-weight: bold;
-  color: #fff;
-  box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.4);
+.linkButtonItem {
+  display: block;
+  width: 100%;
+  text-decoration: none;
+}
+
+.gradientButton,
+.glassButton {
+  width: 100%;
+  min-height: 3rem;
+  padding: 0.875rem 1.25rem;
+  border-radius: var(--radius-sm);
+  font-size: clamp(1rem, 3vw, 1.5625rem);
+  font-weight: 700;
+  line-height: 1.2;
+  cursor: pointer;
   transition:
     transform 0.2s ease,
-    filter 0.2s ease;
+    filter 0.2s ease,
+    background 0.2s ease;
 }
 
-.linkButtons .gradientButton:hover {
+.gradientButton {
+  border: none;
+  background: linear-gradient(to right, #07a7a2 0%, #238dd8 100%);
+  color: #ffffff;
+  box-shadow: 0 6px 4px rgba(0, 0, 0, 0.4);
+}
+
+.gradientButton:hover {
   filter: brightness(1.03);
   transform: translateY(-1px);
-  cursor: pointer;
 }
 
 .glassButton {
+  border: 1px solid rgba(255, 255, 255, 0.29);
   background: rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  color: #ffffff;
+  box-shadow: 0 6px 4px rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(4.3px);
   -webkit-backdrop-filter: blur(4.3px);
-  border: 1px solid rgba(255, 255, 255, 0.29);
-  width: 300px;
-  height: 60px;
-  font-size: 25px;
-  font-weight: bold;
-  color: #fff;
-  box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.4);
-  transition:
-    background 0.2s ease,
-    transform 0.2s ease;
-  cursor: pointer;
 }
 
 .glassButton:hover {
@@ -82,209 +113,213 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 150px 0px 0px 0rem;
+  width: 100%;
+  padding: clamp(3rem, 10vw, 9rem) clamp(1rem, 4vw, 2rem) 0;
+  box-sizing: border-box;
 }
 
 .subtitle {
-  font-size: 48px;
-  color: #000;
-  font-weight: bold;
-  margin-bottom: 20px;
-}
-
-.plansGrid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2rem;
-  width: 80%;
-  padding: 0 20px;
+  width: 100%;
+  max-width: 52rem;
+  margin: 0 0 var(--space-md);
+  padding: 0 clamp(0.5rem, 2vw, 1rem);
+  color: #000000;
+  font-size: clamp(1.75rem, 6vw, 3rem);
+  font-weight: 700;
+  line-height: 1.15;
+  text-align: center;
+  overflow-wrap: anywhere;
 }
 
 .cardInformativoDescription {
-  font-size: 20px;
+  width: 100%;
+  max-width: 42rem;
+  margin: 0 0 var(--space-2xl);
+  padding: 0 clamp(0.5rem, 2vw, 1.25rem);
   color: #505050;
+  font-size: clamp(1rem, 2.8vw, 1.25rem);
   font-weight: 500;
-  width: 80%;
-  padding: 0 20px;
-  margin-bottom: 50px;
+  line-height: 1.55;
   text-align: center;
 }
 
-.containerSub a {
-  border-radius: 50px;
-  border: 2px solid #000;
-  padding: 14px 40px;
-  color: #000;
-  font-size: 20px;
+.ctaLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0 0 var(--space-2xl);
+  padding: 0.875rem 1.75rem;
+  border: 2px solid #000000;
+  border-radius: 999px;
+  color: #000000;
+  font-size: clamp(0.9375rem, 2.5vw, 1.25rem);
   font-weight: 600;
   text-decoration: none;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 15px;
-  margin: 50px 0px 40px 0px;
   transition:
     background 0.3s ease,
     color 0.3s ease;
 }
 
-.containerSub a:hover {
-  background: #000;
-  color: #fff;
+.ctaLink:hover {
+  background: #000000;
+  color: #ffffff;
 }
 
 .containerCardInformativo {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-
-  padding: 0 20px;
-  margin: 0 auto;
-  gap: 50px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-xl);
+  width: 100%;
+  margin: clamp(-2rem, -6vw, -9rem) 0 clamp(-1.5rem, -4vw, -6rem);
+  padding: clamp(2rem, 6vw, 4rem) clamp(1rem, 4vw, 1.25rem);
   background: url("@assets/landing_page/background2.png");
   background-size: cover;
   background-position: center;
-  width: 100%;
-  height: 1000px;
-  margin: -150px 0px -100px 0px;
-
   z-index: -1;
+  box-sizing: border-box;
 }
 
 .plansSection {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 110rem;
-  padding-top: 20rem;
+  width: 100%;
+  padding-top: clamp(4rem, 12vw, 10rem);
+  padding-bottom: clamp(2rem, 6vw, 4rem);
   background: url("@assets/landing_page/background4.png");
   background-size: cover;
   background-position: center;
-  margin: -200px 0px -100px 0px;
-
+  margin: clamp(-3rem, -8vw, -12rem) 0 clamp(-1.5rem, -4vw, -6rem);
   z-index: -1;
 }
 
+.plansHeader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: auto;
+  padding: clamp(1.5rem, 5vw, 4rem) 0 clamp(1rem, 3vw, 2rem);
+}
+
+.plansGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-lg);
+  width: 100%;
+  max-width: 72rem;
+  padding: 0 clamp(0.75rem, 3vw, 1.25rem);
+  box-sizing: border-box;
+}
+
+.plansGrid > * {
+  min-width: 0;
+}
+
 .partnersSection {
+  margin-top: clamp(2rem, 6vw, 5rem);
+  padding-bottom: var(--space-xl);
+}
+
+.partnersGrid {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 5rem;
+  gap: clamp(2rem, 6vw, 4rem);
+  width: 100%;
+  max-width: 56rem;
+  margin-top: var(--space-xl);
+  padding: 0 clamp(1rem, 4vw, 2rem);
 }
 
-.partnersSection div {
-  display: flex;
-  flex-direction: row;
-  gap: 10rem;
-  margin-top: 2rem;
-}
-
-.partnersSection div div {
+.partnerCard {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
-  font-size: 35px;
-  font-weight: bold;
+  gap: var(--space-lg);
+  min-width: 0;
+  text-align: center;
+}
+
+.partnerLogo {
+  width: min(100%, 14rem);
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.partnerCard p {
+  margin: 0;
+  font-size: clamp(1.25rem, 4vw, 2rem);
+  font-weight: 700;
 }
 
 .contactSection {
-  width: 100%;
-
   display: flex;
   justify-content: center;
-
-  padding: 8rem 2rem 0rem 2rem;
-
-  /* background: linear-gradient(
-    180deg,
-    rgba(245, 252, 255, 1) 0%,
-    rgba(235, 247, 255, 1) 100%
-  ); */
+  width: 100%;
+  padding: clamp(3rem, 10vw, 8rem) clamp(1rem, 4vw, 2rem) 0;
+  box-sizing: border-box;
 }
 
 .contactContainer {
-  width: 100%;
-  max-width: 900px;
-
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  padding: 4rem;
-
-  border-radius: 32px;
-
+  width: 100%;
+  max-width: 56rem;
+  padding: clamp(1.75rem, 5vw, 4rem);
+  border-radius: var(--radius-xl);
   background: #faf9fd;
-
   backdrop-filter: blur(10px);
-
-  box-shadow: 0px 20px 60px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.04);
+  box-sizing: border-box;
 }
 
 .contactTitle {
-  font-size: 3rem;
+  margin: 0 0 var(--space-lg);
+  font-size: clamp(1.75rem, 5vw, 3rem);
   font-weight: 700;
-
+  line-height: 1.15;
   text-align: center;
-
-  margin-bottom: 1.5rem;
 }
 
 .contactDescription {
-  font-size: 1.2rem;
-
+  max-width: 44rem;
+  margin: 0 0 var(--space-2xl);
   color: #4d4d4d;
-
-  text-align: center;
-
-  max-width: 700px;
-
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
   line-height: 1.7;
-
-  margin-bottom: 4rem;
+  text-align: center;
 }
 
 .contactForm {
-  width: 100%;
-
   display: flex;
   flex-direction: column;
-
-  gap: 2rem;
+  gap: var(--space-lg);
+  width: 100%;
 }
 
 .inputGroup {
   display: flex;
   flex-direction: column;
-
   gap: 0.8rem;
+  min-width: 0;
 }
 
 .inputGroup label {
-  font-size: 1.1rem;
-  font-weight: 700;
-
   color: #13364b;
+  font-size: clamp(1rem, 2.5vw, 1.1rem);
+  font-weight: 700;
 }
 
 .inputGroup input,
 .inputGroup textarea {
   width: 100%;
-
-  padding: 1rem 1.2rem;
-
+  padding: 0.875rem 1rem;
   border: none;
   border-bottom: 2px solid rgba(0, 0, 0, 0.2);
-
   background: transparent;
-
-  font-size: 1rem;
-
+  font-size: clamp(0.9375rem, 2.5vw, 1rem);
   outline: none;
-
+  box-sizing: border-box;
   transition: border-color 0.2s ease;
 }
 
@@ -294,159 +329,160 @@
 }
 
 .inputGroup textarea {
-  resize: none;
+  min-height: 9rem;
+  resize: vertical;
 }
 
 .contactButtonWrapper {
   display: flex;
   justify-content: center;
-
-  margin-top: 2rem;
-
   width: 100%;
+  margin-top: var(--space-md);
 }
 
 .contactButtonWrapper button {
-  width: fit-content;
-
-  padding: 1rem 3rem;
-
-  border-radius: 16px;
-
-  color: white;
-
-  font-size: 1rem;
+  width: 100%;
+  max-width: 18rem;
+  min-height: 2.75rem;
+  padding: 0.875rem 1.5rem;
+  border-radius: var(--radius-md);
+  color: #ffffff;
+  font-size: clamp(0.9375rem, 2.5vw, 1rem);
   font-weight: 700;
-
   transition:
     transform 0.2s ease,
     opacity 0.2s ease;
 }
 
 .contactButtonWrapper button:hover {
-  transform: translateY(-3px);
-
+  transform: translateY(-2px);
   opacity: 0.9;
 }
 
 .contactFeedback {
   align-self: center;
-  color: #16803f;
-  background: #ecfdf3;
+  margin: 0;
+  padding: 0.75rem 1rem;
   border-left: 4px solid #16a34a;
-  border-radius: 12px;
-  padding: 12px 16px;
-  font-size: 0.95rem;
+  border-radius: 0.75rem;
+  background: #ecfdf3;
+  color: #16803f;
+  font-size: clamp(0.875rem, 2.5vw, 0.95rem);
   font-weight: 800;
+  text-align: center;
 }
 
 .socialLinks {
   display: flex;
-  gap: 2rem;
-
-  margin-top: 4rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-md);
+  margin-top: var(--space-2xl);
 }
 
 .socialLinks a {
-  width: 70px;
-  height: 70px;
-
   display: flex;
+  flex-shrink: 0;
   align-items: center;
   justify-content: center;
-
+  width: clamp(3rem, 10vw, 4.375rem);
+  height: clamp(3rem, 10vw, 4.375rem);
   border-radius: 50%;
-
   background: #097cd8;
-
-  color: #fff;
-
-  font-size: 2rem;
-
+  color: #ffffff;
+  font-size: clamp(1.35rem, 4vw, 2rem);
   text-decoration: none;
-
-  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
-
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   transition:
     transform 0.2s ease,
-    background 0.2s ease,
-    color 0.2s ease;
+    background 0.2s ease;
 }
 
 .socialLinks a:hover {
   transform: translateY(-4px);
-
-  background: #097cd8;
-
-  color: white;
-}
-
-.partnersGrid {
-  display: flex;
-  gap: 8rem;
-
-  margin-top: 3rem;
-}
-
-.partnerCard {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  gap: 2rem;
-}
-
-.partnerCard p {
-  font-size: 2rem;
-  font-weight: 700;
-}
-
-@media (max-width: 1024px) {
-  .contactContainer {
-    padding: 3rem 2rem;
-  }
-
-  .contactTitle {
-    font-size: 2.4rem;
-  }
-
-  .partnersGrid {
-    flex-direction: column;
-    gap: 4rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .contactTitle {
-    font-size: 2rem;
-  }
-
-  .contactDescription {
-    font-size: 1rem;
-  }
-
-  .socialLinks {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .partnerCard p {
-    font-size: 1.5rem;
-  }
+  background: #086fc2;
 }
 
 .footerContainer {
   width: 100%;
-
   background: url("@assets/landing_page/background5.png");
   background-size: cover;
   background-position: center;
 }
 
-.plansHeader {
-  height: 20rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-top: 7rem;
+/* Tablet: 768px – 1024px */
+@media (min-width: 768px) {
+  .linkButtons {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: stretch;
+  }
+
+  .linkButtonItem {
+    flex: 1 1 12rem;
+    width: auto;
+  }
+
+  .containerCardInformativo {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-lg);
+  }
+
+  .plansGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .partnersGrid {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: clamp(2rem, 8vw, 5rem);
+  }
+
+  .partnerCard {
+    flex: 1 1 14rem;
+    max-width: 20rem;
+  }
+
+  .contactButtonWrapper button {
+    width: fit-content;
+    max-width: none;
+  }
+}
+
+/* Desktop: acima de 1024px */
+@media (min-width: 1025px) {
+  .linkButtons {
+    gap: var(--space-xl);
+  }
+
+  .containerCardInformativo {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(2rem, 4vw, 3rem);
+  }
+
+  .plansGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-xl);
+  }
+
+  .partnersGrid {
+    gap: clamp(3rem, 8vw, 8rem);
+  }
+}
+
+@media (max-width: 767px) {
+  .contactButtonWrapper button {
+    max-width: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gradientButton:hover,
+  .glassButton:hover,
+  .contactButtonWrapper button:hover,
+  .socialLinks a:hover,
+  .ctaLink:hover {
+    transform: none;
+  }
 }

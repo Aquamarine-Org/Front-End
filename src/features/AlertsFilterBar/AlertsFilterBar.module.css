@@ -1,32 +1,25 @@
 .wrapper {
-  width: 100%;
-  min-height: 60px;
-
-  border-radius: 100px;
-  background: #f6f6f6;
-
   display: grid;
-  grid-template-columns: 122px minmax(0, 1fr);
-
-  align-items: center;
-
+  grid-template-columns: minmax(0, 1fr);
+  align-items: stretch;
+  width: 100%;
+  min-width: 0;
+  min-height: 6.5rem;
+  border-radius: 1.375rem;
+  background: #f6f6f6;
   flex-shrink: 0;
+  overflow: hidden;
 }
 
 .scopeButton {
-  height: 100%;
-
+  min-height: 3rem;
   border: none;
-  border-right: 1px solid #d4d8e1;
-
+  border-bottom: 1px solid #d4d8e1;
   background: transparent;
-
   color: #323a4a;
-  font-size: 1.05rem;
+  font-size: clamp(0.9375rem, 2.5vw, 1.05rem);
   font-weight: 600;
-
   cursor: pointer;
-
   transition:
     background-color 0.2s ease,
     color 0.2s ease;
@@ -38,27 +31,24 @@
 }
 
 .searchContainer {
-  width: 100%;
-  min-width: 0;
-
   display: flex;
   align-items: center;
-  gap: 12px;
-
-  padding: 0 20px;
+  gap: 0.75rem;
+  width: 100%;
+  min-width: 0;
+  min-height: 3.25rem;
+  padding: 0 clamp(0.875rem, 2.5vw, 1.25rem);
+  box-sizing: border-box;
 }
 
 .searchInput {
   flex: 1;
   min-width: 0;
-
   height: 100%;
-
-  background: transparent;
   border: none;
-
+  background: transparent;
   color: #313949;
-  font-size: 1rem;
+  font-size: clamp(0.9375rem, 2.5vw, 1rem);
   font-weight: 500;
 }
 
@@ -72,38 +62,34 @@
 
 .searchIcon {
   flex-shrink: 0;
-
   color: #0f1728;
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 2.8vw, 1.2rem);
 }
 
-@media (max-width: 1480px) {
+/* Tablet: 768px – 1024px */
+@media (min-width: 768px) {
   .wrapper {
-    min-height: 54px;
-    grid-template-columns: 114px minmax(0, 1fr);
-  }
-}
-
-@media (max-width: 1080px) {
-  .wrapper {
-    min-height: 50px;
-    grid-template-columns: 102px minmax(0, 1fr);
-  }
-}
-
-@media (max-width: 700px) {
-  .wrapper {
-    border-radius: 22px;
-    grid-template-columns: 1fr;
+    grid-template-columns: clamp(6rem, 14vw, 7.625rem) minmax(0, 1fr);
+    min-height: 3.375rem;
+    border-radius: 100px;
   }
 
   .scopeButton {
-    min-height: 48px;
-    border-right: none;
-    border-bottom: 1px solid #d4d8e1;
+    height: 100%;
+    min-height: 0;
+    border-bottom: none;
+    border-right: 1px solid #d4d8e1;
   }
 
   .searchContainer {
-    min-height: 52px;
+    min-height: 0;
+  }
+}
+
+/* Desktop: acima de 1024px */
+@media (min-width: 1025px) {
+  .wrapper {
+    grid-template-columns: 7.625rem minmax(0, 1fr);
+    min-height: 3.75rem;
   }
 }

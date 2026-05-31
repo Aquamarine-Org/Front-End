@@ -1,7 +1,10 @@
 .section {
   position: relative;
-  margin: 0 0px 2rem 0px;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 0 2rem;
   background-color: var(--background);
+  overflow-x: hidden;
   /* background: url("@assets/landing_page/background3.png") no-repeat;
   background-size: cover;
   background-position: center; */
@@ -12,10 +15,12 @@
   z-index: 10;
 
   width: 100%;
-  max-width: 1280px;
+  max-width: 80rem;
+  min-width: 0;
 
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 clamp(1rem, 4vw, 2rem);
+  box-sizing: border-box;
 }
 
 .header {
@@ -25,6 +30,9 @@
   justify-content: center;
 
   margin: 0 auto;
+  max-width: 42rem;
+  min-width: 0;
+  text-align: center;
 }
 
 .badgeWrapper {
@@ -42,28 +50,37 @@
 .title {
   margin-top: 1.25rem;
 
-  font-size: 1.25rem;
+  font-size: clamp(1.5rem, 7vw, 2rem);
   font-weight: 700;
-  letter-spacing: -0.05em;
+  letter-spacing: 0;
+  line-height: 1.12;
 
   text-align: center;
+  overflow-wrap: anywhere;
 }
 
 .description {
-  margin-top: 1.25rem;
+  max-width: 32rem;
+  margin: 1rem auto 0;
 
+  font-size: clamp(0.95rem, 3vw, 1.08rem);
+  line-height: 1.55;
   text-align: center;
   opacity: 0.75;
+  overflow-wrap: anywhere;
 }
 
 .columns {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: start;
+  gap: clamp(1rem, 4vw, 2rem);
+  width: 100%;
+  min-width: 0;
 
-  margin-top: 2.5rem;
+  margin-top: clamp(1.75rem, 6vw, 2.5rem);
 
-  max-height: 740px;
+  max-height: min(42rem, 120vw);
   overflow: hidden;
 
   mask-image: linear-gradient(
@@ -87,13 +104,14 @@
 
 @media (min-width: 640px) {
   .title {
-    font-size: 1.5rem;
+    font-size: clamp(1.75rem, 5vw, 2.25rem);
   }
 }
 
 @media (min-width: 768px) {
-  .title {
-    font-size: 1.875rem;
+  .columns {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-height: 44rem;
   }
 
   .hiddenMd {
@@ -103,16 +121,15 @@
 
 @media (min-width: 1024px) {
   .title {
-    font-size: 2.25rem;
+    font-size: clamp(2.25rem, 4vw, 3rem);
+  }
+
+  .columns {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    max-height: 46.25rem;
   }
 
   .hiddenLg {
     display: block;
-  }
-}
-
-@media (min-width: 1280px) {
-  .title {
-    font-size: 3rem;
   }
 }

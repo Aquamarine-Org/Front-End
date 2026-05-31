@@ -67,13 +67,15 @@ function DispositivosPage() {
           />
         </div>
 
-        <button
-          type="button"
-          className={styles.manageButton}
-          onClick={() => navigate("/dispositivos/gerenciar")}
-        >
-          Gerenciar dispositivos
-        </button>
+        <div className={styles.manageActions}>
+          <button
+            type="button"
+            className={styles.manageButton}
+            onClick={() => navigate("/dispositivos/gerenciar")}
+          >
+            Gerenciar dispositivos
+          </button>
+        </div>
 
         <DeviceActionHistoryCard
           title="Histórico de acionamentos"

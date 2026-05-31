@@ -19,7 +19,7 @@ function AlertsFeedItem({
     <article className={styles.item}>
       <header className={styles.header}>
         <div className={styles.left}>
-          <div className={`${styles.iconBox} ${styles[tone]}`}>
+          <div className={`${styles.iconBox} ${styles[tone]}`} aria-hidden="true">
             <Icon />
           </div>
 
@@ -42,7 +42,7 @@ function AlertsFeedItem({
             }`}
             onClick={onToggle}
           >
-            <FiChevronDown />
+            <FiChevronDown aria-hidden="true" />
           </button>
         </div>
       </header>
@@ -53,7 +53,7 @@ function AlertsFeedItem({
 
           <div className={styles.suggestionCard}>
             <strong>
-              <PiShootingStarBold />
+              <PiShootingStarBold aria-hidden="true" />
               Sugestao da IA
             </strong>
 

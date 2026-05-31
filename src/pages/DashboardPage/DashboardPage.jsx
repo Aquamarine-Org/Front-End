@@ -109,7 +109,7 @@ function DashboardPage() {
                   <strong>{card.value}</strong>
                 </div>
 
-                <div className={styles.statusIcon}>
+                <div className={styles.statusIcon} aria-hidden="true">
                   <Icon />
                 </div>
               </article>
@@ -127,7 +127,7 @@ function DashboardPage() {
                 className={styles.floorActionButton}
                 onClick={() => setModalDashboard({ type: "floors" })}
               >
-                <FaStairs />
+                <FaStairs aria-hidden="true" />
                 Andares
               </button>
 
@@ -136,7 +136,7 @@ function DashboardPage() {
                 className={styles.floorActionButton}
                 onClick={() => navigate("/planta-da-casa")}
               >
-                <FiEdit3 />
+                <FiEdit3 aria-hidden="true" />
                 editar mapa
               </button>
             </div>

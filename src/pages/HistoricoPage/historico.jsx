@@ -428,7 +428,7 @@ function HistoricoPage() {
             className={estilos.botaoData}
             onClick={abrirFiltro}
           >
-            <IoCalendarClearOutline size={16} />
+            <IoCalendarClearOutline size={16} aria-hidden="true" />
             {obterRotuloFiltro(filtroAplicado)}
           </button>
 
@@ -438,7 +438,7 @@ function HistoricoPage() {
               className={estilos.botaoSecundario}
               onClick={exportarHistoricoParaPdf}
             >
-              <IoDocumentTextOutline size={16} />
+              <IoDocumentTextOutline size={16} aria-hidden="true" />
               Exportar PDF
             </button>
 
@@ -447,7 +447,7 @@ function HistoricoPage() {
               className={estilos.botaoWhatsapp}
               onClick={enviarHistoricoMensal}
             >
-              <FaWhatsapp size={18} />
+              <FaWhatsapp size={18} aria-hidden="true" />
               Enviar histórico mensal por WhatsApp
             </button>
 
@@ -456,7 +456,7 @@ function HistoricoPage() {
               className={estilos.botaoFiltro}
               onClick={abrirFiltro}
             >
-              <IoFilterOutline size={16} />
+              <IoFilterOutline size={16} aria-hidden="true" />
               Filtros
             </button>
           </div>
@@ -464,19 +464,19 @@ function HistoricoPage() {
 
         <div className={estilos.gradeResumo}>
           <article className={estilos.cartaoResumo}>
-            <IoWaterOutline size={24} />
+            <IoWaterOutline size={24} aria-hidden="true" />
             <span>Consumo de água</span>
             <strong>{formatarNumero(resumo.consumoTotal, 0)} litros</strong>
           </article>
 
           <article className={estilos.cartaoResumo}>
-            <IoPulseOutline size={24} />
+            <IoPulseOutline size={24} aria-hidden="true" />
             <span>Fluxo médio</span>
             <strong>{formatarNumero(resumo.fluxoMedio)} litros por minuto</strong>
           </article>
 
           <article className={estilos.cartaoResumo}>
-            <IoWarningOutline size={24} />
+            <IoWarningOutline size={24} aria-hidden="true" />
             <span>Análises com alerta</span>
             <strong>
               {resumo.quantidadeAlertas}{" "}
@@ -645,11 +645,11 @@ function HistoricoPage() {
                 aria-label="Fechar filtro"
                 onClick={() => setFiltroAberto(false)}
               >
-                <IoCloseOutline size={20} />
+                <IoCloseOutline size={20} aria-hidden="true" />
               </button>
 
               <div className={estilos.iconeFiltro}>
-                <IoCalendarClearOutline size={24} />
+                <IoCalendarClearOutline size={24} aria-hidden="true" />
               </div>
 
               <p className={estilos.textoFiltro}>

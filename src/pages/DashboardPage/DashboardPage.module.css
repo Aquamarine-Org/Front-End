@@ -1,118 +1,144 @@
 .dashboardTitle {
-  font-size: clamp(2rem, 2.4vw, 2.45rem);
-  line-height: 1;
+  font-size: clamp(1.75rem, 4.5vw, 2.45rem);
+  line-height: 1.08;
   font-weight: 800;
 }
 
 .dashboardPage {
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.25rem;
+  --space-xl: 1.5rem;
+  --space-2xl: 2rem;
+
+  --radius-sm: 0.5rem;
+  --radius-md: 1.0625rem;
+
   width: 100%;
   max-width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 32px;
-  padding: 0 0 40px 0;
+  gap: var(--space-xl);
+  padding: 0 0 var(--space-2xl);
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 .statusGrid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 20px;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-md);
+  width: 100%;
+  min-width: 0;
 }
 
 .statusCard {
-  min-height: 126px;
-  border-radius: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  min-width: 0;
+  min-height: clamp(5.5rem, 18vw, 7.875rem);
+  padding: clamp(1rem, 3vw, 1.75rem) clamp(0.875rem, 2.5vw, 1.5rem);
+  border-radius: var(--radius-md);
   background: #ffffff;
   box-shadow:
     0 9px 22px rgba(15, 37, 67, 0.16),
     inset 0 0 0 1px rgba(13, 50, 199, 0.04);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 28px 24px;
 }
 
 .statusText {
-  min-width: 0;
   display: flex;
+  flex: 1;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--space-xs);
+  min-width: 0;
 }
 
 .statusText span {
-  max-width: 150px;
   color: #677081;
-  font-size: 12px;
+  font-size: clamp(0.625rem, 2vw, 0.75rem);
   font-weight: 600;
   line-height: 1.25;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.12em;
+  overflow-wrap: anywhere;
 }
 
 .statusText strong {
   color: #171b25;
-  font-size: 20px;
+  font-size: clamp(1rem, 3.5vw, 1.25rem);
   font-weight: 800;
-  line-height: 1.1;
+  line-height: 1.15;
+  overflow-wrap: anywhere;
 }
 
 .statusIcon {
-  width: 48px;
-  height: 48px;
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: clamp(2.25rem, 8vw, 3rem);
+  height: clamp(2.25rem, 8vw, 3rem);
   border-radius: 50%;
   background: #0d83df;
   color: #ffffff;
-  display: grid;
-  place-items: center;
-  font-size: 24px;
-  flex-shrink: 0;
+  font-size: clamp(1.125rem, 3.5vw, 1.5rem);
 }
 
 .floorPanel {
-  min-height: 690px;
-  border-radius: 17px;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  padding: clamp(1rem, 3vw, 2.375rem) clamp(0.875rem, 3vw, 3.25rem)
+    clamp(1rem, 2.5vw, 1.625rem);
+  border-radius: var(--radius-md);
   background: #ffffff;
   box-shadow:
     0 12px 28px rgba(15, 37, 67, 0.16),
     inset 0 0 0 1px rgba(13, 50, 199, 0.04);
-  padding: 38px 52px 26px;
 }
 
 .floorHeader {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  margin-bottom: 10px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-md);
+  margin-bottom: var(--space-sm);
 }
 
 .floorHeader h2 {
+  margin: 0;
   color: #08090d;
-  font-size: 30px;
+  font-size: clamp(1.5rem, 4.5vw, 1.875rem);
   font-weight: 900;
-  line-height: 1;
+  line-height: 1.1;
 }
 
 .floorActions {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 30px;
+  gap: var(--space-sm);
+  width: 100%;
 }
 
 .floorActionButton {
-  min-width: 172px;
-  height: 34px;
+  display: inline-flex;
+  flex: 1 1 9rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  min-width: 0;
+  min-height: 2.125rem;
+  padding: 0.5rem 1rem;
   border: none;
   border-radius: 999px;
   background: #0d83df;
   color: #ffffff;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  padding: 0 20px;
-  font-size: 14px;
+  font-size: clamp(0.75rem, 2.2vw, 0.875rem);
   font-weight: 800;
+  white-space: nowrap;
   cursor: pointer;
   transition:
     background-color 0.2s ease,
@@ -125,42 +151,53 @@
 }
 
 .floorActionButton svg {
-  width: 16px;
-  height: 16px;
   flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
 }
 
 .floorCanvas {
-  min-height: 580px;
-  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  min-width: 0;
+  min-height: clamp(14rem, 45vw, 36rem);
+  padding: clamp(0.75rem, 2.5vw, 1.75rem);
+  border-radius: var(--radius-sm);
   background: #efefef;
-  overflow: hidden;
-  padding: 15px 28px;
+  overflow: auto;
+  box-sizing: border-box;
 }
 
 .roomStack {
-  width: 180px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
+  max-width: 11.25rem;
+  min-width: 0;
 }
 
 .roomCard {
-  width: 180px;
-  border-radius: 8px;
-  background: #ffffff;
   display: flex;
   flex-direction: column;
-  padding: 23px 13px 7px;
+  width: 100%;
+  min-width: 0;
+  padding: clamp(0.875rem, 2.5vw, 1.4375rem) clamp(0.625rem, 2vw, 0.8125rem)
+    0.4375rem;
+  border-radius: var(--radius-sm);
+  background: #ffffff;
+  box-sizing: border-box;
 }
 
 .normal {
-  min-height: 260px;
+  min-height: clamp(10rem, 35vw, 16.25rem);
   border: 1px solid #08c95c;
 }
 
 .risk {
-  min-height: 160px;
+  min-height: clamp(7rem, 24vw, 10rem);
   border: 1px solid #e80c0c;
 }
 
@@ -168,25 +205,29 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 12px;
+  gap: var(--space-sm);
+  min-width: 0;
 }
 
 .roomHeader h3 {
+  margin: 0;
   color: #0f0f0f;
-  font-size: 20px;
+  font-size: clamp(1rem, 3vw, 1.25rem);
   font-weight: 900;
   line-height: 1.15;
+  overflow-wrap: anywhere;
 }
 
 .roomViewButton {
-  width: 24px;
-  height: 24px;
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: clamp(1.375rem, 4vw, 1.5rem);
+  height: clamp(1.375rem, 4vw, 1.5rem);
   border: none;
-  border-radius: 5px;
+  border-radius: 0.3125rem;
   background: #d9d9d9;
   color: #000000;
-  display: grid;
-  place-items: center;
   cursor: pointer;
   transition:
     background-color 0.2s ease,
@@ -199,41 +240,43 @@
 }
 
 .roomViewButton svg {
-  width: 15px;
-  height: 15px;
+  width: 0.9375rem;
+  height: 0.9375rem;
 }
 
 .roomMetrics {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 2px;
+  gap: 0.125rem;
   color: #0f0f0f;
-  font-size: 14px;
+  font-size: clamp(0.8125rem, 2.2vw, 0.875rem);
   font-weight: 500;
   line-height: 1.15;
 }
 
 .normal .roomMetrics {
-  margin-top: 72px;
+  margin-top: clamp(2rem, 12vw, 4.5rem);
 }
 
 .risk .roomMetrics {
-  margin-top: 15px;
+  margin-top: 0.75rem;
 }
 
 .roomStatus {
-  width: 100%;
-  min-height: 25px;
-  border-radius: 999px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  min-height: 1.5625rem;
   margin-top: auto;
+  padding: 0.25rem 0.5rem;
+  border-radius: 999px;
   color: #000000;
-  font-size: 12px;
+  font-size: clamp(0.6875rem, 2vw, 0.75rem);
   font-weight: 800;
   line-height: 1;
+  box-sizing: border-box;
 }
 
 .normalStatus {
@@ -247,37 +290,41 @@
 }
 
 .connector {
-  height: 27px;
+  flex-shrink: 0;
+  width: 0;
+  height: clamp(1.25rem, 4vw, 1.6875rem);
   border-left: 3px dotted #0d83df;
 }
 
 .dashboardModalContent {
   display: flex;
   flex-direction: column;
-  gap: 18px;
-  margin-top: 18px;
+  gap: var(--space-lg);
+  width: 100%;
+  margin-top: var(--space-lg);
 }
 
 .dashboardModalContent p {
+  margin: 0;
   color: #414755;
-  font-size: 1rem;
+  font-size: clamp(0.9375rem, 2.5vw, 1rem);
   font-weight: 700;
   line-height: 1.45;
 }
 
 .modalPrimaryButton {
   align-self: flex-start;
-  min-height: 42px;
+  min-height: 2.625rem;
+  padding: 0 1.125rem;
   border: none;
   border-radius: 100px;
   background: #097cd8;
   color: #ffffff;
+  font-size: clamp(0.8125rem, 2.2vw, 0.875rem);
+  font-weight: 900;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0 18px;
-  font-size: 14px;
-  font-weight: 900;
   cursor: pointer;
   transition:
     background-color 0.2s ease,
@@ -289,49 +336,70 @@
   transform: translateY(-1px);
 }
 
-@media (max-width: 1320px) {
+/* Tablet: 768px – 1024px */
+@media (min-width: 768px) {
   .dashboardPage {
-    width: 100%;
-    padding-right: 0;
+    gap: var(--space-2xl);
   }
 
   .statusGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 900px) {
-  .dashboardTitle {
-    font-size: 2.4rem;
-  }
-
-  .statusGrid {
-    grid-template-columns: 1fr;
-  }
-
-  .floorPanel {
-    min-height: 0;
-    padding: 24px 20px;
+    gap: var(--space-lg);
   }
 
   .floorHeader {
-    align-items: flex-start;
-    flex-direction: column;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-xl);
   }
 
   .floorActions {
-    width: 100%;
-    flex-wrap: wrap;
-    gap: 10px;
+    flex-wrap: nowrap;
+    width: auto;
+    gap: var(--space-lg);
   }
 
   .floorActionButton {
-    min-width: 0;
-    flex: 1;
+    flex: 0 1 auto;
   }
 
   .floorCanvas {
-    min-height: 500px;
-    padding: 14px;
+    justify-content: flex-start;
+  }
+}
+
+/* Desktop: acima de 1024px */
+@media (min-width: 1025px) {
+  .statusGrid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--space-lg);
+  }
+
+  .floorHeader {
+    gap: var(--space-xl);
+  }
+
+  .floorActions {
+    gap: 1.875rem;
+  }
+
+  .floorActionButton {
+    min-width: 10.75rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .modalPrimaryButton {
+    align-self: stretch;
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .floorActionButton:hover,
+  .roomViewButton:hover,
+  .modalPrimaryButton:hover {
+    transform: none;
   }
 }

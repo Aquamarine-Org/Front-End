@@ -12,7 +12,7 @@ function AlertsSummaryCard({ label, value, description, tone, icon: Icon }) {
         </div>
       </div>
 
-      <div className={`${styles.iconCircle} ${styles[tone]}`}>
+      <div className={`${styles.iconCircle} ${styles[tone]}`} aria-hidden="true">
         <Icon />
       </div>
     </article>
