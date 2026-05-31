@@ -141,13 +141,14 @@ function LandingPage() {
         <InteractiveGallery />
       </section>
 
-      <section id="avaliacoes" className={styles.containerSub}>
+      <section
+        id="avaliacoes"
+        className={`${styles.containerSub} ${styles.avaliacoesSection}`}
+      >
         <Testimonials />
       </section>
 
-      <section
-        className={`${styles.containerSub} ${styles.plansSection}`}
-      >
+      <section className={`${styles.containerSub} ${styles.plansSection}`}>
         <div className={styles.plansHeader} id="planos">
           <h2 className={styles.subtitle}>Nossos planos</h2>
         </div>

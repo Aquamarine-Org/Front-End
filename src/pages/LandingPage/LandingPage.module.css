@@ -118,6 +118,10 @@
   box-sizing: border-box;
 }
 
+.avaliacoesSection {
+  margin-bottom: clamp(15rem, 6vw, 15rem);
+}
+
 .subtitle {
   width: 100%;
   max-width: 52rem;
