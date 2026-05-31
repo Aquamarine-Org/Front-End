@@ -93,7 +93,7 @@ function LandingPage() {
         </div>
       </section>
 
-      <section id="sobre" className={styles.containerSub}>
+      <section id="sobre" className={`${styles.containerSub} ${styles.aboutSection}`}>
         <h2 className={styles.subtitle}>
           Tenha segurança no encanamento da sua casa
         </h2>

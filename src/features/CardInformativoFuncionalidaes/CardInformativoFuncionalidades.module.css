@@ -49,3 +49,18 @@
     margin: 0;
   }
 }
+
+@media (max-width: 1024px) {
+  .card {
+    max-width: none;
+  }
+
+  .cardDescription {
+    min-height: auto;
+    padding: clamp(0.75rem, 3vw, 1rem);
+  }
+
+  .cardDescription p {
+    font-size: clamp(0.82rem, 3vw, 1.1rem);
+  }
+}

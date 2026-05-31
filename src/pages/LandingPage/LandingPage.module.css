@@ -118,6 +118,10 @@
   box-sizing: border-box;
 }
 
+.aboutSection {
+  padding: 0px;
+}
+
 .avaliacoesSection {
   margin-bottom: clamp(15rem, 6vw, 15rem);
 }
@@ -171,10 +175,11 @@
 
 .containerCardInformativo {
   display: grid;
-  grid-template-columns: minmax(0, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 13.5rem), 1fr));
   gap: var(--space-xl);
   width: 100%;
-  padding: clamp(2rem, 100vw, 10rem) clamp(1rem, 4vw, 1.25rem);
+  min-width: 0;
+  padding: clamp(2rem, 12vw, 10rem) clamp(1rem, 4vw, 1.25rem);
   background: url("@assets/landing_page/background2.png");
   background-size: cover;
   background-position: center;
@@ -204,10 +209,11 @@
 
 .plansGrid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr));
   gap: var(--space-lg);
   width: 100%;
   max-width: 72rem;
+  min-width: 0;
   padding: 0 clamp(0.75rem, 3vw, 1.25rem);
   box-sizing: border-box;
 }
@@ -413,6 +419,54 @@
   background-position: center;
 }
 
+@media (max-width: 1024px) {
+  .containerCardInformativo,
+  .plansGrid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: clamp(0.75rem, 3vw, 1.25rem);
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-x: contain;
+    scroll-padding-inline: clamp(1rem, 4vw, 1.25rem);
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .containerCardInformativo > *,
+  .plansGrid > * {
+    min-width: 0;
+    scroll-snap-align: start;
+  }
+
+  .containerCardInformativo > * {
+    flex: 0 0 clamp(13.5rem, 72vw, 20rem);
+  }
+
+  .plansGrid > * {
+    flex: 0 0 clamp(14rem, 78vw, 20rem);
+  }
+
+  .partnersGrid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    justify-items: center;
+    gap: clamp(1rem, 5vw, 2rem);
+  }
+
+  .partnerCard {
+    width: 100%;
+    max-width: 14rem;
+  }
+
+  .partnerLogo {
+    width: min(100%, 10rem);
+  }
+}
+
 /* Tablet: 768px – 1024px */
 @media (min-width: 768px) {
   .linkButtons {
@@ -427,12 +481,7 @@
   }
 
   .containerCardInformativo {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: var(--space-lg);
-  }
-
-  .plansGrid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .partnersGrid {
