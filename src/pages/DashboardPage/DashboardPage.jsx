@@ -1,71 +1,26 @@
+import { useEffect, useState } from "react";
 import DashboardLayout from "@src/layouts/DashboardLayout/DashboardLayout.jsx";
 import { FiDroplet, FiEdit3, FiShield } from "react-icons/fi";
 import { IoEyeOutline, IoWaterOutline } from "react-icons/io5";
 import { GiValve } from "react-icons/gi";
 import { FaStairs } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
 import Modal from "@src/components/Modal/Modal.jsx";
+import { apiGet } from "@src/lib/api.js";
+import { createFallbackDashboardOverview } from "@src/lib/aquamarineData.js";
 import styles from "./DashboardPage.module.css";
-
-const STATUS_CARDS = [
-  {
-    id: "sistema",
-    label: "STATUS DO SISTEMA",
-    value: "Funcionando",
-    icon: FiDroplet,
-  },
-  {
-    id: "registro",
-    label: "STATUS DO REGISTRO",
-    value: "Aberto",
-    icon: GiValve,
-  },
-  {
-    id: "risco",
-    label: "RISCO ATUAL DE VAZAMENTO",
-    value: "Baixo",
-    icon: FiShield,
-  },
-  {
-    id: "dispositivos",
-    label: "DISPOSITIVOS ONLINE",
-    value: "5",
-    icon: IoWaterOutline,
-  },
-];
-
-const ROOMS = [
-  {
-    id: "cozinha",
-    name: "Cozinha",
-    area: "12m²",
-    sensors: "1 sensor",
-    status: "Normal",
-    tone: "normal",
-    showDetails: true,
-  },
-  {
-    id: "banheiro",
-    name: "Banheiro",
-    area: "12m²",
-    sensors: "1 sensor",
-    status: "Risco",
-    tone: "risk",
-  },
-];
 
 function RoomCard({ room, onView }) {
   return (
     <article className={`${styles.roomCard} ${styles[room.tone]}`}>
       <header className={styles.roomHeader}>
-        <h3>{room.name}</h3>
+        <h3>{room.nome}</h3>
 
-        {room.showDetails ? (
+        {room.exibirDetalhes ? (
           <button
             type="button"
             className={styles.roomViewButton}
-            aria-label={`Visualizar ${room.name}`}
+            aria-label={`Visualizar ${room.nome}`}
             onClick={() => onView(room)}
           >
             <IoEyeOutline />
@@ -75,7 +30,7 @@ function RoomCard({ room, onView }) {
 
       <div className={styles.roomMetrics}>
         <span>{room.area}</span>
-        <span>{room.sensors}</span>
+        <span>{room.sensores}</span>
       </div>
 
       <span className={`${styles.roomStatus} ${styles[`${room.tone}Status`]}`}>
@@ -87,9 +42,46 @@ function RoomCard({ room, onView }) {
 
 function DashboardPage() {
   const navigate = useNavigate();
+  const [dashboard, setDashboard] = useState(createFallbackDashboardOverview());
   const [modalDashboard, setModalDashboard] = useState(null);
 
+  useEffect(() => {
+    let isMounted = true;
+
+    const carregarDashboard = async () => {
+      try {
+        const data = await apiGet("/dashboard/overview");
+        if (isMounted && data) {
+          setDashboard(data);
+        }
+      } catch {
+        if (isMounted) {
+          setDashboard(createFallbackDashboardOverview());
+        }
+      }
+    };
+
+    carregarDashboard();
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
   const closeModal = () => setModalDashboard(null);
+  const quantidadeAndares = dashboard.resumo?.quantidadeAndares ?? 1;
+  const selectedRoom = modalDashboard?.room;
+
+  const getStatusIcon = (cardId) => {
+    const icons = {
+      sistema: FiDroplet,
+      registro: GiValve,
+      risco: FiShield,
+      dispositivos: IoWaterOutline,
+    };
+
+    return icons[cardId] || IoWaterOutline;
+  };
 
   return (
     <DashboardLayout
@@ -99,22 +91,21 @@ function DashboardPage() {
     >
       <section className={styles.dashboardPage}>
         <div className={styles.statusGrid}>
-          {STATUS_CARDS.map((card) => {
-            const Icon = card.icon;
+          {dashboard.statusCards.map((card) => (
+            <article className={styles.statusCard} key={card.id}>
+              <div className={styles.statusText}>
+                <span>{card.label}</span>
+                <strong>{card.value}</strong>
+              </div>
 
-            return (
-              <article className={styles.statusCard} key={card.id}>
-                <div className={styles.statusText}>
-                  <span>{card.label}</span>
-                  <strong>{card.value}</strong>
-                </div>
-
-                <div className={styles.statusIcon} aria-hidden="true">
-                  <Icon />
-                </div>
-              </article>
-            );
-          })}
+              <div className={styles.statusIcon} aria-hidden="true">
+                {(() => {
+                  const StatusIcon = getStatusIcon(card.id);
+                  return <StatusIcon />;
+                })()}
+              </div>
+            </article>
+          ))}
         </div>
 
         <article className={styles.floorPanel}>
@@ -144,17 +135,15 @@ function DashboardPage() {
 
           <div className={styles.floorCanvas}>
             <div className={styles.roomStack}>
-              <RoomCard
-                room={ROOMS[0]}
-                onView={(room) => setModalDashboard({ type: "room", room })}
-              />
-
-              <span className={styles.connector} aria-hidden="true"></span>
-
-              <RoomCard
-                room={ROOMS[1]}
-                onView={(room) => setModalDashboard({ type: "room", room })}
-              />
+              {dashboard.ambientes.map((room) => (
+                <RoomCard
+                  key={room.id}
+                  room={room}
+                  onView={(selected) =>
+                    setModalDashboard({ type: "room", room: selected })
+                  }
+                />
+              ))}
             </div>
           </div>
         </article>
@@ -167,7 +156,7 @@ function DashboardPage() {
         title="Andares da residência"
       >
         <div className={styles.dashboardModalContent}>
-          <p>Há 1 andar cadastrado no mapa atual.</p>
+          <p>Há {quantidadeAndares} andar(es) cadastrado(s) no mapa atual.</p>
           <button
             type="button"
             className={styles.modalPrimaryButton}
@@ -182,12 +171,12 @@ function DashboardPage() {
         isOpen={modalDashboard?.type === "room"}
         onClose={closeModal}
         icon={IoEyeOutline}
-        title={modalDashboard?.room?.name}
-        subtitle={modalDashboard?.room?.status}
+        title={selectedRoom?.nome}
+        subtitle={selectedRoom?.status}
       >
         <div className={styles.dashboardModalContent}>
           <p>
-            {modalDashboard?.room?.area} · {modalDashboard?.room?.sensors}
+            {selectedRoom?.area} · {selectedRoom?.sensores}
           </p>
           <button
             type="button"

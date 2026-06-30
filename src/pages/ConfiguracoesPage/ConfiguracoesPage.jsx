@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import DashboardLayout from "@src/layouts/DashboardLayout/DashboardLayout.jsx";
 import {
   IoAlertCircleOutline,
@@ -15,29 +15,15 @@ import {
 } from "react-icons/io5";
 import { MdOutlineDevicesOther } from "react-icons/md";
 import { FaWhatsapp } from "react-icons/fa";
+import { apiGet, apiPut } from "@src/lib/api.js";
+import {
+  createFallbackSettings,
+  normalizeSettingsResponse,
+} from "@src/lib/aquamarineData.js";
 
 import styles from "./ConfiguracoesPage.module.css";
 
 const CHAVE_DADOS_USUARIO = "aquamarine:dados-usuario";
-
-const DADOS_PADRAO = {
-  nomeCompleto: "",
-  nomeExibicao: "",
-  email: "",
-  telefone: "",
-  idioma: "pt-BR",
-  fusoHorario: "America/Sao_Paulo",
-  notificacoes: {
-    email: true,
-    whatsapp: true,
-    alertasConta: true,
-    relatorioMensal: false,
-  },
-  seguranca: {
-    doisFatores: false,
-    avisoLogin: true,
-  },
-};
 
 const ABAS = [
   { chave: "perfil", rotulo: "Perfil e conta", icone: IoPersonCircleOutline },
@@ -70,6 +56,8 @@ const DISPOSITIVOS_CONECTADOS = [
     atual: false,
   },
 ];
+
+const DADOS_PADRAO = createFallbackSettings();
 
 const ERROS_CONTATO_PADRAO = {
   email: "",
@@ -136,14 +124,38 @@ function salvarDadosUsuarioNoNavegador(dadosUsuario) {
   return dadosNormalizados;
 }
 
+async function salvarDadosUsuarioNoBackend(dadosUsuario) {
+  const payload = {
+    nomeCompleto: dadosUsuario.nomeCompleto,
+    nomeExibicao: dadosUsuario.nomeExibicao,
+    email: dadosUsuario.email,
+    telefone: dadosUsuario.telefone,
+    idioma: dadosUsuario.idioma,
+    fusoHorario: dadosUsuario.fusoHorario,
+    notificacoes: dadosUsuario.notificacoes,
+    seguranca: dadosUsuario.seguranca,
+  };
+
+  try {
+    const response = await apiPut("/configuracoes-usuario/me", payload);
+    return normalizeSettingsResponse(response);
+  } catch (error) {
+    if (error?.status === 404 || error?.status === 405) {
+      return salvarDadosUsuarioNoNavegador(dadosUsuario);
+    }
+
+    throw error;
+  }
+}
+
 function validarEmailGmail(email) {
   if (!email) {
     return "";
   }
 
-  return /^[^\s@]+@gmail\.com$/i.test(email)
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
     ? ""
-    : "Gmail inválido. Use um endereço terminado em @gmail.com.";
+    : "Informe um e-mail válido.";
 }
 
 function obterDigitosTelefone(telefone) {
@@ -232,6 +244,35 @@ function ConfiguracoesPage() {
   const [mensagemErro, setMensagemErro] = useState("");
   const [errosContato, setErrosContato] = useState(ERROS_CONTATO_PADRAO);
 
+  useEffect(() => {
+    let isMounted = true;
+
+    const carregarConfiguracao = async () => {
+      try {
+        const response = await apiGet("/configuracoes-usuario/me");
+        if (!isMounted) {
+          return;
+        }
+
+        const configuracao = normalizeSettingsResponse(response);
+        setDadosUsuario(configuracao);
+        salvarDadosUsuarioNoNavegador(configuracao);
+      } catch {
+        if (!isMounted) {
+          return;
+        }
+
+        setDadosUsuario(carregarDadosUsuario());
+      }
+    };
+
+    carregarConfiguracao();
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
   const iniciaisUsuario = useMemo(() => {
     const nomeParaAvatar = dadosUsuario.nomeCompleto || dadosUsuario.nomeExibicao;
 
@@ -291,7 +332,7 @@ function ConfiguracoesPage() {
     }
   };
 
-  const salvarDados = (evento) => {
+  const salvarDados = async (evento) => {
     evento.preventDefault();
     const dadosValidados = validarDadosAntesDeSalvar(dadosUsuario);
 
@@ -299,26 +340,34 @@ function ConfiguracoesPage() {
       return;
     }
 
-    const dadosSalvos = salvarDadosUsuarioNoNavegador(dadosValidados);
-
-    setDadosUsuario(dadosSalvos);
-    setMensagemSalva("Alterações salvas neste navegador.");
+    try {
+      const dadosSalvos = await salvarDadosUsuarioNoBackend(dadosValidados);
+      setDadosUsuario(salvarDadosUsuarioNoNavegador(dadosSalvos));
+      setMensagemSalva("Alterações salvas com sucesso.");
+    } catch {
+      setDadosUsuario(salvarDadosUsuarioNoNavegador(dadosValidados));
+      setMensagemSalva("Alterações salvas neste navegador.");
+    }
   };
 
-  const salvarPreferencias = () => {
+  const salvarPreferencias = async () => {
     const dadosValidados = validarDadosAntesDeSalvar(dadosUsuario);
 
     if (!dadosValidados) {
       return;
     }
 
-    const dadosSalvos = salvarDadosUsuarioNoNavegador(dadosValidados);
-
-    setDadosUsuario(dadosSalvos);
-    setMensagemSalva("Preferências salvas neste navegador.");
+    try {
+      const dadosSalvos = await salvarDadosUsuarioNoBackend(dadosValidados);
+      setDadosUsuario(salvarDadosUsuarioNoNavegador(dadosSalvos));
+      setMensagemSalva("Preferências salvas com sucesso.");
+    } catch {
+      setDadosUsuario(salvarDadosUsuarioNoNavegador(dadosValidados));
+      setMensagemSalva("Preferências salvas neste navegador.");
+    }
   };
 
-  const salvarPreferenciaAlterada = (grupo, chave) => {
+  const salvarPreferenciaAlterada = async (grupo, chave) => {
     const proximosDados = {
       ...dadosUsuario,
       [grupo]: {
@@ -334,15 +383,20 @@ function ConfiguracoesPage() {
       return;
     }
 
-    salvarDadosUsuarioNoNavegador(dadosValidados);
-
-    setMensagemSalva("Preferência salva neste navegador.");
+    try {
+      const dadosSalvos = await salvarDadosUsuarioNoBackend(dadosValidados);
+      setDadosUsuario(salvarDadosUsuarioNoNavegador(dadosSalvos));
+      setMensagemSalva("Preferência salva com sucesso.");
+    } catch {
+      setDadosUsuario(salvarDadosUsuarioNoNavegador(dadosValidados));
+      setMensagemSalva("Preferência salva neste navegador.");
+    }
   };
 
   const atualizarSenha = (evento) => {
     evento.preventDefault();
     setSenha({ atual: "", nova: "", confirmacao: "" });
-    setMensagemSalva("Senha atualizada com sucesso.");
+    setMensagemSalva("Atualização de senha simulada no perfil local.");
   };
 
   const removerAcessoDispositivo = (nomeDispositivo) => {

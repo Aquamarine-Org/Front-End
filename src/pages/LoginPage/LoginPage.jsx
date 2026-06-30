@@ -3,34 +3,46 @@ import { Link, useNavigate } from "react-router-dom";
 import logoAquamarine from "/logo.png";
 import { IoEyeSharp, IoEyeOffSharp } from "react-icons/io5";
 import styles from "./LoginPage.module.css";
+import { ApiError } from "../../lib/api.js";
+import { useAuth } from "../../context/AuthContext.jsx";
 
 function LoginPage() {
   const navigate = useNavigate();
+  const { login } = useAuth();
+  const [email, setEmail] = useState("");
+  const [senha, setSenha] = useState("");
   const [mostrarSenha, setMostrarSenha] = useState(false);
   const [estaEntrando, setEstaEntrando] = useState(false);
+  const [erroLogin, setErroLogin] = useState("");
 
-  const handleLogin = (event) => {
+  const handleLogin = async (event) => {
     event.preventDefault();
 
     if (estaEntrando) {
       return;
     }
 
+    setErroLogin("");
     setEstaEntrando(true);
-    window.setTimeout(() => {
-      navigate("/verificar-email", { state: { origem: "login" } });
-    }, 850);
+
+    try {
+      const session = await login({ email, password: senha });
+      navigate(session.emailVerificado ? "/home" : "/verificar-email", {
+        state: { origem: "login", email: session.email },
+      });
+    } catch (error) {
+      setErroLogin(
+        error instanceof ApiError
+          ? error.message
+          : "Não foi possível entrar. Verifique seus dados e tente novamente.",
+      );
+    } finally {
+      setEstaEntrando(false);
+    }
   };
 
   const handleGoogleLogin = () => {
-    if (estaEntrando) {
-      return;
-    }
-
-    setEstaEntrando(true);
-    window.setTimeout(() => {
-      navigate("/verificar-email", { state: { origem: "login" } });
-    }, 850);
+    setErroLogin("Login com Google ainda não está conectado ao backend.");
   };
 
   return (
@@ -58,7 +70,13 @@ function LoginPage() {
           <form className={styles.loginForm} onSubmit={handleLogin}>
             <div className={styles.inputGroup}>
               <label>E-mail</label>
-              <input type="email" placeholder="Entre com seu e-mail" />
+              <input
+                type="email"
+                placeholder="Entre com seu e-mail"
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
+                required
+              />
             </div>
 
             <div className={styles.inputGroup}>
@@ -67,6 +85,9 @@ function LoginPage() {
                 <input
                   type={mostrarSenha ? "text" : "password"}
                   placeholder="Digite sua senha"
+                  value={senha}
+                  onChange={(event) => setSenha(event.target.value)}
+                  required
                 />
                 <button
                   type="button"
@@ -76,6 +97,12 @@ function LoginPage() {
                 </button>
               </div>
             </div>
+
+            {erroLogin ? (
+              <p style={{ color: "#ef4444", marginTop: "-0.5rem" }}>
+                {erroLogin}
+              </p>
+            ) : null}
 
             <button
               type="submit"
@@ -106,7 +133,7 @@ function LoginPage() {
               alt="Google"
               className={styles.googleIcon}
             />
-            {estaEntrando ? "Conectando..." : "Entrar com Google"}
+            Entrar com Google
           </button>
 
           <p className={styles.registerText}>

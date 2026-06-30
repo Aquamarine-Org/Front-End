@@ -1,14 +1,23 @@
-﻿import { useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { IoEyeSharp, IoEyeOffSharp } from "react-icons/io5";
 import logoAquamarine from "/logo.png";
 import styles from "./CadastroPage.module.css";
+import { ApiError } from "../../lib/api.js";
+import { useAuth } from "../../context/AuthContext.jsx";
 
 function CadastroPage() {
   const navigate = useNavigate();
+  const { register } = useAuth();
   const [mostrarSenha, setMostrarSenha] = useState(false);
+  const [nome, setNome] = useState("");
+  const [email, setEmail] = useState("");
   const [cpf, setCpf] = useState("");
+  const [telefone, setTelefone] = useState("");
+  const [senha, setSenha] = useState("");
+  const [confirmarSenha, setConfirmarSenha] = useState("");
   const [enviandoCadastro, setEnviandoCadastro] = useState(false);
+  const [erroCadastro, setErroCadastro] = useState("");
 
   const handleCpfChange = (event) => {
     let value = event.target.value.replace(/\D/g, "").slice(0, 11);
@@ -18,28 +27,42 @@ function CadastroPage() {
     setCpf(value);
   };
 
-  const handleCadastro = (event) => {
+  const handleCadastro = async (event) => {
     event.preventDefault();
 
     if (enviandoCadastro) {
       return;
     }
 
+    setErroCadastro("");
     setEnviandoCadastro(true);
-    window.setTimeout(() => {
+
+    try {
+      await register({
+        name: nome,
+        email,
+        password: senha,
+        confirmPassword: confirmarSenha,
+        cpf: cpf.replace(/\D/g, ""),
+        completeAddress: "",
+        cep: "",
+        phone: telefone,
+      });
+
       navigate("/verificar-email", { state: { origem: "cadastro" } });
-    }, 900);
+    } catch (error) {
+      setErroCadastro(
+        error instanceof ApiError
+          ? error.message
+          : "Não foi possível concluir o cadastro.",
+      );
+    } finally {
+      setEnviandoCadastro(false);
+    }
   };
 
   const handleGoogleCadastro = () => {
-    if (enviandoCadastro) {
-      return;
-    }
-
-    setEnviandoCadastro(true);
-    window.setTimeout(() => {
-      navigate("/verificar-email", { state: { origem: "cadastro" } });
-    }, 900);
+    setErroCadastro("Cadastro com Google ainda não está conectado ao backend.");
   };
 
   return (
@@ -60,12 +83,24 @@ function CadastroPage() {
           <form className={styles.cadastroForm} onSubmit={handleCadastro}>
             <div className={styles.inputGroup}>
               <label>Nome</label>
-              <input type="text" placeholder="Digite seu nome" />
+              <input
+                type="text"
+                placeholder="Digite seu nome"
+                value={nome}
+                onChange={(event) => setNome(event.target.value)}
+                required
+              />
             </div>
 
             <div className={styles.inputGroup}>
               <label>E-mail</label>
-              <input type="email" placeholder="Digite seu e-mail" />
+              <input
+                type="email"
+                placeholder="Digite seu e-mail"
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
+                required
+              />
             </div>
 
             <div className={styles.inputGroup}>
@@ -77,18 +112,30 @@ function CadastroPage() {
                 onChange={handleCpfChange}
                 maxLength={14}
                 inputMode="numeric"
+                required
+              />
+            </div>
+
+            <div className={styles.inputGroup}>
+              <label>Telefone</label>
+              <input
+                type="tel"
+                placeholder="Digite seu telefone"
+                value={telefone}
+                onChange={(event) => setTelefone(event.target.value)}
               />
             </div>
 
             <div className={styles.inputGroup}>
               <label>Senha</label>
-
               <div className={styles.passwordInput}>
                 <input
                   type={mostrarSenha ? "text" : "password"}
                   placeholder="Digite sua senha"
+                  value={senha}
+                  onChange={(event) => setSenha(event.target.value)}
+                  required
                 />
-
                 <button
                   type="button"
                   onClick={() => setMostrarSenha(!mostrarSenha)}
@@ -97,6 +144,23 @@ function CadastroPage() {
                 </button>
               </div>
             </div>
+
+            <div className={styles.inputGroup}>
+              <label>Confirmar senha</label>
+              <input
+                type={mostrarSenha ? "text" : "password"}
+                placeholder="Confirme sua senha"
+                value={confirmarSenha}
+                onChange={(event) => setConfirmarSenha(event.target.value)}
+                required
+              />
+            </div>
+
+            {erroCadastro ? (
+              <p style={{ color: "#ef4444", marginTop: "-0.5rem" }}>
+                {erroCadastro}
+              </p>
+            ) : null}
 
             <button
               type="submit"
@@ -127,7 +191,7 @@ function CadastroPage() {
               alt="Google"
               className={styles.googleIcon}
             />
-            {enviandoCadastro ? "Conectando..." : "Entrar com Google"}
+            Entrar com Google
           </button>
 
           <p className={styles.loginText}>

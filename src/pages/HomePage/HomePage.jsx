@@ -1,3 +1,4 @@
+import { useEffect, useMemo, useState } from "react";
 import DashboardLayout from "@src/layouts/DashboardLayout/DashboardLayout.jsx";
 import styles from "./HomePage.module.css";
 
@@ -14,11 +15,10 @@ import { LuGauge } from "react-icons/lu";
 
 import ActionButton from "@src/components/ActionButton/ActionButton.jsx";
 import AlertCard from "@src/features/AlertCard/AlertCard.jsx";
-
 import { useNavigate } from "react-router-dom";
 import Modal from "../../components/Modal/Modal";
-
-import { useMemo, useState } from "react";
+import { apiGet } from "@src/lib/api.js";
+import { createFallbackDashboardOverview } from "@src/lib/aquamarineData.js";
 
 import {
   Area,
@@ -31,54 +31,50 @@ import {
   Line,
 } from "recharts";
 
-const ALERTS = [
-  {
-    id: 1,
-    title: "Consumo Elevado",
-    time: "Ha 12h",
-    level: "Medio",
-    tone: "warning",
-    icon: FiTrendingUp,
-  },
-  {
-    id: 2,
-    title: "Pressao Anomala",
-    time: "Ha 2 dias",
-    level: "Comum",
-    tone: "normal",
-    icon: LuGauge,
-  },
-  {
-    id: 3,
-    title: "Vazamento Detectado",
-    time: "Ha 1 semana",
-    level: "Perigo",
-    tone: "danger",
-    icon: FiAlertTriangle,
-  },
-];
-
-const chartData = [
-  { hour: "00h", fluxo: 10, pressao: 22 },
-  { hour: "04h", fluxo: 15, pressao: 18 },
-  { hour: "08h", fluxo: 12, pressao: 26 },
-  { hour: "12h", fluxo: 18, pressao: 20 },
-  { hour: "16h", fluxo: 14, pressao: 24 },
-  { hour: "20h", fluxo: 11, pressao: 19 },
-  { hour: "24h", fluxo: 13, pressao: 21 },
-];
-
 function HomePage() {
   const navigate = useNavigate();
-
+  const [dashboard, setDashboard] = useState(createFallbackDashboardOverview());
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isValveOpen, setIsValveOpen] = useState(true);
+  const [isValveOpen, setIsValveOpen] = useState(
+    createFallbackDashboardOverview().dispositivoPrincipal.aberta,
+  );
+
+  useEffect(() => {
+    let isMounted = true;
+
+    const carregarDashboard = async () => {
+      try {
+        const data = await apiGet("/dashboard/overview");
+        if (isMounted && data) {
+          setDashboard(data);
+          setIsValveOpen(Boolean(data.dispositivoPrincipal?.aberta));
+        }
+      } catch {
+        if (isMounted) {
+          const fallback = createFallbackDashboardOverview();
+          setDashboard(fallback);
+          setIsValveOpen(Boolean(fallback.dispositivoPrincipal.aberta));
+        }
+      }
+    };
+
+    carregarDashboard();
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   const averageFlow = useMemo(() => {
-    const total = chartData.reduce((acc, item) => acc + item.fluxo, 0);
+    const total = dashboard.grafico24Horas.reduce(
+      (acc, item) => acc + item.fluxo,
+      0,
+    );
 
-    return (total / chartData.length).toFixed(1);
-  }, []);
+    return dashboard.grafico24Horas.length
+      ? (total / dashboard.grafico24Horas.length).toFixed(1)
+      : "0.0";
+  }, [dashboard.grafico24Horas]);
 
   const handleToggleValve = () => {
     setIsValveOpen((prev) => !prev);
@@ -109,7 +105,7 @@ function HomePage() {
             <div className={styles.chartArea}>
               <ResponsiveContainer width="100%" height="100%">
                 <AreaChart
-                  data={chartData}
+                  data={dashboard.grafico24Horas}
                   margin={{ top: 8, right: 8, left: -12, bottom: 0 }}
                 >
                   <defs>
@@ -121,7 +117,6 @@ function HomePage() {
                       y2="1"
                     >
                       <stop offset="5%" stopColor="#ea4a4a" stopOpacity={0.3} />
-
                       <stop offset="95%" stopColor="#ea4a4a" stopOpacity={0} />
                     </linearGradient>
                   </defs>
@@ -129,7 +124,7 @@ function HomePage() {
                   <CartesianGrid strokeDasharray="3 3" stroke="#dfe6ee" />
 
                   <XAxis
-                    dataKey="hour"
+                    dataKey="hora"
                     tick={{ fontSize: 11 }}
                     tickMargin={6}
                     interval="preserveStartEnd"
@@ -256,16 +251,25 @@ function HomePage() {
           </header>
 
           <div className={styles.alertList}>
-            {ALERTS.map((alert) => (
-              <AlertCard
-                key={alert.id}
-                icon={alert.icon}
-                title={alert.title}
-                time={alert.time}
-                level={alert.level}
-                tone={alert.tone}
-              />
-            ))}
+            {dashboard.alertasRecentes.map((alert) => {
+              const alertIcon = {
+                warning: FiTrendingUp,
+                normal: LuGauge,
+                danger: FiAlertTriangle,
+                success: FiCheck,
+              }[alert.tone] || FiTrendingUp;
+
+              return (
+                <AlertCard
+                  key={alert.id}
+                  icon={alertIcon}
+                  title={alert.titulo}
+                  time={alert.tempo}
+                  level={alert.nivel}
+                  tone={alert.tone}
+                />
+              );
+            })}
           </div>
         </section>
       </div>

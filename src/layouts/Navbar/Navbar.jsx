@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import styles from "./Navbar.module.css";
 import ActionButton from "../../components/ActionButton/ActionButton";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext.jsx";
 import logo from "/public/logo.png";
 import { FiHome } from "react-icons/fi";
 import { MdOutlineDashboard } from "react-icons/md";
@@ -59,6 +60,7 @@ const NAVIGATION_ITEMS = [
 
 function Navbar({ currentPage = "inicio" }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { logout } = useAuth();
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(min-width: 768px)");
@@ -204,7 +206,14 @@ function Navbar({ currentPage = "inicio" }) {
                 </div>
               </Link>
 
-              <Link to="/" className={styles.footerLink} onClick={closeMenu}>
+              <Link
+                to="/login"
+                className={styles.footerLink}
+                onClick={() => {
+                  logout();
+                  closeMenu();
+                }}
+              >
                 <div className={styles.logoutItem}>
                   <MdExitToApp
                     className={styles.logoutIcon}
