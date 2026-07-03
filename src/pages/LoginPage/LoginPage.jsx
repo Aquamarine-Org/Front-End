@@ -3,14 +3,14 @@ import { Link, useNavigate } from "react-router-dom";
 import logoAquamarine from "/logo.png";
 import { IoEyeSharp, IoEyeOffSharp } from "react-icons/io5";
 import styles from "./LoginPage.module.css";
-import { ApiError } from "../../lib/api.js";
+import { ApiError, MOCK_DEMO_CREDENTIALS } from "../../lib/api.js";
 import { useAuth } from "../../context/AuthContext.jsx";
 
 function LoginPage() {
   const navigate = useNavigate();
   const { login } = useAuth();
-  const [email, setEmail] = useState("");
-  const [senha, setSenha] = useState("");
+  const [email, setEmail] = useState(MOCK_DEMO_CREDENTIALS.email);
+  const [senha, setSenha] = useState(MOCK_DEMO_CREDENTIALS.password);
   const [mostrarSenha, setMostrarSenha] = useState(false);
   const [estaEntrando, setEstaEntrando] = useState(false);
   const [erroLogin, setErroLogin] = useState("");
@@ -42,7 +42,7 @@ function LoginPage() {
   };
 
   const handleGoogleLogin = () => {
-    setErroLogin("Login com Google ainda não está conectado ao backend.");
+    setErroLogin("Login com Google indisponível nesta demonstração.");
   };
 
   return (
@@ -115,6 +115,11 @@ function LoginPage() {
               {estaEntrando ? "Entrando..." : "Login"}
             </button>
           </form>
+
+          <p style={{ marginTop: "-0.25rem", color: "#64748b", fontSize: "0.92rem" }}>
+            Acesso de demonstração: <strong>demo@aquamarine.com</strong> /{" "}
+            <strong>Demo123!</strong>
+          </p>
 
           <div className={styles.divider}>
             <span></span>

@@ -291,8 +291,8 @@ function InformacoesPage() {
                 <FiCheckCircle />
                 <h3>Informações salvas com sucesso</h3>
                 <p>
-                  O formulário ficará disponível para integração quando o
-                  backend do projeto for criado.
+                  O formulário fica salvo localmente nesta demonstração, sem
+                  depender de backend.
                 </p>
                 <button
                   type="button"

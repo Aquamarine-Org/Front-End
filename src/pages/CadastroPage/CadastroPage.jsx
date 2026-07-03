@@ -64,7 +64,7 @@ function CadastroPage() {
   };
 
   const handleGoogleCadastro = () => {
-    setErroCadastro("Cadastro com Google ainda não está conectado ao backend.");
+    setErroCadastro("Cadastro com Google indisponível nesta demonstração.");
   };
 
   return (
@@ -175,6 +175,10 @@ function CadastroPage() {
               {enviandoCadastro ? "Enviando código..." : "Cadastrar-se"}
             </button>
           </form>
+
+          <p style={{ marginTop: "-0.25rem", color: "#64748b", fontSize: "0.92rem" }}>
+            Os dados do cadastro ficam salvos localmente para a apresentação.
+          </p>
 
           <div className={styles.divider}>
             <span></span>

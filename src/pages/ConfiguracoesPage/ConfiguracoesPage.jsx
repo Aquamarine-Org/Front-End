@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import DashboardLayout from "@src/layouts/DashboardLayout/DashboardLayout.jsx";
 import {
   IoAlertCircleOutline,
@@ -15,11 +15,7 @@ import {
 } from "react-icons/io5";
 import { MdOutlineDevicesOther } from "react-icons/md";
 import { FaWhatsapp } from "react-icons/fa";
-import { apiGet, apiPut } from "@src/lib/api.js";
-import {
-  createFallbackSettings,
-  normalizeSettingsResponse,
-} from "@src/lib/aquamarineData.js";
+import { createFallbackSettings } from "@src/lib/aquamarineData.js";
 
 import styles from "./ConfiguracoesPage.module.css";
 
@@ -125,27 +121,7 @@ function salvarDadosUsuarioNoNavegador(dadosUsuario) {
 }
 
 async function salvarDadosUsuarioNoBackend(dadosUsuario) {
-  const payload = {
-    nomeCompleto: dadosUsuario.nomeCompleto,
-    nomeExibicao: dadosUsuario.nomeExibicao,
-    email: dadosUsuario.email,
-    telefone: dadosUsuario.telefone,
-    idioma: dadosUsuario.idioma,
-    fusoHorario: dadosUsuario.fusoHorario,
-    notificacoes: dadosUsuario.notificacoes,
-    seguranca: dadosUsuario.seguranca,
-  };
-
-  try {
-    const response = await apiPut("/configuracoes-usuario/me", payload);
-    return normalizeSettingsResponse(response);
-  } catch (error) {
-    if (error?.status === 404 || error?.status === 405) {
-      return salvarDadosUsuarioNoNavegador(dadosUsuario);
-    }
-
-    throw error;
-  }
+  return salvarDadosUsuarioNoNavegador(dadosUsuario);
 }
 
 function validarEmailGmail(email) {
@@ -243,35 +219,6 @@ function ConfiguracoesPage() {
   const [mensagemSalva, setMensagemSalva] = useState("");
   const [mensagemErro, setMensagemErro] = useState("");
   const [errosContato, setErrosContato] = useState(ERROS_CONTATO_PADRAO);
-
-  useEffect(() => {
-    let isMounted = true;
-
-    const carregarConfiguracao = async () => {
-      try {
-        const response = await apiGet("/configuracoes-usuario/me");
-        if (!isMounted) {
-          return;
-        }
-
-        const configuracao = normalizeSettingsResponse(response);
-        setDadosUsuario(configuracao);
-        salvarDadosUsuarioNoNavegador(configuracao);
-      } catch {
-        if (!isMounted) {
-          return;
-        }
-
-        setDadosUsuario(carregarDadosUsuario());
-      }
-    };
-
-    carregarConfiguracao();
-
-    return () => {
-      isMounted = false;
-    };
-  }, []);
 
   const iniciaisUsuario = useMemo(() => {
     const nomeParaAvatar = dadosUsuario.nomeCompleto || dadosUsuario.nomeExibicao;

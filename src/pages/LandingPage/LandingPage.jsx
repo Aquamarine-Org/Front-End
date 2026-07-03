@@ -85,6 +85,12 @@ function LandingPage() {
             </button>
           </Link>
 
+          <Link to="/brinde" className={styles.linkButtonItem}>
+            <button type="button" className={styles.glassButton}>
+              Jogar desafio
+            </button>
+          </Link>
+
           <a href="#planos" className={styles.linkButtonItem}>
             <button type="button" className={styles.glassButton}>
               Ver planos

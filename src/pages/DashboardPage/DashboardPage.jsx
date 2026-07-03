@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import DashboardLayout from "@src/layouts/DashboardLayout/DashboardLayout.jsx";
 import { FiDroplet, FiEdit3, FiShield } from "react-icons/fi";
 import { IoEyeOutline, IoWaterOutline } from "react-icons/io5";
@@ -6,7 +6,6 @@ import { GiValve } from "react-icons/gi";
 import { FaStairs } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
 import Modal from "@src/components/Modal/Modal.jsx";
-import { apiGet } from "@src/lib/api.js";
 import { createFallbackDashboardOverview } from "@src/lib/aquamarineData.js";
 import styles from "./DashboardPage.module.css";
 
@@ -42,31 +41,8 @@ function RoomCard({ room, onView }) {
 
 function DashboardPage() {
   const navigate = useNavigate();
-  const [dashboard, setDashboard] = useState(createFallbackDashboardOverview());
+  const dashboard = createFallbackDashboardOverview();
   const [modalDashboard, setModalDashboard] = useState(null);
-
-  useEffect(() => {
-    let isMounted = true;
-
-    const carregarDashboard = async () => {
-      try {
-        const data = await apiGet("/dashboard/overview");
-        if (isMounted && data) {
-          setDashboard(data);
-        }
-      } catch {
-        if (isMounted) {
-          setDashboard(createFallbackDashboardOverview());
-        }
-      }
-    };
-
-    carregarDashboard();
-
-    return () => {
-      isMounted = false;
-    };
-  }, []);
 
   const closeModal = () => setModalDashboard(null);
   const quantidadeAndares = dashboard.resumo?.quantidadeAndares ?? 1;

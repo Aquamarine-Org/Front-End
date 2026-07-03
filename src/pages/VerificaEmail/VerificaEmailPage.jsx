@@ -1,7 +1,12 @@
 import { useMemo, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import logoAquamarine from "/logo.png";
-import { ApiError, apiPost } from "../../lib/api.js";
+import {
+  ApiError,
+  IS_MOCK_API,
+  MOCK_VERIFICATION_CODE,
+  apiPost,
+} from "../../lib/api.js";
 import { useAuth } from "../../context/AuthContext.jsx";
 import styles from "./VerificarEmail.module.css";
 
@@ -9,7 +14,9 @@ function VerificarEmail() {
   const navigate = useNavigate();
   const location = useLocation();
   const { session, updateSession } = useAuth();
-  const [code, setCode] = useState(Array(6).fill(""));
+  const [code, setCode] = useState(() =>
+    IS_MOCK_API ? MOCK_VERIFICATION_CODE.split("") : Array(6).fill(""),
+  );
   const [verificandoEmail, setVerificandoEmail] = useState(false);
   const [reenviandoCodigo, setReenviandoCodigo] = useState(false);
   const [mensagemReenvio, setMensagemReenvio] = useState("");
@@ -44,11 +51,11 @@ function VerificarEmail() {
 
     const verificationCode = code.join("");
     if (!email) {
-      setErro("Não encontramos o e-mail para validar.");
+      setErro("Nao encontramos o e-mail para validar.");
       return;
     }
     if (verificationCode.length !== 6) {
-      setErro("Digite os 6 dígitos do código.");
+      setErro("Digite os 6 digitos do codigo.");
       return;
     }
 
@@ -66,7 +73,7 @@ function VerificarEmail() {
         setErro(
           error instanceof ApiError
             ? error.message
-            : "Não foi possível verificar o e-mail.",
+            : "Nao foi possivel verificar o e-mail.",
         );
       })
       .finally(() => {
@@ -80,7 +87,7 @@ function VerificarEmail() {
     }
 
     if (!email) {
-      setErro("Não encontramos o e-mail para reenviar o código.");
+      setErro("Nao encontramos o e-mail para reenviar o codigo.");
       return;
     }
 
@@ -89,15 +96,15 @@ function VerificarEmail() {
 
     apiPost("/auth/resend-verification-code", { email })
       .then(() => {
-        setCode(Array(6).fill(""));
-        setMensagemReenvio("Código reenviado. Confira sua caixa de entrada.");
+        setCode(IS_MOCK_API ? MOCK_VERIFICATION_CODE.split("") : Array(6).fill(""));
+        setMensagemReenvio("Codigo reenviado. Confira sua caixa de entrada.");
         inputRefs.current[0]?.focus();
       })
       .catch((error) => {
         setErro(
           error instanceof ApiError
             ? error.message
-            : "Não foi possível reenviar o código.",
+            : "Nao foi possivel reenviar o codigo.",
         );
       })
       .finally(() => {
@@ -118,7 +125,12 @@ function VerificarEmail() {
           <div className={styles.verificarCard}>
             <div className={styles.verificarTitle}>
               <h1>Verifique seu e-mail</h1>
-              <p>Um código de 6 dígitos foi enviado para {email || "seu e-mail"}.</p>
+              <p>Um codigo de 6 digitos foi enviado para {email || "seu e-mail"}.</p>
+              {IS_MOCK_API ? (
+                <p style={{ fontSize: "0.95rem", color: "#64748b" }}>
+                  Modo demonstracao ativo. Use o codigo {MOCK_VERIFICATION_CODE}.
+                </p>
+              ) : null}
             </div>
 
             <div className={styles.codigoContainer}>
@@ -156,7 +168,7 @@ function VerificarEmail() {
               disabled={reenviandoCodigo}
               onClick={handleReenviarCodigo}
             >
-              {reenviandoCodigo ? "Reenviando..." : "Reenviar código"}
+              {reenviandoCodigo ? "Reenviando..." : "Reenviar codigo"}
             </button>
 
             {erro ? <p className={styles.reenvioMensagem}>{erro}</p> : null}

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import DashboardLayout from "@src/layouts/DashboardLayout/DashboardLayout.jsx";
 import styles from "./HomePage.module.css";
 
@@ -17,7 +17,6 @@ import ActionButton from "@src/components/ActionButton/ActionButton.jsx";
 import AlertCard from "@src/features/AlertCard/AlertCard.jsx";
 import { useNavigate } from "react-router-dom";
 import Modal from "../../components/Modal/Modal";
-import { apiGet } from "@src/lib/api.js";
 import { createFallbackDashboardOverview } from "@src/lib/aquamarineData.js";
 
 import {
@@ -33,37 +32,11 @@ import {
 
 function HomePage() {
   const navigate = useNavigate();
-  const [dashboard, setDashboard] = useState(createFallbackDashboardOverview());
+  const dashboard = createFallbackDashboardOverview();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isValveOpen, setIsValveOpen] = useState(
     createFallbackDashboardOverview().dispositivoPrincipal.aberta,
   );
-
-  useEffect(() => {
-    let isMounted = true;
-
-    const carregarDashboard = async () => {
-      try {
-        const data = await apiGet("/dashboard/overview");
-        if (isMounted && data) {
-          setDashboard(data);
-          setIsValveOpen(Boolean(data.dispositivoPrincipal?.aberta));
-        }
-      } catch {
-        if (isMounted) {
-          const fallback = createFallbackDashboardOverview();
-          setDashboard(fallback);
-          setIsValveOpen(Boolean(fallback.dispositivoPrincipal.aberta));
-        }
-      }
-    };
-
-    carregarDashboard();
-
-    return () => {
-      isMounted = false;
-    };
-  }, []);
 
   const averageFlow = useMemo(() => {
     const total = dashboard.grafico24Horas.reduce(
