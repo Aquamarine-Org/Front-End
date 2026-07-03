@@ -1,4 +1,4 @@
-name = "aquamarine-frontend"
+name = "front-end"
 compatibility_date = "2026-07-01"
 main = "worker.js"
 
