@@ -2,11 +2,14 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { FiCheckCircle, FiHome, FiX } from "react-icons/fi";
 import logoAquamarine from "/logo.png";
+import { ApiError, apiPost } from "../../lib/api.js";
+import { useAuth } from "../../context/AuthContext.jsx";
 
 import styles from "./InformacoesPage.module.css";
 
 function InformacoesPage() {
   const navigate = useNavigate();
+  const { session } = useAuth();
   const [cpf, setCpf] = useState("");
   const [endereco, setEndereco] = useState("");
   const [cep, setCep] = useState("");
@@ -108,6 +111,14 @@ function InformacoesPage() {
       return;
     }
 
+    const email = session?.email || "";
+    if (!email) {
+      setErroCadastro(
+        "Nao encontramos seu e-mail para finalizar o cadastro.",
+      );
+      return;
+    }
+
     const dadosCadastro = {
       dadosPessoais: {
         cpf,
@@ -120,17 +131,34 @@ function InformacoesPage() {
     };
 
     setSalvandoPerfilResidencia(true);
-    window.setTimeout(() => {
-      localStorage.setItem(
-        "aquamarine-cadastro-complementar",
-        JSON.stringify(dadosCadastro),
-      );
 
-      setPerfilResidenciaSalvo(true);
-      setSalvandoPerfilResidencia(false);
-      setMostrarModalResidencia(true);
-      window.setTimeout(() => navigate("/home"), 1400);
-    }, 650);
+    apiPost("/auth/complete-registration", {
+      email,
+      phone: telefone,
+      address: endereco.trim(),
+      cpf: cpf.replace(/\D/g, ""),
+      cep,
+    })
+      .then(() => {
+        localStorage.setItem(
+          "aquamarine-cadastro-complementar",
+          JSON.stringify(dadosCadastro),
+        );
+
+        setPerfilResidenciaSalvo(true);
+        setMostrarModalResidencia(true);
+        window.setTimeout(() => navigate("/home"), 1400);
+      })
+      .catch((error) => {
+        setErroCadastro(
+          error instanceof ApiError
+            ? error.message
+            : "Nao foi possivel finalizar o cadastro.",
+        );
+      })
+      .finally(() => {
+        setSalvandoPerfilResidencia(false);
+      });
   };
 
   useEffect(() => {

@@ -59,7 +59,7 @@ function VerificarEmail() {
       .then(() => {
         updateSession?.({ emailVerificado: true });
         const proximaRota =
-          location.state?.origem === "cadastro" ? "/informacoes" : "/home";
+          location.state?.origem === "cadastro" ? "/dados" : "/home";
         navigate(proximaRota, { replace: true });
       })
       .catch((error) => {

@@ -49,7 +49,9 @@ function CadastroPage() {
         phone: telefone,
       });
 
-      navigate("/verificar-email", { state: { origem: "cadastro" } });
+      navigate("/verificar-email", {
+        state: { origem: "cadastro", email },
+      });
     } catch (error) {
       setErroCadastro(
         error instanceof ApiError
