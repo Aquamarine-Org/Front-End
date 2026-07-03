@@ -23,38 +23,38 @@ import styles from "./LandingPage.module.css";
 
 const planos = [
   {
-    nome: "Aquamarine Common",
+    nome: "Plano Home",
+    preco: " R$ 24,90/mês",
     descricao: "Ferramentas essenciais para começos conscientes.",
-    preco: "Teste Grátis",
     destaque: false,
     botao: "Escolher Common",
-    funcionalidades: ["Análise do fluxo de pressão", "Alerta de vazamento"],
+    funcionalidades: ["Detecção automática.", "Alertas instantâneos.", "Controle remoto da água.", "Setorização de alertas."],
   },
   {
-    nome: "Aquamarine Plus",
+    nome: "Plano Ap",
     descricao: "Uma imersão profunda no bem-estar avançado.",
-    preco: "R$80",
+    preco: "R$ 29,90/mês",
     periodo: "/mensal",
     destaque: true,
     botao: "Escolher Plus",
     funcionalidades: [
-      "Análise do fluxo de pressão",
-      "Alerta de vazamento",
-      "Fechamento de dispositivos",
+      "Detecção automática",
+      "Alertas instantâneos.",
+      "Modo viagem.",
+      "Relatórios de danos  a unidades vizinhas."
     ],
   },
   {
-    nome: "Aquamarine Premium",
+    nome: "Plano Condomínio",
     descricao: "O oceano definitivo de possibilidades.",
-    preco: "R$100",
+    preco: "R$299,90/mês",
     periodo: "/mensal",
     destaque: false,
     botao: "Escolher Premium",
     funcionalidades: [
       "Análise do fluxo de pressão",
-      "Alerta de vazamento",
-      "Fechamento de dispositivos",
-      "IA integrada",
+      "Indicadores de eficiência. ",
+      "Alertas de redução de desperdícios e prejuízos", 
     ],
   },
 ];
@@ -82,12 +82,6 @@ function LandingPage() {
           <Link to="/cadastro" className={styles.linkButtonItem}>
             <button type="button" className={styles.gradientButton}>
               Começar
-            </button>
-          </Link>
-
-          <Link to="/brinde" className={styles.linkButtonItem}>
-            <button type="button" className={styles.glassButton}>
-              Jogar desafio
             </button>
           </Link>
 
@@ -155,8 +149,8 @@ function LandingPage() {
       </section>
 
       <section className={`${styles.containerSub} ${styles.plansSection}`}>
-        <div className={styles.plansHeader} id="planos">
           <h2 className={styles.subtitle}>Nossos planos</h2>
+        <div className={styles.plansHeader} id="planos">
         </div>
 
         <div className={styles.plansGrid}>
